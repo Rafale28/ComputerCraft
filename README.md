@@ -2,7 +2,7 @@
 **サーバー内にあるComputer, Turtleに使うプログラムを送れます.**  
 **2階のチェスト右側へ実験用のPCを置いてあります.**  
 - - -
-1. idとコマンドを打つとそのComputerのIDが表示されます(この場合はおそらく3のはず)  
+1. idとコマンドを打つとそのComputerのIDが表示されます(実験用PCで試す場合はおそらく3のはず)  
 2. programs/Userに自分のディレクトリを作ってプログラムを作ります。  
 3. config.csvに転送したいPCのidとプログラムの置いてあるディレクトリまでのPathを書いてcommit & push  
     * id3のPCにUser/Hoge/Test/test.luaを転送したい場合,  
