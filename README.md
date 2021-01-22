@@ -7,7 +7,7 @@
 3. config.csvに転送したいPCのidとプログラムの置いてあるディレクトリまでのPathを書いてcommit & push  
     * id3のPCにUser/Hoge/Test/test.luaを転送したい場合,  
     * `3, User/Hoge/Test/ `   
-    * とconfig.csvに追記します。  
+    * とProgramsより下からのディレクトリをconfig.csvに追記します。  
 4. 1分間隔でpollingしているので1分位すればroot直下にTestというディレクトリが出来ているはず  
   
 - - -  
