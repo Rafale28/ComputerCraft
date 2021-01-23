@@ -1,4 +1,5 @@
 function checkIthem(slotVal) 
+    x = {}
     x = turtle.getItemDetail(slotVal)
     print(x[1])
     print(x[3])
