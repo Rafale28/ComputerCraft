@@ -63,10 +63,10 @@ function toStoreCarrot(lane)
         if x then
             if itm["name"] == carrot then
                 turtle.select(i)
-                turtle.drop()
-            elseif itm["name"] == carrot then
+                turtle.drop(itm["count"])
+            elseif itm["name"] == potato then
                 turtle.select(i)
-                turtle.drop()
+                turtle.drop(itm["count"])
             elseif itm["name"] == pisPotato then
                 turtle.select(i)
                 turtle.dropUp(x["count"])
