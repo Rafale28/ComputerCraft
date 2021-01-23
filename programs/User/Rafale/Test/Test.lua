@@ -13,4 +13,6 @@ while true do
     print("N="..num)
     h.writeLine(num)
     h.flush()
+    h.close()
+    sleep(1)
 end
