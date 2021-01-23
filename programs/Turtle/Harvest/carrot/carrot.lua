@@ -60,7 +60,7 @@ function toStoreCarrot(lane)
     for i = 1, 16 do
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
-        if x then
+        if itm then
             if itm["name"] == carrot then
                 turtle.select(i)
                 turtle.drop(itm["count"])
