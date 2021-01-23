@@ -1,5 +1,10 @@
+function checkIthem(slotVal) 
+    x = turtle.getItemDetail(slotVal)
+    for k, v in pairs(x) do
+        print(k,v)
+    end
+end
 print("Hello World!!")
-x = turtle.getItemDetail(1)
-for k, v in pairs(x) do
-    print(k,v)
+for i=1, 16 do
+    checkIthem(i)
 end
