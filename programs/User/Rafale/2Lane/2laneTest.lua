@@ -5,28 +5,15 @@
 -- #############
 -- config
 CARROT_SLOT  = 1
-FUEL_SLOT   = 13
+FUEL_SLOT   = 16
 
-function chargeFuelFromChest()
-    for i = 1, 3 do
-        turtle.select(FUEL_SLOT)
-        res = turtle.compareTo(FUEL_SLOT + i)
-        if res == false then
-            turtle.select(FUEL_SLOT + i)
-            turtle.suckUp()
-        end
-    end
-end
-
-function fuelCheck(x)
-    fuelSlot1 = FUEL_SLOT + 1 
-    fuelSlot2 = FUEL_SLOT + 2 
+function fuelCheck(lane)
+    fmin = 64 * 2 * lane
     fuel = turtle.getFuelLevel()
     print("fuelLevel"..fuel)
-    if fuel < x then
-        turtle.select(fuelSlot1)
-        turtle.refuel(64)
-        turtle.select(fuelSlot2)
+    while fuel < fmin
+        turtle.select(FUEL_SLOT)
+        turtle.suckUp()
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
         print("Refuel"..fuel)
@@ -148,8 +135,7 @@ end
 function routine(lane)
     -- #############
     -- fuelcheck
-    fmin = 64 * 2 * lane
-    fuelCheck(fmin)
+    fuelCheck(lane)
 
     -- #############
     -- harvest
@@ -186,7 +172,6 @@ function routine(lane)
             switch2RightLane()
         end
     end
-    chargeFuelFromChest(lane)
 end
 -- #############
 -- Main
