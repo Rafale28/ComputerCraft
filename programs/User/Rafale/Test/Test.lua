@@ -1,5 +1,5 @@
 print("Hello World!!")
-h = fs.open("time.txt")
+h = fs.open("time.txt", "r")
 num = h.readline()
 if num == nil then
     num = 0
