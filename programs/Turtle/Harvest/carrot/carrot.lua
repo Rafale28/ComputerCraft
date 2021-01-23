@@ -192,7 +192,11 @@ end
 hLane = 2
 local minute = 60
 debug = arg[1]
+ftime = arg[2]
 if debug ~= 'd' then
+    if debug == 't' then
+        sleep(minute * ftime)
+    end
     while true do
         for i=40, 0, -1 do
             print(i.."min...")
