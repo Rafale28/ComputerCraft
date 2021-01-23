@@ -8,7 +8,8 @@ CARROT_SLOT  = 1
 FUEL_SLOT   = 16
 
 function fuelCheck(lane)
-    fmin = 64 * 2 * lane
+    fmin = 64 * 4 * lane 
+    fmin = fmin + 10
     fuel = turtle.getFuelLevel()
     print("fuelLevel"..fuel)
     while fuel < fmin do
