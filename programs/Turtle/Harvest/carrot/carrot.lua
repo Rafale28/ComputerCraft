@@ -52,18 +52,26 @@ function harvestrightShift()
     turtle.turnRight()
 end
 
+function potatoCheck()
+end
+
+carrot     = "minecraft:carrot"
+potato     = "minecraft:potato"
+posiPotato = "minecraft:poisonous_potato"
+
 function toStoreCarrot(lane)
     for i = 1, 16 do
-        turtle.select(CARROT_SLOT)
-        if i ~= CARROT_SLOT then
-            res = turtle.compareTo(i)
-            if res == true then
-                turtle.select(i)
-                turtle.drop()
-            end
+        turtle.select(i)
+        itm = turtle.getItemDetail(i)
+        if itm["name"] == potato or itm["name"] == carrot then
+            turtle.select(i)
+            turtle.drop()
+        elseif itm["name"] == posiPotato then
+            turtle.select(i)
+            turtle.dropUp(itm["count"])
         end
     end
-    turtle.select(CARROT_SLOT + 1)
+    turtle.select(1)
     for i=1, lane do
         turtle.suck()
         turtle.suck()
@@ -72,13 +80,10 @@ end
 
 function plantCarrot()
     for i = 1, 16 do
-        turtle.select(CARROT_SLOT)
-        if i ~= CARROT_SLOT then
-            res = turtle.compareTo(i)
-            if res == true then
-                turtle.select(i)
-                break
-            end
+        itm = turtle.getItemDetail(i)
+        if itm["name"] == potato or itm["name"] == carrot then
+            turtle.select(i)
+            break
         end
     end
     turtle.place()
@@ -93,7 +98,7 @@ function plowLine()
     res = true
     i = 1
     while res do
-        print(i,'/',MAX)
+        print(i)
         plowAndPlant()
         res =  turtle.back()
         i = i + 1
@@ -185,4 +190,4 @@ while true do
         sleep(minute)
     end
     routine(hLane)
-end
+--end
