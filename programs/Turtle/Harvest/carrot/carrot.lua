@@ -61,7 +61,6 @@ function toStoreCarrot(lane)
         turtle.select(i)
         local x = turtle.getItemDetail(i)
         if x["name"] == "minecraft:potato" then
-        if x["name"] == "minecraft:potato" then
             turtle.select(i)
             turtle.drop()
         elseif x["name"] == "minecraft:carrot" then
