@@ -10,6 +10,7 @@
     * とProgramsより下からのディレクトリをconfig.csvに追記します。  
 4. 1分間隔でpollingしているので1分位すればroot直下にTestというディレクトリが出来ているはず  
   
+   
 - - -  
 注意,Computerのディレクトリが出来る条件がlabelが恐らくセットされていることと一度ディレクトリを操作することなので
 label set hogehoge  
