@@ -75,7 +75,7 @@ function toStoreCarrot()
             end
         end
     end
-    turtle.select(SEED_SLOT + 1)
+    turtle.select(CARROT_SLOT + 1)
     turtle.suck()
     turtle.suck()
 end
