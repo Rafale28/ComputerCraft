@@ -195,7 +195,11 @@ debug = arg[1]
 ftime = arg[2]
 if debug ~= 'd' then
     if debug == 't' then
-        sleep(minute * ftime)
+        for i=ftime, 1, -1 do
+            print(i.."min...")
+            sleep(minute)
+        end
+        routine(hLane)
     end
     while true do
         for i=40, 0, -1 do
