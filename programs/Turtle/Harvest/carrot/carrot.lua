@@ -62,13 +62,13 @@ posiPotato = "minecraft:poisonous_potato"
 function toStoreCarrot(lane)
     for i = 1, 16 do
         turtle.select(i)
-        itm = turtle.getItemDetail(i)
-        if itm["name"] == potato or itm["name"] == carrot then
+        sitm = turtle.getItemDetail(i)
+        if sitm["name"] == potato or sitm["name"] == carrot then
             turtle.select(i)
             turtle.drop()
-        elseif itm["name"] == posiPotato then
+        elseif sitm["name"] == posiPotato then
             turtle.select(i)
-            turtle.dropUp(itm["count"])
+            turtle.dropUp(sitm["count"])
         end
     end
     turtle.select(1)
@@ -80,8 +80,8 @@ end
 
 function plantCarrot()
     for i = 1, 16 do
-        itm = turtle.getItemDetail(i)
-        if itm["name"] == potato or itm["name"] == carrot then
+        pitm = turtle.getItemDetail(i)
+        if pntm["name"] == potato or ptm["name"] == carrot then
             turtle.select(i)
             break
         end
