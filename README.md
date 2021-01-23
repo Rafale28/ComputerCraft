@@ -8,7 +8,7 @@
     * id3のPCにUser/Hoge/Test/test.luaを転送したい場合,  
     * `3, User/Hoge/Test/ `   
     * とProgramsより下からのディレクトリをconfig.csvに追記します。  
-4. 1分間隔でpollingしているので1分位すればroot直下にTestというディレクトリが出来ているはず  
+4. 10秒間隔でpollingしているので10秒位すればroot直下にTestというディレクトリが出来ているはず  
   
    
 - - -  
