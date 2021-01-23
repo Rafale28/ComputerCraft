@@ -5,11 +5,13 @@ function checkIthem(slotVal)
         print(x["count"])
         print(x["name"])
     end
-    --for k, v in pairs(x) do
-    --    print(k,v)
-    --end
 end
 print("Hello World!!")
 for i=1, 16 do
-    checkIthem(i)
+    x = turtle.getItemDetail(slotVal)
+    if x and x["name"] == "minecraft:poisonous_potato" then
+        print("Unko!")
+        print(x["count"])
+        print(x["name"])
+    end
 end
