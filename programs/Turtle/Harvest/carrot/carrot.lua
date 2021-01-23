@@ -52,22 +52,22 @@ function harvestrightShift()
     turtle.turnRight()
 end
 
-function potatoCheck()
-end
 
-
+carrot     = "minecraft:carrot"
+potato     = "minecraft:potato"
+pisPotato  = "minecraft:poisonous_potato"
 function toStoreCarrot(lane)
     for i = 1, 16 do
         turtle.select(i)
-        local x = turtle.getItemDetail(i)
+        local itm = turtle.getItemDetail(i)
         if x then
-            if x["name"] == "minecraft:potato" then
+            if itm["name"] == carrot then
                 turtle.select(i)
                 turtle.drop()
-            elseif x["name"] == "minecraft:carrot" then
+            elseif itm["name"] == carrot then
                 turtle.select(i)
                 turtle.drop()
-            elseif x["name"] == "minecraft:poisonous_potato" then
+            elseif itm["name"] == pisPotato then
                 turtle.select(i)
                 turtle.dropUp(x["count"])
             end
@@ -81,15 +81,13 @@ function toStoreCarrot(lane)
 end
 
 function plantCarrot()
-    carrot     = "minecraft:carrot"
-    potato     = "minecraft:potato"
     for i = 1, 16 do
-        local pitm = turtle.getItemDetail(i)
-        if pitm then
-            if pntm["name"] == "minecraft:potato" then
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == potato then
                 turtle.select(i)
                 break
-            elseif pitm["name"] == "minecraft:carrot" then
+            elseif itm["name"] == carrot then
                 turtle.select(i)
                 break
             end
