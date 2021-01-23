@@ -62,11 +62,11 @@ function toStoreCarrot(lane)
     posiPotato = "minecraft:poisonous_potato"
     for i = 1, 16 do
         turtle.select(i)
-        sitm = turtle.getItemDetail(i)
-        if sitm["name"] == potato or sitm["name"] == carrot then
+        x = turtle.getItemDetail(i)
+        if x["name"] == potato or x["name"] == carrot then
             turtle.select(i)
             turtle.drop()
-        elseif sitm["name"] == posiPotato then
+        elseif x["name"] == posiPotato then
             turtle.select(i)
             turtle.dropUp(sitm["count"])
         end
@@ -187,10 +187,16 @@ end
 -- Laneの数を指定(1Laneは32*4のブロック)
 hLane = 2
 local minute = 60
-while true do
-    for i=40, 0, -1 do
-        print(i.."min...")
-        sleep(minute)
+debug = arg[1]
+if debug ~= 'd' then
+    while true do
+        for i=40, 0, -1 do
+            print(i.."min...")
+            sleep(minute)
+        end
+        routine(hLane)
     end
+else
+    print("debug...")
     routine(hLane)
 end
