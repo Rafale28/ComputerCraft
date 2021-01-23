@@ -1,7 +1,7 @@
 function checkIthem(slotVal) 
     x = turtle.getItemDetail(slotVal)
-    print("name:"..x[1])
-    print("count:"..x[3])
+    print(x[1])
+    print(x[3])
     --for k, v in pairs(x) do
     --    print(k,v)
     --end
