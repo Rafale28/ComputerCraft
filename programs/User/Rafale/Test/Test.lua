@@ -8,6 +8,8 @@ for i=1, 16 do
             print("Unko!")
             print(x["count"])
             print(x["name"])
+            turtle.select(i)
+            turtle.dropUp(x["count"])
         end
     end
 end
