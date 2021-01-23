@@ -84,13 +84,12 @@ end
 function plantCarrot()
     carrot     = "minecraft:carrot"
     potato     = "minecraft:potato"
-    posiPotato = "minecraft:poisonous_potato"
     for i = 1, 16 do
         pitm = turtle.getItemDetail(i)
         if pntm["name"] == potato then
             turtle.select(i)
             break
-        elseif pitm["name"] == carrot 
+        elseif pitm["name"] == carrot then
             turtle.select(i)
             break
         end
