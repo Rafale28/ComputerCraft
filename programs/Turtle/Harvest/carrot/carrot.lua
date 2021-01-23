@@ -55,11 +55,11 @@ end
 function potatoCheck()
 end
 
-carrot     = "minecraft:carrot"
-potato     = "minecraft:potato"
-posiPotato = "minecraft:poisonous_potato"
 
 function toStoreCarrot(lane)
+    carrot     = "minecraft:carrot"
+    potato     = "minecraft:potato"
+    posiPotato = "minecraft:poisonous_potato"
     for i = 1, 16 do
         turtle.select(i)
         sitm = turtle.getItemDetail(i)
@@ -79,6 +79,9 @@ function toStoreCarrot(lane)
 end
 
 function plantCarrot()
+    carrot     = "minecraft:carrot"
+    potato     = "minecraft:potato"
+    posiPotato = "minecraft:poisonous_potato"
     for i = 1, 16 do
         pitm = turtle.getItemDetail(i)
         if pntm["name"] == potato or ptm["name"] == carrot then
