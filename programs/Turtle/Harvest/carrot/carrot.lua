@@ -61,7 +61,7 @@ function suckStack(num)
             turtle.suck()
         end
     end
-    for i=num, 16 do
+    for i=(num + 1), 16 do
         turtle.select(i)
         turtle.drop()
     end
