@@ -5,29 +5,19 @@
 -- #############
 -- config
 WHEAT_SLOT  = 1
-SEED_SLOT   = 5
-FUEL_SLOT   = 13
+FUEL_SLOT   = 16
 
-function chargeFuelFromChest()
-    for i = 1, 2 do
-        turtle.select(FUEL_SLOT)
-        res = turtle.compareTo(FUEL_SLOT + i)
-        if res == false then
-            turtle.select(FUEL_SLOT + i)
-            turtle.suckUp()
-        end
-    end
-end
+WHEAT_ID = "minecraft:wheat"
+SEED_ID  = "minecraft:wheat_seeds"
 
-function fuelCheck(x)
-    fuelSlot1 = 14
-    fuelSlot2 = 15
+function fuelCheck(lane)
+    fmin = 64 * 4 * lane 
+    fmin = fmin + 10
     fuel = turtle.getFuelLevel()
     print("fuelLevel"..fuel)
-    if fuel < x then
-        turtle.select(fuelSlot1)
-        turtle.refuel(64)
-        turtle.select(fuelSlot2)
+    while fuel < fmin do
+        turtle.select(FUEL_SLOT)
+        turtle.suckUp()
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
         print("Refuel"..fuel)
@@ -36,9 +26,10 @@ end
 -- #############
 -- define functions
 function harvest()
-    turtle.select(WHEAT_SLOT + 1)
+    turtle.select(WHEAT_SLOT)
     turtle.dig()
 end
+
 function harvestLine()
     res = true
     i = 1
@@ -67,42 +58,32 @@ end
 
 function toStoreWheat()
     for i = 1, 16 do
-        turtle.select(WHEAT_SLOT)
-        if i ~= WHEAT_SLOT then
-            res = turtle.compareTo(i)
-            if res == true then
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == WHEAT_ID then
                 turtle.select(i)
-                turtle.drop()
+                turtle.drop(itm["count"])
+            elseif itm["name"] == SEED_ID then
+                turtle.select(i)
+                turtle.dropUp(itm["count"])
             end
         end
     end
-end
-
-function toStoreSeed()
-    for i = 1, 16 do
-        turtle.select(SEED_SLOT)
-        if i ~= SEED_SLOT then
-            res = turtle.compareTo(i)
-            if res == true then
-                turtle.select(i)
-                turtle.dropUp()
-            end
-        end
+    turtle.select(1)
+    for i=1, lane do
+        turtle.suckUp()
+        turtle.suckUp()
     end
-    turtle.select(SEED_SLOT + 1)
-    turtle.suckUp()
-    turtle.suckUp()
 end
 
 function plantSeed()
     for i = 1, 16 do
-        turtle.select(SEED_SLOT)
-        if i ~= SEED_SLOT then
-            res = turtle.compareTo(i)
-            if res == true then
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == SEED_ID then
                 turtle.select(i)
                 break
-            end
         end
     end
     turtle.place()
@@ -140,48 +121,88 @@ function plowtrightShift()
     turtle.turnLeft()
 end
 
-function routine()
--- #############
--- fuelcheck
-fuelCheck(250)
+function switch2LeftLane()
+    turtle.turnRight()
+    turtle.dig() 
+    res =  turtle.forward()
+    turtle.dig() 
+    res =  turtle.forward()
+    turtle.turnRight()
+end
 
--- #############
--- harvest
-harvestLine()
-harvestleftShift()
+function switch2RightLane()
+    turtle.turnLeft()
+    res =  turtle.back()
+    plowAndPlant()
+    res =  turtle.back()
+    turtle.turnLeft()
+end
 
-harvestLine()
-harvestrightShift()
+function routine(lane)
+    -- #############
+    -- fuelcheck
+    fuelCheck(lane)
 
-harvestLine()
-harvestleftShift()
+    -- #############
+    -- harvest
+    for i=1, lane do
+        harvestLine()
+        harvestleftShift()
 
-harvestLine()
+        harvestLine()
+        harvestrightShift()
 
-toStoreWheat()
-toStoreSeed()
--- #############
--- plow and plant
-plowLine()
-plowleftShift()
+        harvestLine()
+        harvestleftShift()
 
-plowLine()
-plowtrightShift()
+        harvestLine()
+        if i < lane then
+            switch2LeftLane()
+        end
+    end
 
-plowLine()
-plowleftShift()
+    toStoreWheat()
+    -- #############
+    -- plow and plant
+    for i=1, lane do
+        plowLine()
+        plowleftShift()
 
-plowLine()
-chargeFuelFromChest()
+        plowLine()
+        plowtrightShift()
+
+        plowLine()
+        plowleftShift()
+
+        plowLine()
+        if i < lane then
+            switch2RightLane()
+        end
+    end
 end
 -- #############
 -- Main
-
+-- Laneの数を指定(1Laneは32*4のブロック)
+hLane = 2
 local minute = 60
-while true do
-    for i=40, 0, -1 do
-        print(i.."min...")
-        sleep(minute)
+debug = arg[1]
+ftime = arg[2]
+if debug ~= 'd' then
+    if debug == 't' then
+        for i=ftime, 1, -1 do
+            print(i.."min...")
+            sleep(minute)
+        end
+        routine(hLane)
     end
-    routine()
+    while true do
+        for i=40, 0, -1 do
+            print(i.."min...")
+            sleep(minute)
+        end
+        routine(hLane)
+    end
+else
+    print("debug...")
+    routine(hLane)
 end
