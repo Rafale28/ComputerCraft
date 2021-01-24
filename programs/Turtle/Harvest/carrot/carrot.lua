@@ -55,7 +55,7 @@ end
 
 function suckStack(num)
     for i=1, num do
-        turtle.slelct(i)
+        turtle.slect(i)
         turtle.suck()
         while getIthemCount(i) < 64 do
             turtle.suck()
