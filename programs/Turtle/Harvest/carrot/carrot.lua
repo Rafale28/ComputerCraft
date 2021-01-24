@@ -23,9 +23,10 @@ end
 -- #############
 -- define functions
 function harvest()
-    turtle.select(CARROT_SLOT + 1)
+    turtle.select(CARROT_SLOT)
     turtle.dig()
 end
+
 function harvestLine()
     res = true
     i = 1
@@ -52,6 +53,19 @@ function harvestrightShift()
     turtle.turnRight()
 end
 
+function suckStack(num)
+    for i=1, num do
+        turtle.slelct(i)
+        turtle.suck()
+        while getIthemCount(i) < 64 then
+            turtle.suck()
+        end
+    end
+    for i=num, 16 do
+        turtle.select(i)
+        turtle.drop()
+    end
+end
 
 carrot     = "minecraft:carrot"
 potato     = "minecraft:potato"
@@ -74,10 +88,7 @@ function toStoreCarrot(lane)
         end
     end
     turtle.select(1)
-    for i=1, lane do
-        turtle.suck()
-        turtle.suck()
-    end
+    suckStack(lane * 2)
 end
 
 function plantCarrot()
