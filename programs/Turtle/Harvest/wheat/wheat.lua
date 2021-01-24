@@ -84,6 +84,7 @@ function plantSeed()
             if itm["name"] == SEED_ID then
                 turtle.select(i)
                 break
+            end
         end
     end
     turtle.place()
