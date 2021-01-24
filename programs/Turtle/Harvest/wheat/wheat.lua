@@ -56,7 +56,7 @@ function harvestrightShift()
     turtle.turnRight()
 end
 
-function toStoreWheat()
+function toStoreWheat(lane)
     for i = 1, 16 do
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
@@ -162,7 +162,7 @@ function routine(lane)
         end
     end
 
-    toStoreWheat()
+    toStoreWheat(lane)
     -- #############
     -- plow and plant
     for i=1, lane do
