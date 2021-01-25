@@ -1,5 +1,3 @@
-
-
 while 1 do
     if rs.getInput("left") == true then
         rs.setOutput("right",false)
