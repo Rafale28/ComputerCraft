@@ -49,27 +49,6 @@ function harvestleftShift()
     res =  turtle.forward()
     turtle.turnLeft()
 end
---
---function harvestrightShift()
---    turtle.turnRight()
---    turtle.dig() 
---    res =  turtle.forward()
---    turtle.turnRight()
---end
---
---function suckStack(num)
---    for i=1, num do
---        turtle.select(i)
---        turtle.suck()
---        while turtle.getItemCount(i) < 64 do
---            turtle.suck()
---        end
---    end
---    for i=(num + 1), 16 do
---        turtle.select(i)
---        turtle.drop()
---    end
---end
 
 sugarCane  = "minecraft:sugar_cane"
 function toStoreSugar()
@@ -112,7 +91,7 @@ end
 -- Laneの数を指定(1Laneは32*4のブロック)
 hLane = 1
 local minute = 60
-local interval = 30
+local interval = 15 
 
 debug = arg[1]
 ftime = arg[2]
