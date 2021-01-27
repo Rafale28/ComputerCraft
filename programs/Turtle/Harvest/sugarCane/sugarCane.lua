@@ -79,7 +79,7 @@ function toStoreSugar()
         if itm then
             if itm["name"] == sugarCane then
                 turtle.select(i)
-                turtle.drop(itm["count"])
+                turtle.dropDown(itm["count"])
             end
         end
     end
