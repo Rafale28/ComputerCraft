@@ -7,12 +7,12 @@ function fuelCheck(min)
 
     while fuel < min do
         turtle.select(fuelSlot)
-        if not turtle.suck()
+        if not turtle.suck() then
 			break	-- empty item
 		end
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
-		fuelSlot -= 1
+		fuelSlot = fuelSlot - 1
     end
 end
 
@@ -50,10 +50,10 @@ function workUntilDead()
 			turtle.turnLeft()
 			turtle.turnLeft()
 		end
-		for y=targetHeight, 0, y-=1 do
+		for y=targetHeight, 0, -1 do
 			turtle.down()
 		end
-		if x ~= targetWidth do
+		if x ~= targetWidth then
 			turtle.turnLeft()
 			dig()
 			turtle.forward()
