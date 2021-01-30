@@ -126,7 +126,7 @@ end
 -- Main
 -- Laneの数を指定(1Laneは32*4のブロック)
 local minute = 10
-local interval = 60
+local interval = 20
 
 while true do
     for i=interval, 1, -1 do
