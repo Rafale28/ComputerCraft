@@ -36,20 +36,26 @@ function workUntilDead()
 	fuelCheck(targetX*targetY*targetZ)
 	for x=0, targetX-1 do
 		for y=0, targetY-1 do
-			for z, targetZ-1 do
+			for z=0, targetZ-1 do
 				dig()
 			end
-			turtle.digUp()	-- FIXME: sand
-			turtle.up()
+			--turtle.digUp()	-- FIXME: sand
+			--turtle.up()
 			turtle.turnRight()
 			turtle.turnRight()
 		end
 		for y=targetY-1, 0, -1 do
 			turtle.down()
 		end
-		turtle.turnRight()
-		dig()
-		turtle.turnRight()
+		if (x % 2 == 0) then
+			turtle.turnRight()
+			dig()
+			turtle.turnLeft()
+		else
+			turtle.turnLeft()
+			dig()
+			turtle.turnRight()
+		end
 	end
 end
 
