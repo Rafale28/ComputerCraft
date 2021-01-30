@@ -20,6 +20,7 @@ UP = 1
 DOWN = 2
 
 function checkTree(TID, DIR)
+    local itm = false
     if DIR == FRONT then
         itm = turtle.inspect()
     elseif DIR == UP then
