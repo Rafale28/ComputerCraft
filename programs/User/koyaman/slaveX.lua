@@ -36,10 +36,11 @@ function workUntilDead()
 	fuelCheck(targetX*targetY*targetZ)
 	for x=0, targetX-1 do
 		for y=0, targetY-1 do
-			for z=0, targetZ-1 do
+			for z=0, targetZ-1 do	-- FIXME: 1回多い?
 				dig()
+				print(x, y, z)
 			end
-			if (y ~= targetY) then
+			if (y ~= targetY-1) then
 				turtle.digUp()	-- FIXME: sand
 			end
 			turtle.up()
