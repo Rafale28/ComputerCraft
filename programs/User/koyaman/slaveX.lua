@@ -44,14 +44,14 @@ function workUntilDead()
 			digBlocks(targetLength)
 			turtle.digUp()
 			turtle.up()	-- FIXME: 砂だったら良くない
-			-- 180 回転
-			turtle.turnLeft()
-			turtle.turnLeft()
 			print(x, y)
 		end
 		for y=targetHeight-1, 0, -1 do
 			turtle.down()
 		end
+		-- 180 回転
+		turtle.turnRight()
+		turtle.turnRight()
 		if x ~= targetWidth then
 			turtle.turnRight()
 			dig()
