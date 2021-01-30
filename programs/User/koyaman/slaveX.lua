@@ -39,7 +39,9 @@ function workUntilDead()
 			for z=0, targetZ-1 do
 				dig()
 			end
-			--turtle.digUp()	-- FIXME: sand
+			if (y ~= targetY) then
+				turtle.digUp()	-- FIXME: sand
+			end
 			turtle.up()
 			turtle.turnRight()
 			turtle.turnRight()
