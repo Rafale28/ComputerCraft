@@ -34,14 +34,21 @@ end
 function workUntilDead()
 	targetHeight=5
 	targetWidth=5
-	for i=0, targetHeight do
-		digBlocks(targetWidth)
-		turtle.digUp()
-		turtle.up()
+	targetlength=5
+	for i=0, targetWidth do
+		for j=0, targetHeight do
+			digBlocks(targetlength)
+			turtle.digUp()
+			turtle.up()
+			turtle.turnLeft()
+			turtle.turnLeft()
+		end
 		turtle.turnLeft()
-		turtle.turnLeft()
+		turtle.forward()
+		turtle.turnRight()
 	end
 end
+
 -- #############
 -- Main
 workUntilDead()
