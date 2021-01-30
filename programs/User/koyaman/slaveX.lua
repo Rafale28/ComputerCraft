@@ -12,6 +12,7 @@ function fuelCheck(min)
         turtle.suck()
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
+		fuelSlot = fuelSlot - 1
     end
 end
 
@@ -39,7 +40,7 @@ function workUntilDead()
 
 	fuelCheck(targetHeight*targetWidth*targetLength)
 	for x=0, targetWidth-1 do
-		for y=0, targetHeight do
+		for y=0, targetHeight-1 do
 			digBlocks(targetLength)
 			turtle.digUp()
 			turtle.up()	-- FIXME: 砂だったら良くない
@@ -62,7 +63,7 @@ function workUntilDead()
 	-- 180 回転
 	turtle.turnRight()
 	turtle.turnRight()
-	for x=0, targetWidth do
+	for x=0, targetWidth-1 do
 		turtle.forward()
 	end
 end
