@@ -16,56 +16,38 @@ function fuelCheck(min)
     end
 end
 
-function digBlocks(n)
-	for i=1, n do
-		turtle.select(FIRST_SLOT)
+function dig()
+	turtle.select(FIRST_SLOT)
+	turtle.dig()
+	os.sleep(0.5)	-- wait until sand drops
+	while turtle.detect() do	-- dig sand
 		turtle.dig()
 		os.sleep(0.5)	-- wait until sand drops
-		while turtle.detect() do	-- dig sand
-			turtle.dig()
-			os.sleep(0.5)	-- wait until sand drops
-		end
-		turtle.forward()
-		-- FIXME: fuel is zero OR block is present
 	end
-end
-function dig()
-	digBlocks(1)
+	turtle.forward()
+	-- FIXME: fuel is zero OR block is present
 end
 
 function workUntilDead()
-	targetHeight=5
-	targetWidth=5
-	targetLength=5
+	targetX=3
+	targetY=3
+	targetZ=3
 
 	fuelCheck(targetHeight*targetWidth*targetLength)
-	for x=0, targetWidth-1 do
-		for y=0, targetHeight-1 do
-			digBlocks(targetLength)
-			turtle.digUp()
-			turtle.up()	-- FIXME: 砂だったら良くない
-			print(x, y)
+	for x=0, targetX-1 do
+		for y=0, targetY-1, do
+			digBlocks(targetZ)	
+			turtle.digUp()	-- FIXME: sand
+			turtle.up()
+			turtle.turnRight()
+			turtle.turnRight()
 		end
-		for y=targetHeight-1, 0, -1 do
+		for y=targetY-1, 0, -1 do
 			turtle.down()
 		end
-		-- 180 回転
 		turtle.turnRight()
+		dig()
 		turtle.turnRight()
-		if x ~= targetWidth then
-			turtle.turnRight()
-			dig()
-			turtle.turnLeft()
-		end
-	end
-	for y=0, targetHeight-1 do
-		turtle.up()
-	end
-	-- 180 回転
-	turtle.turnRight()
-	turtle.turnRight()
-	for x=0, targetWidth-1 do
-		turtle.forward()
 	end
 end
 
