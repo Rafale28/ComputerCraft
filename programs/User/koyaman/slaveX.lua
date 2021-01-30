@@ -47,6 +47,7 @@ function workUntilDead()
 			-- 180 回転
 			turtle.turnLeft()
 			turtle.turnLeft()
+			print(x, y)
 		end
 		for y=targetHeight-1, 0, -1 do
 			turtle.down()
