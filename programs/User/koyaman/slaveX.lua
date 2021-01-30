@@ -1,20 +1,22 @@
-FUEL_SLOT   = 16
-FIRST_SLOT  = 1
+FUEL_SLOT   = 16	-- high to low number
+FIRST_SLOT  = 1		-- low to high number
 
 function fuelCheck(min)
     fuel = turtle.getFuelLevel()
-    print("fuelLevel"..fuel)
+	fuelSlot = FUEL_SLOT
+
     while fuel < min do
-        turtle.select(FUEL_SLOT)
-        turtle.suck()
+        turtle.select(fuelSlot)
+        if not turtle.suck()
+			break	-- empty item
+		end
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
-        print("Refuel"..fuel)
+		fuelSlot -= 1
     end
 end
 
 function digBlocks(n)
-	fuelCheck(n)
 	for i=1, n do
 		turtle.select(FIRST_SLOT)
 		turtle.dig()
@@ -30,26 +32,41 @@ function digBlocks(n)
 		end
 	end
 end
+function dig()
+	digBlocks(1)
+end
 
 function workUntilDead()
 	targetHeight=5
 	targetWidth=5
-	targetlength=5
-	for i=0, targetWidth do
-		for j=0, targetHeight do
-			digBlocks(targetlength)
+	targetLength=5
+
+	fuelCheck(targetHeight*targetWidth*targetLength)
+	for x=0, targetWidth do
+		for y=0, targetHeight do
+			digBlocks(targetLength)
 			turtle.digUp()
-			turtle.up()
+			turtle.up()	-- 砂だったら良くない
 			turtle.turnLeft()
 			turtle.turnLeft()
 		end
-		for j=0, targetHeight do
+		for y=targetHeight, 0, y-=1 do
 			turtle.down()
 		end
+		if x ~= targetWidth do
+			turtle.turnLeft()
+			dig()
+			turtle.forward()
+			turtle.turnRight()
+		end
+	end
+	for y=0, targetHeight do
+		turtle.up()
+	end
+	for x=targetWidth do
 		turtle.turnLeft()
-		turtle.dig()
+		turtle.turnLeft()
 		turtle.forward()
-		turtle.turnRight()
 	end
 end
 
