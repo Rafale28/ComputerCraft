@@ -46,7 +46,7 @@ end
 function storeAll()
     for i = 1, 15 do
         turtle.select(i)
-        turtle.dropDown(itm["count"])
+        turtle.dropDown()
     end
 end
 
@@ -126,7 +126,7 @@ local minute = 60
 local interval = 1
 
 while true do
-    for i=interval, 0, -1 do
+    for i=interval, 1, -1 do
         print(i.."min...")
         sleep(minute)
     end
