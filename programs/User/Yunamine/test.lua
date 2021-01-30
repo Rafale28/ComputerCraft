@@ -21,7 +21,7 @@ end
 -- #############
 -- define functions
 
-fonction suckChest()
+function suckChest()
 
     for i = 1, 15 do
         turtle.select(i)
