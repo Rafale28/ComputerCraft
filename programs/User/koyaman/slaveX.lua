@@ -43,6 +43,9 @@ function workUntilDead()
 			turtle.turnLeft()
 			turtle.turnLeft()
 		end
+		for j=0, targetHeight do
+			turtle.down()
+		end
 		turtle.turnLeft()
 		turtle.forward()
 		turtle.turnRight()
