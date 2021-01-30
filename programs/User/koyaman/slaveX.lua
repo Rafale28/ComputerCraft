@@ -5,6 +5,7 @@ function fuelCheck(min)
     fuel = turtle.getFuelLevel()
 	fuelSlot = FUEL_SLOT
 
+	-- FIXME: loop condition
     while fuel < min do
         turtle.select(fuelSlot)
         if not turtle.suck() then
@@ -20,7 +21,7 @@ function digBlocks(n)
 	for i=1, n do
 		turtle.select(FIRST_SLOT)
 		turtle.dig()
-		os.sleep(0.5)
+		os.sleep(0.5)	-- wait until sand drops
 		if turtle.forward() then
 			while turtle.detect() do
 				turtle.dig()
@@ -46,7 +47,8 @@ function workUntilDead()
 		for y=0, targetHeight do
 			digBlocks(targetLength)
 			turtle.digUp()
-			turtle.up()	-- 砂だったら良くない
+			turtle.up()	-- FIXME: 砂だったら良くない
+			-- 180 回転
 			turtle.turnLeft()
 			turtle.turnLeft()
 		end
@@ -54,18 +56,18 @@ function workUntilDead()
 			turtle.down()
 		end
 		if x ~= targetWidth then
-			turtle.turnLeft()
-			dig()
-			turtle.forward()
 			turtle.turnRight()
+			dig()
+			turtle.turnLeft()
 		end
 	end
 	for y=0, targetHeight do
 		turtle.up()
 	end
+	-- 180 回転
+	turtle.turnRight()
+	turtle.turnRight()
 	for x=0, targetWidth do
-		turtle.turnLeft()
-		turtle.turnLeft()
 		turtle.forward()
 	end
 end
