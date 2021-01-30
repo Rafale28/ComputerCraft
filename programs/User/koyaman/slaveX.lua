@@ -63,7 +63,7 @@ function workUntilDead()
 	for y=0, targetHeight do
 		turtle.up()
 	end
-	for x=targetWidth do
+	for x=0, targetWidth do
 		turtle.turnLeft()
 		turtle.turnLeft()
 		turtle.forward()
