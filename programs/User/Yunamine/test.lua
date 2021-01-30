@@ -110,6 +110,7 @@ function routine()
 
     -- #############
     -- itemmove
+    
     suckChest()
     gotoPotato()
     store("minecraft:potato")
