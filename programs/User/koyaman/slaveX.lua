@@ -33,10 +33,12 @@ function workUntilDead()
 	targetY=3
 	targetZ=3
 
-	fuelCheck(targetHeight*targetWidth*targetLength)
+	fuelCheck(targetX*targetY*targetZ)
 	for x=0, targetX-1 do
-		for y=0, targetY-1, do
-			digBlocks(targetZ)	
+		for y=0, targetY-1 do
+			for z, targetZ-1 do
+				dig()
+			end
 			turtle.digUp()	-- FIXME: sand
 			turtle.up()
 			turtle.turnRight()
