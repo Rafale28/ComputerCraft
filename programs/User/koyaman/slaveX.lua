@@ -40,7 +40,7 @@ function workUntilDead()
 				dig()
 			end
 			--turtle.digUp()	-- FIXME: sand
-			--turtle.up()
+			turtle.up()
 			turtle.turnRight()
 			turtle.turnRight()
 		end
@@ -48,13 +48,13 @@ function workUntilDead()
 			turtle.down()
 		end
 		if (x % 2 == 0) then
-			turtle.turnRight()
-			dig()
 			turtle.turnLeft()
+			dig()
+			turtle.turnRight()
 		else
-			turtle.turnLeft()
-			dig()
 			turtle.turnRight()
+			dig()
+			turtle.turnLeft()
 		end
 	end
 end
