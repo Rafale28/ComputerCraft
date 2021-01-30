@@ -50,7 +50,7 @@ function workUntilDead()
 		for y=targetY-1, 0, -1 do
 			turtle.down()
 		end
-		if (x % 2 == 0) then
+		if (x % 2 == 0) and (targetY % 2 ~= 0) then
 			turtle.turnLeft()
 			dig()
 			turtle.turnRight()
