@@ -110,7 +110,7 @@ function routine()
 
     -- #############
     -- itemmove
-    
+
     suckChest()
     gotoPotato()
     store("minecraft:potato")
@@ -125,12 +125,12 @@ end
 -- #############
 -- Main
 -- Laneの数を指定(1Laneは32*4のブロック)
-local minute = 60
-local interval = 1
+local minute = 10
+local interval = 60
 
 while true do
     for i=interval, 1, -1 do
-        print(i.."min...")
+        print(i.."0secs...")
         sleep(minute)
     end
     routine()
