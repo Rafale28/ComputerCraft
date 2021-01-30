@@ -92,6 +92,7 @@ function gotoChest()
     turtle.forward()
     turtle.forward()
     turtle.forward()
+    turtle.forward()
     turtle.down()
     turtle.down()
     turtle.down()
@@ -109,6 +110,7 @@ function routine()
 
     -- #############
     -- itemmove
+    suckChest()
     gotoPotato()
     store("minecraft:potato")
     gotoCarrot()
