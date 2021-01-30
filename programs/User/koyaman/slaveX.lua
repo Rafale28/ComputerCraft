@@ -8,12 +8,10 @@ function fuelCheck(min)
 	-- FIXME: loop condition
     while fuel < min do
         turtle.select(fuelSlot)
-        if not turtle.suck() then
-			break	-- empty item
-		end
+		-- FIXME: check if empty
+        turtle.suck()
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
-		fuelSlot = fuelSlot - 1
     end
 end
 
@@ -27,8 +25,8 @@ function digBlocks(n)
 				turtle.dig()
 			end
 			turtle.forward()
-		end
-		if turtle.getFuelLevel() == 0 then
+		else
+			-- FIXME: fuel is zero OR block is present
 			break
 		end
 	end
@@ -43,7 +41,7 @@ function workUntilDead()
 	targetLength=5
 
 	fuelCheck(targetHeight*targetWidth*targetLength)
-	for x=0, targetWidth do
+	for x=0, targetWidth-1 do
 		for y=0, targetHeight do
 			digBlocks(targetLength)
 			turtle.digUp()
@@ -52,7 +50,7 @@ function workUntilDead()
 			turtle.turnLeft()
 			turtle.turnLeft()
 		end
-		for y=targetHeight, 0, -1 do
+		for y=targetHeight-1, 0, -1 do
 			turtle.down()
 		end
 		if x ~= targetWidth then
@@ -61,7 +59,7 @@ function workUntilDead()
 			turtle.turnLeft()
 		end
 	end
-	for y=0, targetHeight do
+	for y=0, targetHeight-1 do
 		turtle.up()
 	end
 	-- 180 回転
