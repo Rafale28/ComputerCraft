@@ -1,4 +1,5 @@
 FUEL_SLOT   = 16
+FIRST_SLOT  = 1
 
 function fuelCheck(min)
     fuel = turtle.getFuelLevel()
@@ -31,12 +32,15 @@ function digBlocks(n)
 end
 
 function workUntilDead()
-	digBlocks(32)
-	turtle.digUp()
-	turtle.up()
-	turtle.turnLeft()
-	turtle.turnLeft()
-	digBlocks(32)
+	targetHeight=5
+	targetWidth=5
+	for i=0, targetHeight do
+		digBlocks(targetWidth)
+		turtle.digUp()
+		turtle.up()
+		turtle.turnLeft()
+		turtle.turnLeft()
+	end
 end
 -- #############
 -- Main
