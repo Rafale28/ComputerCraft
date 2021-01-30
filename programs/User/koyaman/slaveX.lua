@@ -47,6 +47,7 @@ function workUntilDead()
 			turtle.down()
 		end
 		turtle.turnLeft()
+		turtle.dig()
 		turtle.forward()
 		turtle.turnRight()
 	end
