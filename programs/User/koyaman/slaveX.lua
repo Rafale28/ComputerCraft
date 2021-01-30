@@ -20,15 +20,12 @@ function digBlocks(n)
 		turtle.select(FIRST_SLOT)
 		turtle.dig()
 		os.sleep(0.5)	-- wait until sand drops
-		if turtle.forward() then
-			while turtle.detect() do
-				turtle.dig()
-			end
-			turtle.forward()
-		else
-			-- FIXME: fuel is zero OR block is present
-			break
+		while turtle.detect() do	-- dig sand
+			turtle.dig()
+			os.sleep(0.5)	-- wait until sand drops
 		end
+		turtle.forward()
+		-- FIXME: fuel is zero OR block is present
 	end
 end
 function dig()
