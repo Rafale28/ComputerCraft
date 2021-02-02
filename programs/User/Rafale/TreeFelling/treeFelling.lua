@@ -1,14 +1,20 @@
 BIRCH_LOG_ID = "minecraft:birch_log"
 FUEL_SLOT   = 16
 
-function fuelCheck(lane)
+function fuelCheck(lane, DIR)
     fmin = 32 * lane 
     fmin = fmin + 10
     fuel = turtle.getFuelLevel()
     print("fuelLevel"..fuel)
     while fuel < fmin do
         turtle.select(FUEL_SLOT)
-        turtle.suckUp()
+        if DIR == FRONT then 
+            turtle.suck()
+        elseif DIR == UP then
+            turtle.suckUp()
+        elseif DIR == DOWN then
+            turtle.suckDown()
+        end
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
         print("Refuel"..fuel)
@@ -155,10 +161,10 @@ function routine(TID)
     print("finish...")
 end
 
-local fuelNum = 100
+local fuelNum = 2
 initialize()
 while true do
-    fuelCheck(fuelNum)
+    fuelCheck(fuelNum, DOWN)
     routine(BIRCH_LOG_ID)
     sleep(100)
 end
