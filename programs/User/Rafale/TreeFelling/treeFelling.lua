@@ -70,6 +70,8 @@ function drop(SNUM, DIR, CNT)
         turtle.drop(CNT)
     elseif DIR == UP then
         turtle.dropUp(CNT)
+    elseif DIR == DOWN then
+        turtle.dropDown(CNT)
     end
 end
 
@@ -98,7 +100,7 @@ function store(TID, DIR)
         local itm = turtle.getItemDetail(i)
         if itm then
             if itm["name"] == TID then
-                dropDown(i, DIR, itm["count"])
+                drop(i, DIR, itm["count"])
             end
         end
     end
