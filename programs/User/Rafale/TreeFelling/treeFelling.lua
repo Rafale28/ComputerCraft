@@ -118,7 +118,7 @@ function felling(TID, DIR)
         turtle.up()
         count = count + 1
     end
-    move(DOWN, i)
+    move(DOWN, count)
     move(BACK, 1)
     if DIR == RIGHT then
         turtle.turnLeft()
