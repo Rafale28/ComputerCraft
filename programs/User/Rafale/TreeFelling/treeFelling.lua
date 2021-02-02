@@ -18,6 +18,9 @@ end
 FRONT = 0
 UP = 1
 DOWN = 2
+BACK = 3
+RIGHT = 4
+LEFT = 4
 
 function checkTree(TID, DIR)
     local itm = nil
@@ -35,9 +38,14 @@ function checkTree(TID, DIR)
     end
 end
 
-function frontDig()
-    turtle.dig()
-    turtle.forward()
+function Dig(DIR)
+    if DIR == FRONT then
+        turtle.dig()
+    elseif DIR == UP then
+        turtle.digUp()
+    elseif DIR == DOWN then
+        turtle.digDown()
+    end
 end
 
 function drop(SNUM, DIR, CNT)
@@ -47,6 +55,25 @@ function drop(SNUM, DIR, CNT)
     elseif DIR == UP then
         turtle.dropUp(CNT)
     end
+end
+
+function move(DIR, NUM)
+    ret = false
+    for i=1, NUM do
+        if DIR == FRONT then
+            ret = turtle.forward()
+        elseif DIR == UP then
+            ret = turtle.up()
+        elseif DIR == DOWN then
+            ret = turtle.down()
+        elseif DIR == BACK then
+            ret = turtle.back()
+        end
+        if ret == false then
+            return ret
+        end
+    end
+    return ret
 end
 
 function store(TID, DIR)
@@ -61,26 +88,77 @@ function store(TID, DIR)
     end
 end
 
-function routine(TID)
-    local count = 0
-    fuelCheck(1)
-    frontDig()
+function felling(TID, DIR)
+    if DIR == RIGHT then
+        turtle.turnRight()
+    elseif DIR == LEFT then
+        turtle.turnLeft()
+    end
+    Dig(FRONT)
+    move(FRONT, 1)
     while checkTree(BIRCH_LOG_ID, UP) do
         turtle.digUp()
         turtle.up()
         count = count + 1
     end
-
-    for i=1, count do
-        turtle.down()
+    move(DOWN, i)
+    move(BACK, 1)
+    if DIR == RIGHT then
+        turtle.turnLeft()
+    elseif DIR == LEFT then
+        turtle.turnRight()
     end
-    turtle.back()
-    store(BIRCH_LOG_ID, DOWN)
 end
 
-while true do
-    sleep(1)
-    if checkTree(BIRCH_LOG_ID, FRONT) then
-        routine(BIRCH_LOG_ID)
+function initialize()
+    print("init")
+end
+
+function routine(TID)
+    move(FRONT, 1)
+    if checkTree(TID, RIGHT) then
+        felling(TID, RIGHT)
     end
+    move(FRONT, 4)
+    if checkTree(TID, RIGHT) then
+        felling(TID, RIGHT)
+    end
+    move(FRONT, 4)
+    if checkTree(TID, RIGHT) then
+        felling(TID, RIGHT)
+    end
+    while move(FRONT, 1) do
+    end
+    turtle.turnRight()
+    while move(FRONT, 1) do
+    end
+    turtle.turnRight()
+    move(FRONT, 1)
+    if checkTree(TID, RIGHT) then
+        felling(TID, RIGHT)
+    end
+    move(FRONT, 4)
+    if checkTree(TID, RIGHT) then
+        felling(TID, RIGHT)
+    end
+    move(FRONT, 4)
+    if checkTree(TID, RIGHT) then
+        felling(TID, RIGHT)
+    end
+    while move(FRONT, 1) do
+    end
+    store(BIRCH_LOG_ID, DOWN)
+    turtle.turnRight()
+    while move(FRONT, 1) do
+    end
+    turtle.turnRight()
+    print("finish...")
+end
+
+local fuelNum = 100
+initialize()
+while true do
+    fuelCheck(fuelNum)
+    routine(BIRCH_LOG_ID)
+    sleep(100)
 end
