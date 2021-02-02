@@ -136,7 +136,7 @@ end
 
 function routine()
 
-    local height = 14
+    local height = 15
 
     -- initialize
     initialize()
@@ -163,10 +163,10 @@ local minute = 10
 local interval = 60
 
 while true do
+    routine()
     for i=interval, 1, -1 do
         print(i.."0secs...")
         sleep(minute)
     end
-    routine()
 end
 
