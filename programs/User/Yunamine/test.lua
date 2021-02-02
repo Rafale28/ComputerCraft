@@ -50,69 +50,103 @@ function storeAll()
     end
 end
 
-function gotoPotato()
+function up(n)
+
+    for i = 1, n do
+
+        turtle.up()
+
+    end
+
+end
+
+
+function down(n)
+
+    for i = 1, n do
+
+        turtle.down()
+
+    end
+
+end
+
+function forward(n)
+
+    for i = 1, n do
+
+        turtle.forward()
+
+    end
+
+end
+
+function back(n)
+
+    for i = 1, n do
+
+        turtle.back()
+
+    end
+
+end
+
+function gotoPotato(height)
     print("Going to a chest for Potatos")
-    turtle.up()
-    turtle.up()
-    turtle.up()
-    turtle.up()
-    turtle.up()
-    turtle.up()
-    turtle.up()
-    turtle.back()
+    up(height)
+    back(1)
 
  end
 
 function gotoCarrot()
     print("Going to a chest for Carrots")
-    turtle.back()
-    turtle.back()
+    back(2)
 
 end
 
 function gotoWheat()
     print("Going to a chest for Wheats")
-    turtle.back()
-    turtle.back()
+    back(2)
 
 end
 
 function gotoEtc()
     print("Going to a chest for e.t.c")
-    turtle.back()
-    turtle.back()
+    back(2)
 
 end
 
-function gotoChest()
+function gotoChest(height)
     print("Returning to a chest")
-    turtle.forward()
-    turtle.forward()
-    turtle.forward()
-    turtle.forward()
-    turtle.forward()
-    turtle.forward()
-    turtle.forward()
-    turtle.down()
-    turtle.down()
-    turtle.down()
-    turtle.down()
-    turtle.down()
-    turtle.down()
-    turtle.down()
+    forward(7)
+    down(height)
 
+end
+
+function initialize()
+
+    --keep forwarding until noblock in front of the turtle
+    while turtle.forward() do
+    end
+ 
+    --keep downing until noblock under the turtle
+     while turtle.down() do
+    end
 end
 
 function routine()
-    -- #############
+
+    local height = 14
+
+    -- initialize
+    initialize()
+
     -- fuelcheck
     fuelCheck(32)
 
-    -- #############
     -- itemmove
-
     suckChest()
-    gotoPotato()
+    gotoPotato(height)
     store("minecraft:potato")
     gotoCarrot()
     store("minecraft:carrot")
@@ -120,13 +154,13 @@ function routine()
     store("minecraft:wheat")
     gotoEtc()
     storeAll()
-    gotoChest()
+    gotoChest(height)
 end
 -- #############
 -- Main
 -- Laneの数を指定(1Laneは32*4のブロック)
 local minute = 10
-local interval = 20
+local interval = 60
 
 while true do
     for i=interval, 1, -1 do
