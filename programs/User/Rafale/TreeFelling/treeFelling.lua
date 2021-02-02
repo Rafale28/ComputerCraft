@@ -31,19 +31,17 @@ LEFT = 4
 function checkTree(TID, DIR)
     local status, itm = turtle.inspect()
     if DIR == FRONT then
-        itm = turtle.inspect()
+        status, itm = turtle.inspect()
     elseif DIR == UP then
-        itm = turtle.inspectUp()
+        status, itm = turtle.inspectUp()
     elseif DIR == RIGHT then
         turtle.turnRight()
-        itm = turtle.inspect()
+        status, itm = turtle.inspect()
         turtle.turnLeft()
     elseif DIR == LEFT then
         turtle.turnLeft()
-        itm = turtle.inspect()
+        status, itm = turtle.inspect()
         turtle.turnRight()
-    else
-        itm = turtle.inspect()
     end
 
     if status then
@@ -148,7 +146,7 @@ function routine(TID)
     while move(FRONT, 1) do
     end
     turtle.turnRight()
-    while move(FRONT, 1) do
+    while move(FRONT, 2) do
     end
     turtle.turnRight()
     move(FRONT, 1)
