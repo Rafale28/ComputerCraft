@@ -98,12 +98,14 @@ function store(TID, DIR)
         local itm = turtle.getItemDetail(i)
         if itm then
             if itm["name"] == TID then
-                drop(i, DIR, itm["count"])
+                dropDown(i, DIR, itm["count"])
             end
         end
     end
 end
 
+function place()
+end
 function felling(TID, DIR)
     local count = 0
     if DIR == RIGHT then
@@ -120,6 +122,7 @@ function felling(TID, DIR)
     end
     move(DOWN, count)
     move(BACK, 1)
+    place()
     if DIR == RIGHT then
         turtle.turnLeft()
     elseif DIR == LEFT then
@@ -147,10 +150,10 @@ function routine(TID)
     while move(FRONT, 1) do
     end
     turtle.turnRight()
-    while move(FRONT, 2) do
+    while move(FRONT, 1) do
     end
     turtle.turnRight()
-    move(FRONT, 1)
+    move(FRONT, 2)
     if checkTree(TID, RIGHT) then
         felling(TID, RIGHT)
     end
