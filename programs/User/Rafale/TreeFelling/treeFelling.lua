@@ -1,4 +1,5 @@
 BIRCH_LOG_ID = "minecraft:birch_log"
+BIRCH_SAPLING_ID = "minecraft:birch_sapling"
 FUEL_SLOT   = 16
 
 function fuelCheck(lane, DIR)
@@ -106,8 +107,18 @@ function store(TID, DIR)
     end
 end
 
-function place()
+function place(SID)
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == SID then
+                turtle.place()
+            end
+        end
+    end
 end
+
 function felling(TID, DIR)
     local count = 0
     if DIR == RIGHT then
@@ -124,7 +135,7 @@ function felling(TID, DIR)
     end
     move(DOWN, count)
     move(BACK, 1)
-    place()
+    place(BIRCH_SAPLING_ID)
     if DIR == RIGHT then
         turtle.turnLeft()
     elseif DIR == LEFT then
