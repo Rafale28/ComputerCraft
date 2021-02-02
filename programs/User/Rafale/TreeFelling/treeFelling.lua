@@ -105,6 +105,7 @@ function store(TID, DIR)
 end
 
 function felling(TID, DIR)
+    local count = 0
     if DIR == RIGHT then
         turtle.turnRight()
     elseif DIR == LEFT then
@@ -176,5 +177,5 @@ initialize()
 while true do
     fuelCheck(fuelNum, DOWN)
     routine(BIRCH_LOG_ID)
-    sleep(100)
+    sleep(60 * 30)
 end
