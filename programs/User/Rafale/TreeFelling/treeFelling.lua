@@ -34,6 +34,14 @@ function checkTree(TID, DIR)
         itm = turtle.inspect()
     elseif DIR == UP then
         itm = turtle.inspectUp()
+    elseif DIR == RIGHT then
+        turtle.turnRight()
+        itm = turtle.inspect()
+        turtle.turnLeft()
+    elseif DIR == LEFT then
+        turtle.turnLeft()
+        itm = turtle.inspect()
+        turtle.turnRight()
     end
     if itm then
         if itm["name"] == TID then
