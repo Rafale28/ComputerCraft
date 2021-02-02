@@ -188,10 +188,50 @@ function routine(TID)
     print("finish...")
 end
 
+function saplingCheck(SID, DIR)
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == SID and itm["count"] >=6 then
+                return true
+            end
+        end
+    end
+
+    if DIR == LEFT then
+        turtle.turnLeft()
+    elseif DIR == RIGHT then
+        turtle.turnRight()
+    end
+    turtle.suck()
+    if DIR == LEFT then
+        turtle.turnRight()
+    elseif DIR == RIGHT then
+        turtle.turnLeft()
+    end
+
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == SID and itm["count"] >=6 then
+                return true
+            end
+        end
+    end
+    return false
+end
 local fuelNum = 2
+local interval = 20 
 initialize()
 while true do
     fuelCheck(fuelNum, DOWN)
-    routine(BIRCH_LOG_ID)
-    sleep(60 * 30)
+    if saplingCheck(BIRCH_SAPLING_ID, LEFT) then
+        routine(BIRCH_LOG_ID)
+    end
+    for i=1, interval do
+        print((interval-i + 1).."min...")
+        sleep(60)
+    end
 end
