@@ -29,6 +29,7 @@ RIGHT = 4
 LEFT = 4
 
 function checkTree(TID, DIR)
+    local itm = nil
     if DIR == FRONT then
         itm = turtle.inspect()
     elseif DIR == UP then
@@ -44,7 +45,7 @@ function checkTree(TID, DIR)
     else
         itm = turtle.inspect()
     end
-    if itm then
+    if itm ~= nil then
         if itm["name"] == TID then
             return true 
         else
