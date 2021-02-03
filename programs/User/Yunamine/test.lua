@@ -142,7 +142,7 @@ function routine()
     initialize()
 
     -- fuelcheck
-    fuelCheck(32)
+    fuelCheck(150)
 
     -- itemmove
     suckChest()
