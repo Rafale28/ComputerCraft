@@ -152,7 +152,7 @@ function throwUnnecessaryItems()
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
         if itm then
-            if itm["name"] == "poisonous_potato" then
+            if itm["name"] == "minecraft:poisonous_potato" then
                 turtle.select(i)
                 turtle.dropUp(itm["count"])
             end
@@ -185,7 +185,7 @@ function routine()
     -- itemmove
 
     suckChest()
-    storeFuel(item)
+    storeFuel("minecraft:carpet")
 
     gotoPotato(height)
     store("minecraft:potato")
