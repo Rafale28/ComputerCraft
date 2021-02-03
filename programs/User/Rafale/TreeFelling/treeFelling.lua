@@ -215,7 +215,7 @@ function saplingCheck(SID, DIR)
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
         if itm then
-        a   if itm["name"] == SID and itm["count"] >=6 then
+            if itm["name"] == SID and itm["count"] >=6 then
                 return true
             end
         end
