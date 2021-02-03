@@ -12,10 +12,10 @@ function fuelCheck(min)
     print("fuelLevel"..fuel)
     while fuel < min do
         turtle.select(FUEL_SLOT)
-        turtle.suck()
+        turtle.suck(64)
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
-        print("Refuel"..fuel)
+        print("Refuel now:"..fuel.."min:"..min)
     end
 end
 -- #############
@@ -23,7 +23,7 @@ end
 
 function suckChest()
 
-    for i = 1, 15 do
+    for i = 1, 16 do
         turtle.select(i)
         turtle.suckDown()
     end
@@ -31,7 +31,7 @@ function suckChest()
 end
 
 function store(item)
-    for i = 1, 15 do
+    for i = 1, 16 do
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
         if itm then
@@ -44,7 +44,7 @@ function store(item)
 end
 
 function storeAll()
-    for i = 1, 15 do
+    for i = 1, 16 do
         turtle.select(i)
         turtle.dropDown()
     end
