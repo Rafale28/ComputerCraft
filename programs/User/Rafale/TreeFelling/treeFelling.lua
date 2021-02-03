@@ -1,5 +1,6 @@
-BIRCH_LOG_ID = "minecraft:birch_log"
-BIRCH_SAPLING_ID = "minecraft:birch_sapling"
+require "/TurtleAPI/itemIdList"
+BIRCH_LOG_ID = ID.birchLog
+BIRCH_SAPLING_ID = ID.birchSapling
 FUEL_SLOT   = 16
 
 function fuelCheck(lane, DIR)
