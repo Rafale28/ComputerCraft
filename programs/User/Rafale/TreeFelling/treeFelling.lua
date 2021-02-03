@@ -215,13 +215,14 @@ function saplingCheck(SID, DIR)
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
         if itm then
-            if itm["name"] == SID and itm["count"] >=6 then
+        a   if itm["name"] == SID and itm["count"] >=6 then
                 return true
             end
         end
     end
     return false
 end
+
 local fuelNum = 2
 local interval = 20 
 initialize()
