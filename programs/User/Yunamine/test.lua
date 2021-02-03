@@ -185,7 +185,7 @@ function routine()
     -- itemmove
 
     suckChest()
-    storeFuel("minecraft:carpet")
+    storeFuel("minecraft:white_carpet")
 
     gotoPotato(height)
     store("minecraft:potato")
