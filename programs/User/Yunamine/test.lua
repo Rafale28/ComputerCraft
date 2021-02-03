@@ -112,7 +112,13 @@ end
 
 function gotoEtc()
     print("Going to a chest for e.t.c")
-    back(2)
+    forward(2)
+
+end
+
+function gotoHopper()
+    print("Going to a hopper to deriver")
+    back(4)
 
 end
 
@@ -120,6 +126,38 @@ function gotoChest(height)
     print("Returning to a chest")
     forward(7)
     down(height)
+
+end
+
+--Use mixed carpets as fuel
+function storeFuel(item)
+
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == item then
+                turtle.select(i)
+                turtle.drop(itm["count"])
+            end
+        end
+    end
+
+end
+
+--Rotten potatoes 
+function throwUnnecessaryItems()
+
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == "poisonous_potato" then
+                turtle.select(i)
+                turtle.dropUp(itm["count"])
+            end
+        end
+    end 
 
 end
 
@@ -145,15 +183,28 @@ function routine()
     fuelCheck(150)
 
     -- itemmove
+
     suckChest()
+    storeFuel(item)
+
     gotoPotato(height)
     store("minecraft:potato")
+
     gotoCarrot()
     store("minecraft:carrot")
+ 
+    throwUnnecessaryItems()
+    
     gotoWheat()
     store("minecraft:wheat")
+    
+    gotoHopper()
+    store("minecraft:potato")
+    store("minecraft:carrot")
+
     gotoEtc()
     storeAll()
+
     gotoChest(height)
 end
 -- #############
