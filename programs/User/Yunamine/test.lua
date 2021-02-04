@@ -29,7 +29,7 @@ function suckChest()
 
         -- return the items that less than 64
         cnt=turtle.getItemDetail(i)["count"]
-        if cnt != 64 then
+        if cnt ~= 64 then
 
             turtle.dropDown(cnt)
             -- = loop
