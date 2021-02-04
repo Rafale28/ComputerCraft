@@ -46,13 +46,15 @@ function suckChest()
             
             if itemdetail ~= nil then
 
-                if itemdetail["count"] ~= 64 then
+                --64 check for potato and carrot
+                if itemdeatil["name"] == "minecraft:potato" or itemdeatil["name"] == "minecraft:carrot" then
+                    if itemdetail["count"] ~= 64 then
 
-                    turtle.dropDown(cnt)
-                    -- = loop
-                    go = false
-                end    
-
+                        turtle.dropDown(cnt)
+                        -- = loop
+                        go = false
+                    end    
+                end
             end
         end
 
