@@ -51,6 +51,16 @@ function suckChest()
 
             end
         end
+
+        -- sleep for item charge
+        print("items are less than 64")
+        if go == false then
+            interval = 10
+            for i=interval, 1, -1 do
+                print(i.."0secs...")
+                sleep(10)
+            end
+        end
     end
 
 end
@@ -240,9 +250,5 @@ local interval = 60
 
 while true do
     routine()
-    for i=interval, 1, -1 do
-        print(i.."0secs...")
-        sleep(minute)
-    end
 end
 
