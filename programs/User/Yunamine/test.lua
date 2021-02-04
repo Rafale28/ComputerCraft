@@ -38,13 +38,18 @@ function suckChest()
         for i = 1, 16 do
             turtle.select(i)
             -- return the items that less than 64
-            cnt=turtle.getItemDetail(i)["count"]
-            if cnt ~= 64 then
+            itemdetail=turtle.getItemDetail(i)
+            
+            if itemdetail ~= nil then
 
-                turtle.dropDown(cnt)
-                -- = loop
-                go = false
-            end    
+                if itemdetail["count"] ~= 64 then
+
+                    turtle.dropDown(cnt)
+                    -- = loop
+                    go = false
+                end    
+
+            end
         end
     end
 
