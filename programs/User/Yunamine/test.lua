@@ -30,9 +30,13 @@ function suckChest()
         for i = 1, 16 do
             turtle.select(i)
             turtle.suckDown()
+            
 
         end
         
+        storeFuel("minecraft:white_carpet")
+        throwUnnecessaryItems()
+
         go = true
 
         for i = 1, 16 do
@@ -55,7 +59,7 @@ function suckChest()
         -- sleep for item charge
         print("items are less than 64")
         if go == false then
-            interval = 10
+            interval = 6
             for i=interval, 1, -1 do
                 print(i.."0secs...")
                 sleep(10)
@@ -220,15 +224,12 @@ function routine()
     -- itemmove
 
     suckChest()
-    storeFuel("minecraft:white_carpet")
-
+ 
     gotoPotato(height)
     store("minecraft:potato")
 
     gotoCarrot()
     store("minecraft:carrot")
- 
-    throwUnnecessaryItems()
     
     gotoWheat()
     store("minecraft:wheat")
