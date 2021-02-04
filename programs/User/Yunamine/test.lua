@@ -26,6 +26,15 @@ function suckChest()
     for i = 1, 16 do
         turtle.select(i)
         turtle.suckDown()
+
+        -- return the items that less than 64
+        cnt=turtle.getItemDetail(i)["count"]
+        if cnt != 64 then
+
+            turtle.dropDown(cnt)
+            -- = loop
+            i=i-1
+        end    
     end
 
 end
