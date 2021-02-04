@@ -36,7 +36,7 @@ function suckChest()
         go = true
 
         for i = 1, 16 do
-
+            turtle.select(i)
             -- return the items that less than 64
             cnt=turtle.getItemDetail(i)["count"]
             if cnt ~= 64 then
