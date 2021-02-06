@@ -1,9 +1,9 @@
 -- Main
 
-local interval = arg[1]
-local stacks = arg[2]
-local source = arg[3]
-local destination = arg[4]
+local interval = 200
+local stacks = 1
+local source = "up"
+local destination = "front"
 
 while true do
 
