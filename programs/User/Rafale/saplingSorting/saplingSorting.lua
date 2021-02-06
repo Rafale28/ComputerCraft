@@ -31,4 +31,5 @@ init()
 while true do
     turtle.suck()
     store(ID.birchSapling)
+    sleep(5)
 end
