@@ -149,37 +149,19 @@ function initialize()
 end
 
 function routine(TID)
-    move(FRONT, 1)
-    if checkTree(TID, RIGHT) then
-        felling(TID, RIGHT)
-    end
-    move(FRONT, 4)
-    if checkTree(TID, RIGHT) then
-        felling(TID, RIGHT)
-    end
-    move(FRONT, 4)
-    if checkTree(TID, RIGHT) then
-        felling(TID, RIGHT)
-    end
-    while move(FRONT, 1) do
+    while move(FRONT, 4) do
+        if checkTree(TID, RIGHT) then
+            felling(TID, RIGHT)
+        end
     end
     turtle.turnRight()
     while move(FRONT, 1) do
     end
     turtle.turnRight()
-    move(FRONT, 2)
-    if checkTree(TID, RIGHT) then
-        felling(TID, RIGHT)
-    end
-    move(FRONT, 4)
-    if checkTree(TID, RIGHT) then
-        felling(TID, RIGHT)
-    end
-    move(FRONT, 4)
-    if checkTree(TID, RIGHT) then
-        felling(TID, RIGHT)
-    end
-    while move(FRONT, 1) do
+    while move(FRONT, 4) do
+        if checkTree(TID, RIGHT) then
+            felling(TID, RIGHT)
+        end
     end
     store(BIRCH_LOG_ID, DOWN)
     turtle.turnRight()
@@ -190,21 +172,22 @@ function routine(TID)
 end
 
 function saplingCheck(SID, DIR)
-    for i = 1, 16 do
-        turtle.select(i)
-        local itm = turtle.getItemDetail(i)
-        if itm then
-            if itm["name"] == SID and itm["count"] >=6 then
-                return true
-            end
-        end
-    end
-
     if DIR == LEFT then
         turtle.turnLeft()
     elseif DIR == RIGHT then
         turtle.turnRight()
     end
+
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == SID then
+                turtle.store(itm["count"])
+            end
+        end
+    end
+
     turtle.suck()
     if DIR == LEFT then
         turtle.turnRight()
@@ -216,7 +199,7 @@ function saplingCheck(SID, DIR)
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
         if itm then
-            if itm["name"] == SID and itm["count"] >=6 then
+            if itm["name"] == SID and itm["count"] >=12 then
                 return true
             end
         end
@@ -225,7 +208,7 @@ function saplingCheck(SID, DIR)
 end
 
 local fuelNum = 2
-local interval = 20 
+local interval = 20
 initialize()
 while true do
     fuelCheck(fuelNum, DOWN)
