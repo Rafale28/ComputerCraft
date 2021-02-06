@@ -188,6 +188,7 @@ function saplingCheck(SID, DIR)
         end
     end
 
+    turtle.select(1)
     turtle.suck()
     if DIR == LEFT then
         turtle.turnRight()
@@ -207,7 +208,7 @@ function saplingCheck(SID, DIR)
     return false
 end
 
-local fuelNum = 2
+local fuelNum = 5 
 local interval = 20
 initialize()
 while true do
