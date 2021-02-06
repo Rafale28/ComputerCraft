@@ -181,7 +181,7 @@ function saplingCheck(SID, DIR)
         local itm = turtle.getItemDetail(i)
         if itm then
             if itm["name"] == SID then
-                turtle.store(itm["count"])
+                turtle.drop(itm["count"])
             end
         end
     end
