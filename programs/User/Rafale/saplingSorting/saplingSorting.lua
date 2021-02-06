@@ -12,6 +12,13 @@ function initialize()
     end
 end
 
+function suck()
+    for i = 1, 16 do
+        turtle.select(i)
+        turtle.suck()
+    end
+end
+
 function store(ITEMID)
     for i = 1, 16 do
         turtle.select(i)
@@ -30,7 +37,7 @@ end
 
 initialize()
 while true do
-    turtle.suck()
+    suck()
     store(ID.birchSapling)
     sleep(5)
 end
