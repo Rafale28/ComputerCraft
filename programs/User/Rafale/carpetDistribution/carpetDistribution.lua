@@ -12,13 +12,14 @@ function fuelCheck(fmin, DIR)
     fuel = turtle.getFuelLevel()
     print("fuelLevel"..fuel)
     while fuel < fmin do
-        turtle.select(FUEL_SLOT)
-        if DIR == FRONT then 
-            turtle.suck()
-        elseif DIR == UP then
-            turtle.suckUp()
-        elseif DIR == DOWN then
-            turtle.suckDown()
+        for i = 1, 16 do
+            turtle.select(i)
+            local itm = turtle.getItemDetail(i)
+            if itm then
+                if itm["name"] == ID.whiteCarpet then
+                    break
+                end
+            end
         end
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
