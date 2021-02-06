@@ -1,6 +1,4 @@
 require "/TurtleAPI/itemIdList"
-BIRCH_LOG_ID = ID.birchLog
-BIRCH_SAPLING_ID = ID.birchSapling
 FUEL_SLOT   = 16
 
 function fuelCheck(fmin, DIR)
@@ -26,7 +24,7 @@ UP = 1
 DOWN = 2
 BACK = 3
 RIGHT = 4
-LEFT = 4
+LEFT = 5
 
 function checkTree(TID, DIR)
     local status, itm = turtle.inspect()
@@ -127,14 +125,14 @@ function felling(TID, DIR)
     end
     Dig(FRONT)
     move(FRONT, 1)
-    while checkTree(BIRCH_LOG_ID, UP) do
+    while checkTree(TID, UP) do
         turtle.digUp()
         turtle.up()
         count = count + 1
     end
     move(DOWN, count)
     move(BACK, 1)
-    place(BIRCH_SAPLING_ID)
+    place(ID.birchSapling)
     if DIR == RIGHT then
         turtle.turnLeft()
     elseif DIR == LEFT then
@@ -161,7 +159,7 @@ function routine(TID)
             felling(TID, RIGHT)
         end
     end
-    store(BIRCH_LOG_ID, DOWN)
+    store(TID, DOWN)
     turtle.turnRight()
     while move(FRONT, 1) do
     end
@@ -211,8 +209,8 @@ local interval = 20
 initialize()
 while true do
     fuelCheck(fuelNum, DOWN)
-    if saplingCheck(BIRCH_SAPLING_ID, LEFT) then
-        routine(BIRCH_LOG_ID)
+    if saplingCheck(ID.birchSapling, LEFT) then
+        routine(ID.birchLog)
     end
     for i=1, interval do
         print((interval-i + 1).."min...")
