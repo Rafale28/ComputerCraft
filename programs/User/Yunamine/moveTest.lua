@@ -12,10 +12,13 @@ while true do
         turtle.select(i)
         
         if source == "up" then
+            print("suck up")
             turtle.suckUp()
         elseif source == "down" then
+            print("suck down")
             turtle.suckDown()
         elseif source == "front" then
+            print("suck front")
             turtle.suck()
         end
         
@@ -26,10 +29,13 @@ while true do
         turtle.select(i)
     
         if destination == "up" then
+            print("drop up")
             turtle.dropUp()
         elseif destination == "down" then
+            print("drop down")
             turtle.dropDown()
         elseif destination == "front" then
+            print("drop front")
             turtle.drop()
         end        
     
