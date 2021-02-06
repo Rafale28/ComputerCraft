@@ -1,11 +1,12 @@
 require "/TurtleAPI/itemIdList"
 
-function init() 
+function initialize() 
     while true do
         local status, itm = turtle.inspect()
         if status then
             if itm["name"] == ID.chest then
                 return true
+            end
         end
         turtle.turnRight()
     end
@@ -27,7 +28,7 @@ function store(ITEMID)
     end
 end
 
-init()
+initialize()
 while true do
     turtle.suck()
     store(ID.birchSapling)
