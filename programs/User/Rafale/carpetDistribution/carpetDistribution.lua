@@ -1,5 +1,5 @@
 require "/TurtleAPI/itemIdList"
-FUEL_SLOT = 16
+FUEL_SLOT = 1
 
 FRONT = 0
 UP = 1
