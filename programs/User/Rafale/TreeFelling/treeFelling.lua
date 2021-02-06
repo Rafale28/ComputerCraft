@@ -3,9 +3,7 @@ BIRCH_LOG_ID = ID.birchLog
 BIRCH_SAPLING_ID = ID.birchSapling
 FUEL_SLOT   = 16
 
-function fuelCheck(lane, DIR)
-    fmin = 32 * lane 
-    fmin = fmin + 10
+function fuelCheck(fmin, DIR)
     fuel = turtle.getFuelLevel()
     print("fuelLevel"..fuel)
     while fuel < fmin do
@@ -208,7 +206,7 @@ function saplingCheck(SID, DIR)
     return false
 end
 
-local fuelNum = 5 
+local fuelNum = 800
 local interval = 20
 initialize()
 while true do
