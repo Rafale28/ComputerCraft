@@ -1,0 +1,34 @@
+require "/TurtleAPI/itemIdList"
+
+function init() 
+    while true do
+        local status, itm = turtle.inspect()
+        if status then
+            if itm["name"] == ID.chest then
+                return true
+        end
+        turtle.turnRight()
+    end
+end
+
+function store(ITEMID)
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if itm["name"] == ITEMID then
+                turtle.turnRight()
+                turtle.drop()
+                turtle.turnLeft()
+            else
+                turtle.dropUp()
+            end
+        end
+    end
+end
+
+init()
+while true do
+    turtle.suck()
+    store(ID.birchSapling)
+end

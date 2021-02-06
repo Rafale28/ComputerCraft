@@ -6,5 +6,6 @@ ID = {
     wheatSeeds  = "minecraft:wheat_seeds",
     sugarCane   = "minecraft:sugar_cane",
     birchLog    = "minecraft:birch_log",
-    birchSapling= "minecraft:birch_sapling"
+    birchSapling= "minecraft:birch_sapling",
+    chest       = "minecraft:chest"
 }
