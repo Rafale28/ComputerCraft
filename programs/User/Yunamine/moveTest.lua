@@ -13,9 +13,9 @@ while true do
         
         if source == "up" then
             turtle.suckUp()
-        else if source == "down" then
+        elseif source == "down" then
             turtle.suckDown()
-        else if source == "front" then
+        elseif source == "front" then
             turtle.suck()
         end
         
@@ -27,9 +27,9 @@ while true do
     
         if destination == "up" then
             turtle.dropUp()
-        else if destination == "down" then
+        elseif destination == "down" then
             turtle.dropDown()
-        else if destination == "front" then
+        elseif destination == "front" then
             turtle.drop()
         end        
     
