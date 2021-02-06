@@ -3,31 +3,13 @@
 local interval = 60
 local timing = 20
 local stacks = 1
-local source = "front"
 local destination = "up"
 local path = "down"
 
 i=1
 
 while true do
-
-    --suck
-    for i = 1, stacks do
-        turtle.select(i)
-        
-        if source == "up" then
-            print("suck up")
-            turtle.suckUp()
-        elseif source == "down" then
-            print("suck down")
-            turtle.suckDown()
-        elseif source == "front" then
-            print("suck front")
-            turtle.suck()
-        end
-        
-    end
-   
+  
     if i < timing then
     
         --through
