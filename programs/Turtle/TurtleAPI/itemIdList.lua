@@ -7,5 +7,6 @@ ID = {
     sugarCane   = "minecraft:sugar_cane",
     birchLog    = "minecraft:birch_log",
     birchSapling= "minecraft:birch_sapling",
-    chest       = "minecraft:chest"
+    chest       = "minecraft:chest",
+    whiteCarpet = "minecraft:white_carpet"
 }
