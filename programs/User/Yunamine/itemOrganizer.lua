@@ -39,8 +39,13 @@ end
 -- initialize
 function initialize()
 
+    --ひたすら前進
+    while turtle.forward() do
+    end
 
-
+    --ひたすら上
+    while turtle.up() do
+    end
 end
 
 function routine()
