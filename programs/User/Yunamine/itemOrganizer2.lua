@@ -1,6 +1,4 @@
--- ########################
--- cultivate <n>
--- ########################
+require "chestItemList"
 
 -- #############
 -- config
@@ -51,6 +49,7 @@ end
 function routine()
 
     local height = 15
+    local counter = 1
 
     -- initialize
     initialize()
@@ -78,10 +77,40 @@ function routine()
         --格納
         if res then
             
-            -- 格納対象のアイテムIDを取得し持ってたら格納
-            id = getTaggedItemId("up")
-            items=suckItems(id)
-            print(id...":"...items)
+            --定義されている範囲
+            if #CHEST >= counter then
+
+                -- 格納対象のアイテムIDを取得し持ってたら格納
+                CHEST.
+                for index,id in ipairs(CHEST[counter]) do
+
+                    for i = 1,16 do
+                        turtle.select(i)
+                        itemdetail=turtle.getItemDetail(i)
+                        
+                        if itemdetail ~= nil then          
+                            if itemdetail["name"] == id then
+
+                                print(id...":"...items)
+
+                                if back then
+                                    turtle.dropDown()
+                                else
+                                    turtle.dropUp()
+                                end
+                            end
+                        end
+                    end
+                end 
+
+                counter = counter+1
+
+            --定義のされていないところはとりあえず持ってるものを入れる
+            else
+
+                turtle.
+
+            end
  
         --折り返し/終了
         else
@@ -105,6 +134,7 @@ function routine()
                 turtle.up()
 
                 back=true
+                counter = 1
 
         end
     end
