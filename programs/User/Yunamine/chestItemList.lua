@@ -1,4 +1,3 @@
-require itemName2Id
 require itemName2Ids
 CHEST = {
     
@@ -84,6 +83,6 @@ CHEST = {
     n2is("焼き"),
 
     --Chest 14 (ステーキ)
-    n2is("ステーキ"),
+    n2is("ステーキ")
 
 }
