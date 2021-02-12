@@ -90,7 +90,7 @@ function routine()
                         if itemdetail ~= nil then          
                             if itemdetail["name"] == id then
 
-                                print(id...":"...items)
+                                print(id...":"...itemdetail["count"])
 
                                 if back then
                                     turtle.dropDown()
