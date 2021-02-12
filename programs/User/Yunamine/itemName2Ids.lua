@@ -1,11 +1,11 @@
 function n2is(itemName)
 
     --変換用のテキストを読み込む
-    f = io.open("itemIdList.txt","r")
+    fp = io.open("itemIdList.txt","r")
 
     next = false
     res = {}
-    for line in f:lines() do
+    for line in fp:lines() do
 
         --見つかった次の行がid
         if string.find(line,itemName) ~= nil then
@@ -15,5 +15,6 @@ function n2is(itemName)
             table.insert(res,line)
         end
     end
+    io.close(fp)
     return res
 end
