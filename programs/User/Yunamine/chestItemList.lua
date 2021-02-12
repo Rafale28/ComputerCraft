@@ -1,4 +1,4 @@
-require itemName2Ids
+require "itemName2Ids"
 CHEST = {
     
     --Chest 1 (白樺関連)
