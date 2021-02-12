@@ -81,7 +81,6 @@ function routine()
             if #CHEST >= counter then
 
                 -- 格納対象のアイテムIDを取得し持ってたら格納
-                CHEST.
                 for index,id in ipairs(CHEST[counter]) do
 
                     for i = 1,16 do
