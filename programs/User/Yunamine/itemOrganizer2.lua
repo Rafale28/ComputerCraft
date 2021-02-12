@@ -106,11 +106,21 @@ function routine()
 
             --定義のされていないところはとりあえず持ってるものを入れる
             else
+                for i = 1,16 do
+                    turtle.select(i)
+                    itemdetail=turtle.getItemDetail(i)
+                    
+                    if itemdetail ~= nil then          
+                        print(itemdetail["name"]..":"..itemdetail["count"])
 
-                turtle.
-
+                        if back then
+                            turtle.dropDown()
+                        else
+                            turtle.dropUp()
+                        end
+                    end
+                end
             end
- 
         --折り返し/終了
         else
  
