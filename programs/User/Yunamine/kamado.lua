@@ -5,7 +5,7 @@ function initialize()
     --作業台に向いているのがホームポジション
     while true do
         status, itm = turtle.inspect()
-        if itm["name"] ~= "crafting_table" then
+        if itm["name"] ~= "minecraft:crafting_table" then
             turtle.turnLeft()
         else
             break
