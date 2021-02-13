@@ -15,18 +15,20 @@ end
 
 function routine()
 
-   turtle.turnLeft()
+   turtle.turnRight()
    
    --アイテムが拾えたらまだいらない
    if turtle.suck() == nil then
 
-        turtle.turnRight()
-        turtle.turnRight()
+        print("Delivery")
+
+        turtle.turnLeft()
+        turtle.turnLeft()
         turtle.suck()
-        turtle.turnLeft()
-        turtle.turnLeft()
-        turtle.drop()
         turtle.turnRight()
+        turtle.turnRight()
+        turtle.drop()
+        turtle.turnLeft()
    end
 end
 
