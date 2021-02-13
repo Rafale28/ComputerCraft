@@ -28,8 +28,12 @@ function routine()
         turtle.turnRight()
         turtle.turnRight()
         turtle.drop()
-        turtle.turnLeft()
+   else
+        turtle.drop()
    end
+
+   turtle.turnLeft()
+
 end
 
 -- #############
@@ -40,5 +44,6 @@ initialize()
 
 while true do
     routine()
+    sleep(1)
 end
 
