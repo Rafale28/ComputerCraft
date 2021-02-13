@@ -3,7 +3,7 @@
 
 function initialize()
     --作業台に向いているのがホームポジション
-    while turtle.inspect()["name"] ~= "crafting_table" do
+    while (turtle.inspect())["name"] ~= "crafting_table" do
         turtle.turnLeft()
     end
 end
