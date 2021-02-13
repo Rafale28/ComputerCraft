@@ -18,8 +18,7 @@ function routine()
    turtle.turnRight()
    
    --アイテムが拾えたらまだいらない
-   b,s = turtle.suck()
-   if s == nil then
+   if turtle.suck() == false then
 
         print("Delivery")
 
