@@ -95,9 +95,7 @@ end
 
 function routine()
 
-    t=10
-
-    bowCraft(t)
+    bowCraft(1)
 
 end
 
@@ -109,6 +107,6 @@ initialize()
 
 while true do
     routine()
-    sleep(1)
+    sleep(10)
 end
 
