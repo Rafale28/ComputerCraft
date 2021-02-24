@@ -77,7 +77,7 @@ function rowAction(start)
             sleep(10)
             i=i-1
         end
-        ::continue::
+        --::continue::
         print(i..":ok")
     end
 
