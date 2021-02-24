@@ -42,8 +42,8 @@ function rowAction(start)
             --アイテムが取れなかったとき --> 鉄インゴットが不足している
             --60秒待機してもう一回
             print("iron ingot is not enough to craft a block")
-            print("sleep 60secs")
-            sleep(60)
+            print("sleep 10secs")
+            sleep(10)
             i=i-1
         end
         print(i..":ok")
@@ -64,7 +64,7 @@ function routine()
     rowAction(9)
 
     print("ready to craft")
-    
+
     --4の位置に完成品を入れる
     turtle.select(4)
     turtle.craft()
@@ -74,6 +74,8 @@ function routine()
     turtle.turnRight()
     turtle.drop()
     print("a block crafted")
+
+    turtle.turnRight()
 
 end
 
