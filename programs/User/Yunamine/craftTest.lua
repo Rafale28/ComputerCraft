@@ -64,19 +64,10 @@ function routine()
     rowAction(9)
 
     print("ready to craft")
+    
     --4の位置に完成品を入れる
     turtle.select(4)
-    
-    --材料がなくなるまでクラフト
-    while true do
-
-        res=turtle.craft()
-
-        if res == nil then
-            break
-        end
-
-    end
+    turtle.craft()
     
     --格納
     turtle.turnRight()
