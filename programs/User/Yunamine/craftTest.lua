@@ -3,14 +3,17 @@
 
 function initialize()
     --Airに向いているのがホームポジション
+    print("----initializing----")
     while true do
         status, itm = turtle.inspect()
         if itm["name"] ~= "minecraft:air" then
+            print(itm["name"])
             turtle.turnLeft()
         else
             break
         end
     end
+    print("----done----")
 end
 
 function rowAction(start)
