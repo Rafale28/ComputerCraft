@@ -22,6 +22,7 @@ function rowAction(start)
 
         ok=false
 
+        --okになるまでループ
         while ok == false do
 
             turtle.select(i)
