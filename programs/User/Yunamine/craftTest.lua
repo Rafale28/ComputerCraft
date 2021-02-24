@@ -2,12 +2,12 @@
 -- define functions
 
 function initialize()
-    --Airに向いているのがホームポジション
+    --Air(nilになる)に向いているのがホームポジション
     print("----initializing----")
     while true do
         status, itm = turtle.inspect()
-        if itm["name"] ~= "minecraft:air" then
-            print(itm["name"])
+        if itm["name"] ~= nil then
+            print("front:"..itm["name"])
             turtle.turnLeft()
         else
             break
