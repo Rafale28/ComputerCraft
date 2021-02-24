@@ -20,64 +20,73 @@ function rowAction(start)
 
     for i = start, start+2 do
 
-        turtle.select(i)
+        ok=false
 
-        --まずタートル内にすでにインゴットが格納されているかどうかを確認
-        itemdetail=turtle.getItemDetail(i)    
-        if itemdetail ~= nil then       
-           
-            --下がうまくいかないからとりあえず持ってたら戻す
+        while ok == false do
 
-            --64ならスキップ、中途半端ならいったん戻す
-            --if itemdetail["count"] == 64 then
-            --    goto continue
-            --else
-                turtle.drop()
-            --end
+            turtle.select(i)
+
+            --まずタートル内にすでにインゴットが格納されているかどうかを確認
+            itemdetail=turtle.getItemDetail(i)    
+            if itemdetail ~= nil then       
             
-        end
+                --下がうまくいかないからとりあえず持ってたら戻す
 
-        turtle.suck()
-        itemdetail=turtle.getItemDetail(i)
-                        
-        if itemdetail ~= nil then          
-            if itemdetail["name"] ~= "minecraft:iron_ingot" then
-
-                --鉄インゴット以外なら奥のチェストに格納
-                print("Poppy...")
-
-                turtle.turnRight()
-                turtle.drop()
-                turtle.turnLeft()
-                
-                --もう一回同じ場所でトライ
-                i=i-1
-
-            --鉄インゴットの時64個そろってなかったら戻して待機
-            else
-
-                if itemdetail["count"] ~= 64 then
-
+                --64ならスキップ、中途半端ならいったん戻す
+                --if itemdetail["count"] == 64 then
+                --    goto continue
+                --else
                     turtle.drop()
-                    print("iron ingot is not enough to craft a block")
-                    print("sleep 10secs")
-                    sleep(10)
-                    i=i-1
-
-                end
-
+                --end
+                
             end
 
-        else
+            turtle.suck()
+            itemdetail=turtle.getItemDetail(i)
+                            
+            if itemdetail ~= nil then          
+                if itemdetail["name"] ~= "minecraft:iron_ingot" then
 
-            --アイテムが取れなかったとき --> 鉄インゴットが不足している
-            --60秒待機してもう一回
-            print("iron ingot is not enough to craft a block")
-            print("sleep 10secs")
-            sleep(10)
-            i=i-1
+                    --鉄インゴット以外なら奥のチェストに格納
+                    print("Poppy...")
+
+                    turtle.turnRight()
+                    turtle.drop()
+                    turtle.turnLeft()
+                    
+                    --もう一回同じ場所でトライ
+                    --ok=false
+
+                --鉄インゴットの時64個そろってなかったら戻して待機
+                else
+
+                    if itemdetail["count"] ~= 64 then
+
+                        turtle.drop()
+                        print("iron ingot is not enough to craft a block")
+                        print("sleep 10secs")
+                        sleep(10)
+                        --もう一回同じ場所でトライ
+                        --ok=false
+
+                    --okパターン
+                    else
+                        ok=true
+                    end
+
+                end
+            else
+
+                --アイテムが取れなかったとき --> 鉄インゴットが不足している
+                --60秒待機してもう一回
+                print("iron ingot is not enough to craft a block")
+                print("sleep 10secs")
+                sleep(10)
+                --もう一回同じ場所でトライ
+                --ok=false
+            end
+            --::continue::
         end
-        --::continue::
         print(i..":ok")
     end
 
