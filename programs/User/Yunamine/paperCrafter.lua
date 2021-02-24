@@ -17,7 +17,7 @@ function initialize()
 end
 
 ----紙の作り方
---サトウキビ: 1
+--サトウキビ: 1,2,3
 
 ----チェストの配置
 --サトウキビ:左
@@ -67,10 +67,12 @@ function paperCraft(t)
     --サトウキビを配置
     initialize()
     turtle.turnLeft()
-    while place("minecraft:reeds",1) do sleep(t) end
+    while place("minecraft:sugar_cane",1) do sleep(t) end
+    while place("minecraft:sugar_cane",2) do sleep(t) end
+    while place("minecraft:sugar_cane",3) do sleep(t) end
 
     --クラフト
-    turtle.select(2)
+    turtle.select(4)
     turtle.craft()
 
     --紙を格納
