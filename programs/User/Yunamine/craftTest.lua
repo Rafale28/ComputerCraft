@@ -26,12 +26,14 @@ function rowAction(start)
         itemdetail=turtle.getItemDetail(i)    
         if itemdetail ~= nil then       
            
+            --下がうまくいかないからとりあえず持ってたら戻す
+
             --64ならスキップ、中途半端ならいったん戻す
-            if itemdetail["count"] == 64 then
-                goto continue
-            else
-                turtle.drop()            
-            end
+            --if itemdetail["count"] == 64 then
+            --    goto continue
+            --else
+                turtle.drop()
+            --end
             
         end
 
