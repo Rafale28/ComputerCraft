@@ -62,7 +62,7 @@ function place(id,pos)
         ok=false
     end
 
-    return ok
+    return not ok
 end
 
 function bowCraft(t)
@@ -70,16 +70,16 @@ function bowCraft(t)
     --糸を配置
     initialize()
     turtle.turnLeft()
-    while ~place("minecraft:string",1) do sleep(t) end
-    while ~place("minecraft:string",5) do sleep(t) end
-    while ~place("minecraft:string",9) do sleep(t) end
+    while place("minecraft:string",1) do sleep(t) end
+    while place("minecraft:string",5) do sleep(t) end
+    while place("minecraft:string",9) do sleep(t) end
 
     --枝を配置
     initialize()
     turtle.turnRight()
-    while ~place("minecraft:stick",2) do sleep(t) end
-    while ~place("minecraft:stick",7) do sleep(t) end
-    while ~place("minecraft:stick",10) do sleep(t) end
+    while place("minecraft:stick",2) do sleep(t) end
+    while place("minecraft:stick",7) do sleep(t) end
+    while place("minecraft:stick",10) do sleep(t) end
 
     --クラフト
     turtle.select(3)
