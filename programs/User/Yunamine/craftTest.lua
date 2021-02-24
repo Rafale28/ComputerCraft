@@ -21,6 +21,20 @@ function rowAction(start)
     for i = start, start+2 do
 
         turtle.select(i)
+
+        --まずタートル内にすでにインゴットが格納されているかどうかを確認
+        itemdetail=turtle.getItemDetail(i)    
+        if itemdetail ~= nil then       
+           
+            --64ならスキップ、中途半端ならいったん戻す
+            if itemdetail["count"] == 64 then
+                goto continue
+            else
+                turtle.drop()            
+            end
+            
+        end
+
         turtle.suck()
         itemdetail=turtle.getItemDetail(i)
                         
@@ -36,7 +50,22 @@ function rowAction(start)
                 
                 --もう一回同じ場所でトライ
                 i=i-1
+
+            --鉄インゴットの時64個そろってなかったら戻して待機
+            else
+
+                if itemdetail["count"] ~= 64 then
+
+                    turtle.drop()
+                    print("iron ingot is not enough to craft a block")
+                    print("sleep 10secs")
+                    sleep(10)
+                    i=i-1
+
+                end
+
             end
+
         else
 
             --アイテムが取れなかったとき --> 鉄インゴットが不足している
@@ -46,6 +75,7 @@ function rowAction(start)
             sleep(10)
             i=i-1
         end
+        ::continue::
         print(i..":ok")
     end
 
