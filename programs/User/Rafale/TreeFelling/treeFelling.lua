@@ -168,10 +168,12 @@ function routine(TID)
             felling(TID, RIGHT)
         end
     end
-    turtle.turnRight()
+    --turtle.turnRight()
+    logging.turnRight()
     while move(FRONT, 1) do
     end
-    turtle.turnRight()
+    --turtle.turnRight()
+    logging.turnRight()
     while move(FRONT, 4) do
         if checkTree(TID, RIGHT) then
             felling(TID, RIGHT)
@@ -236,6 +238,7 @@ while true do
     if saplingCheck(ID.birchSapling, LEFT) then
         routine(ID.birchLog)
     end
+    fs.delete(logging.LOG_FILE)
     for i=1, interval do
         print((interval-i + 1).."min...")
         sleep(60)
