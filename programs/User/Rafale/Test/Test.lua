@@ -1,4 +1,4 @@
-os.loadAPI("/TurtleAPI/logging")
+os.loadAPI("/TurtleAPI/logging.lua")
 
 print("Hello World!!")
 for i=1, 10 do
