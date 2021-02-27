@@ -34,13 +34,17 @@ function checkTree(TID, DIR)
     elseif DIR == UP then
         status, itm = turtle.inspectUp()
     elseif DIR == RIGHT then
-        turtle.turnRight()
+        --turtle.turnRight()
+        logging.turnRight()
         status, itm = turtle.inspect()
-        turtle.turnLeft()
+        --turtle.turnLeft()
+        logging.turnLeft()
     elseif DIR == LEFT then
-        turtle.turnLeft()
+        --turtle.turnLeft()
+        logging.turnLeft()
         status, itm = turtle.inspect()
-        turtle.turnRight()
+        --turtle.turnRight()
+        logging.turnRight()
     end
 
     if status then

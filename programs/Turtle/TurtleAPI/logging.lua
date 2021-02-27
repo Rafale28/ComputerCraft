@@ -47,8 +47,10 @@ REV_FILE = "myrev"
 CURRENT_TIME = os.day()*24 + os.time()
  
 TRANS_TBL = {}
-TRANS_TBL["turtle.forward()"] = "turtle.back()"
-TRANS_TBL["turtle.back()"] = "turtle.forward()"
+--TRANS_TBL["turtle.forward()"] = "turtle.back()"
+TRANS_TBL["turtle.forward()"] = "turtle.forward()"
+--TRANS_TBL["turtle.back()"] = "turtle.forward()"
+TRANS_TBL["turtle.back()"] = "turtle.back()"
 TRANS_TBL["turtle.up()"] = "turtle.down()"
 TRANS_TBL["turtle.down()"] = "turtle.up()"
 TRANS_TBL["turtle.turnRight()"] = "turtle.turnLeft()"
@@ -119,12 +121,19 @@ end
 -- reverse reverted-func table, and write to REV_FILE
 local function reverseWrite(my_array, filename)
   local fh = fs.open(filename or REV_FILE, 'a')
+  fh.writeLine("turtle.turnRight()")
+  fh.writeLine("turtle.turnRight()")
   fh.writeLine("-- "..tostring(CURRENT_TIME))
   for i=#my_array,1,-1 do
     if my_array[i] then
+      fh.writeLine("turtle.dig()")
+      fh.writeLine("turtle.digUp()")
+      fh.writeLine("turtle.digDown()")
       fh.writeLine(my_array[i])
     end
   end
+  fh.writeLine("turtle.turnRight()")
+  fh.writeLine("turtle.turnRight()")
   fh.close()
 end
  
