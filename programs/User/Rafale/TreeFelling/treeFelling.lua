@@ -1,4 +1,5 @@
 require "/TurtleAPI/itemIdList"
+os.loadAPI("/TurtleAPI/logging.lua")
 FUEL_SLOT   = 16
 
 function fuelCheck(fmin, DIR)
@@ -77,13 +78,17 @@ function move(DIR, NUM)
     ret = false
     for i=1, NUM do
         if DIR == FRONT then
-            ret = turtle.forward()
+            --ret = turtle.forward()
+            ret = logging.forward()
         elseif DIR == UP then
-            ret = turtle.up()
+            --ret = turtle.up()
+            ret = logging.up()
         elseif DIR == DOWN then
-            ret = turtle.down()
+            --ret = turtle.down()
+            ret = logging.down()
         elseif DIR == BACK then
-            ret = turtle.back()
+            --ret = turtle.back()
+            ret = logging.back()
         end
         if ret == false then
             return ret
@@ -119,29 +124,42 @@ end
 function felling(TID, DIR)
     local count = 0
     if DIR == RIGHT then
-        turtle.turnRight()
+        --turtle.turnRight()
+        logging.turnRight()
     elseif DIR == LEFT then
-        turtle.turnLeft()
+        --turtle.turnLeft()
+        logging.turnLeft()
     end
     Dig(FRONT)
     move(FRONT, 1)
     while checkTree(TID, UP) do
         turtle.digUp()
-        turtle.up()
+        --turtle.up()
+        logging.up()
         count = count + 1
     end
     move(DOWN, count)
     move(BACK, 1)
     place(ID.birchSapling)
     if DIR == RIGHT then
-        turtle.turnLeft()
+        --turtle.turnLeft()
+        logging.turnLeft()
     elseif DIR == LEFT then
-        turtle.turnRight()
+        --turtle.turnRight()
+        logging.turnRight()
     end
 end
 
 function initialize()
     print("init")
+    if fs.exists(logging.LOG_FILE) then
+        term.write("Return to home position..")
+        logging.makeRevFile()
+        logging.backupFile(logging.LOG_FILE)
+        logging.backupFile(logging.REV_FILE)
+        shell.run(logging.REV_FILE.."-bak")
+        print("ok")
+    end
 end
 
 function routine(TID)
@@ -160,18 +178,22 @@ function routine(TID)
         end
     end
     store(TID, DOWN)
-    turtle.turnRight()
+    --turtle.turnRight()
+    logging.turnRight()
     while move(FRONT, 1) do
     end
-    turtle.turnRight()
+    --turtle.turnRight()
+    logging.turnRight()
     print("finish...")
 end
 
 function saplingCheck(SID, DIR)
     if DIR == LEFT then
-        turtle.turnLeft()
+        --turtle.turnLeft()
+        logging.turnLeft()
     elseif DIR == RIGHT then
-        turtle.turnRight()
+        --turtle.turnRight()
+        logging.turnRight()
     end
 
     for i = 1, 16 do
@@ -187,9 +209,11 @@ function saplingCheck(SID, DIR)
     turtle.select(1)
     turtle.suck()
     if DIR == LEFT then
-        turtle.turnRight()
+        --turtle.turnRight()
+        logging.turnRight()
     elseif DIR == RIGHT then
-        turtle.turnLeft()
+        --turtle.turnLeft()
+        logging.turnLeft()
     end
 
     for i = 1, 16 do
