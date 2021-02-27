@@ -152,9 +152,9 @@ function createLoggedFunc(func, succeeded_log, failed_log)
 end
  
 -- redefine six movement functions in Turtle API
-forward = createLoggedFunc(turtle.forward, "turtle.forward()", "-- turtle.forward()")
-back = createLoggedFunc(turtle.back, "turtle.back()", "-- turtle.back()")
-up = createLoggedFunc(turtle.up, "turtle.up()", "-- turtle.up()")
-down = createLoggedFunc(turtle.down, "turtle.down()", "-- turtle.down()")
-turnRight = createLoggedFunc(turtle.turnRight, "turtle.turnRight()")
-turnLeft = createLoggedFunc(turtle.turnLeft, "turtle.turnLeft()")
+forward = createLoggedFunc(turtle.forward(), "turtle.forward()", "-- turtle.forward()")
+back = createLoggedFunc(turtle.back(), "turtle.back()", "-- turtle.back()")
+up = createLoggedFunc(turtle.up(), "turtle.up()", "-- turtle.up()")
+down = createLoggedFunc(turtle.down(), "turtle.down()", "-- turtle.down()")
+turnRight = createLoggedFunc(turtle.turnRight(), "turtle.turnRight()")
+turnLeft = createLoggedFunc(turtle.turnLeft(), "turtle.turnLeft()")
