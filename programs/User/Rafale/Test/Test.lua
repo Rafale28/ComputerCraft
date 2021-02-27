@@ -1,5 +1,7 @@
-require "/Test/param.lua"
+os.loadAPI("/TurtleAPI/logging")
 
 print("Hello World!!")
-testPrint("Fuck you!")
-testPrint("ID is "..ID)
+for i=1, 10 do
+    print("fwd")
+    logging.forward()
+end
