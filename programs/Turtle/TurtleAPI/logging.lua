@@ -147,7 +147,7 @@ end
  
 -- return a function which writes succeeded/failed msg to a logfile
 function createLoggedFunc(func, succeeded_log, failed_log)
-  failed_log = failed_log or succeeded_log
+  -- failed_log = failed_log or succeeded_log
   return function(...)
     local status, error_msg = func(...)
     writeTimeStamp()
