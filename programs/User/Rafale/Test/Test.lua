@@ -1,41 +1,41 @@
 os.loadAPI("/TurtleAPI/logging.lua")
 
 function turnTo(dir)
-    while dir ~= MY_DIRECTION do
+    while dir ~= logging.MY_DIRECTION do
         logging.turnRight()
     end
 end
 function goTo(x, y, z, dir)
-    if x < MY_POSITION.X then
-        turnTo(DIRECTION.SOUTH)
-        while X ~= MY_POSITION.X do
+    if x < logging.MY_POSITION.X then
+        turnTo(logging.DIRECTION.SOUTH)
+        while X ~= logging.MY_POSITION.X do
             logging.forward()
         end
-    elseif X > MY_POSITION.X then
-        turnTo(DIRECTION.NORTH)
-        while X ~= MY_POSITION.X do
-            logging.forward()
-        end
-    end
-
-    if Y < MY_POSITION.Y then
-        turnTo(DIRECTION.EAST)
-        while Y ~= MY_POSITION.Y do
-            logging.forward()
-        end
-    elseif Y > MY_POSITION.Y then
-        turnTo(DIRECTION.WEST)
-        while Y ~= MY_POSITION.Y do
+    elseif X > logging.MY_POSITION.X then
+        turnTo(logging.DIRECTION.NORTH)
+        while X ~= logging.MY_POSITION.X do
             logging.forward()
         end
     end
 
-    if Z < MY_POSITION.Z then
-        while Z ~= MY_POSITION.Z do
+    if Y < logging.MY_POSITION.Y then
+        turnTo(logging.DIRECTION.EAST)
+        while Y ~= logging.MY_POSITION.Y do
+            logging.forward()
+        end
+    elseif Y > logging.MY_POSITION.Y then
+        turnTo(logging.DIRECTION.WEST)
+        while Y ~= logging.MY_POSITION.Y do
+            logging.forward()
+        end
+    end
+
+    if Z < logging.MY_POSITION.Z then
+        while Z ~= logging.MY_POSITION.Z do
             logging.down()
         end
-    elseif Z > MY_POSITION.Z then
-        while Z ~= MY_POSITION.Z do
+    elseif Z > logging.MY_POSITION.Z then
+        while Z ~= logging.MY_POSITION.Z do
             logging.up()
         end
     end
@@ -49,7 +49,7 @@ if fs.exists(logging.LOG_FILE) then
     logging.perseMyPosition(logging.LOG_FILE)
     logging.showMyPosition()
     --logging.backupFile(logging.LOG_FILE, "logbak")
-    goTo(0, 0, 0, DIRECTION.NORTH)
+    goTo(0, 0, 0, logging.DIRECTION.NORTH)
 else -- ファイルが残っていないのは初めてこのプログラム動かすということ
     for i=1, 5 do
         logging.forward()
