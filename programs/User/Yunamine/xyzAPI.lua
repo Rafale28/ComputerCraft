@@ -191,7 +191,7 @@ function XyzApi.new()
 
         moveTo=function(self,tx,ty,tz)
 
-            print("START:"..self.x..","..self.y..","..self.z)
+            print("START:"..self.x..","..self.y..","..self.z.." "..direction)
 
             mx = tx - self.x
             my = ty - self.y
@@ -217,12 +217,12 @@ function XyzApi.new()
                 self:upDown(mz)
             end
 
-            print(" END :"..self.x..","..self.y..","..self.z)
+            print(" END :"..self.x..","..self.y..","..self.z.." "..direction)
         end,
 
         moveToRelative=function(self,tx,ty,tz)
 
-            print("START:"..self.x..","..self.y..","..self.z)
+            print("START:"..self.x..","..self.y..","..self.z.." "..direction)
 
             mx = tx
             my = ty
@@ -248,7 +248,7 @@ function XyzApi.new()
                 self:upDown(mz)
             end
 
-            print(" END :"..self.x..","..self.y..","..self.z)
+            print(" END :"..self.x..","..self.y..","..self.z.." "..direction)
 
         end
     }
