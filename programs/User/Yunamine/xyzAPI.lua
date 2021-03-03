@@ -7,29 +7,29 @@ function XyzApi.new()
         z = 0,
         direction = "front",
 
-        function getX(self)
+        getX=function(self)
             return X
         end,
 
-        function getY(self)
-            return X
+        getY=function(self)
+            return y
         end,
 
-        function getZ(self)
-            return X
+        getZ=function(self)
+            return z
         end,
 
-        function getDirection(self)
+        getDirection=function(self)
             return direction
         end,
 
-        function getXYZ(self)
+        getXYZ=function(self)
 
             return {x,y,z,direction}
 
         end,
 
-        local function incrementXYZ(self,n)
+        local incrementXYZ=function(self,n)
 
             if direction == "front" then
                 y=y+n
@@ -42,7 +42,7 @@ function XyzApi.new()
             end
         end,
 
-        function forward(self,n)
+        forward=function(self,n)
 
             moved=0
 
@@ -60,7 +60,7 @@ function XyzApi.new()
             return moved
         end,
 
-        function back(self,n)
+        back=function(self,n)
 
             moved=0
 
@@ -78,7 +78,7 @@ function XyzApi.new()
             return moved
         end,
 
-        function up(self,n)
+        up=function(self,n)
 
             moved=0
 
@@ -95,7 +95,7 @@ function XyzApi.new()
             return moved
         end,
 
-        function down(self,n)
+        down=function(self,n)
 
             moved=0
 
@@ -112,7 +112,7 @@ function XyzApi.new()
             return moved
         end,
 
-        function turn(self,d)
+        turn=function(self,d)
 
             if direction == "front" then
                 if d == "front" then
@@ -166,7 +166,7 @@ function XyzApi.new()
         end,
 
         --front or back based on sign of n
-        local function frontBack(self,n)
+        local frontBack=function(self,n)
 
             if n == 0 then
                 --do noting
@@ -178,7 +178,7 @@ function XyzApi.new()
         end,
 
         --up or down based on sign of n
-        local function upDown(self,n)
+        local upDown=function(self,n)
 
             if n == 0 then
                 --do noting
@@ -189,7 +189,7 @@ function XyzApi.new()
             end
         end,
 
-        function moveTo(self,tx,ty,tz)
+        moveTo=function(self,tx,ty,tz)
 
             mx = tx - x
             my = ty - y
@@ -216,7 +216,7 @@ function XyzApi.new()
             end
         end,
 
-        function moveToRelative(self,tx,ty,tz)
+        moveToRelative=function(self,tx,ty,tz)
 
             mx = tx
             my = ty
