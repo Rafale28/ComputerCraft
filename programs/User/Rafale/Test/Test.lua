@@ -2,42 +2,42 @@ os.loadAPI("/TurtleAPI/logging.lua")
 
 function turnTo(dir)
     print("turn to "..dir)
-    while dir ~= logging.MY_DIRECTION do
+    while dir ~= logging.getDir() do
         logging.turnRight()
     end
 end
 function backToHome(x, y, z, dir)
     print("back to home")
-    if x < logging.MY_POSITION.X then
+    if x < logging.getPosX() then
         turnTo(logging.DIRECTION.SOUTH)
-        while X ~= logging.MY_POSITION.X do
+        while X ~= logging.getPosX() do
             logging.forward()
         end
-    elseif X > logging.MY_POSITION.X then
+    elseif X > logging.getPosX() then
         turnTo(logging.DIRECTION.NORTH)
-        while X ~= logging.MY_POSITION.X do
+        while X ~= logging.getPosX() do
             logging.forward()
         end
     end
 
-    if Y < logging.MY_POSITION.Y then
+    if Y < logging.getPosY() then
         turnTo(logging.DIRECTION.EAST)
-        while Y ~= logging.MY_POSITION.Y do
+        while Y ~= logging.getPosY() do
             logging.forward()
         end
-    elseif Y > logging.MY_POSITION.Y then
+    elseif Y > logging.getPosY() then
         turnTo(logging.DIRECTION.WEST)
-        while Y ~= logging.MY_POSITION.Y do
+        while Y ~= logging.getPosY() do
             logging.forward()
         end
     end
 
-    if Z < logging.MY_POSITION.Z then
-        while Z ~= logging.MY_POSITION.Z do
+    if Z < logging.getPosZ() then
+        while Z ~= logging.getPosZ() do
             logging.down()
         end
-    elseif Z > logging.MY_POSITION.Z then
-        while Z ~= logging.MY_POSITION.Z do
+    elseif Z > logging.getPosZ() then
+        while Z ~= logging.getPosZ() do
             logging.up()
         end
     end
