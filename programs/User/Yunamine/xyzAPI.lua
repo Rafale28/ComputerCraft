@@ -8,37 +8,37 @@ function XyzApi.new()
         direction = "front",
 
         getX=function(self)
-            return X
+            return self.X
         end,
 
         getY=function(self)
-            return y
+            return self.y
         end,
 
         getZ=function(self)
-            return z
+            return self.z
         end,
 
         getDirection=function(self)
-            return direction
+            return self.direction
         end,
 
         getXYZ=function(self)
 
-            return {x,y,z,direction}
+            return {self.x,self.y,self.z,self.direction}
 
         end,
 
         incrementXYZ=function(self,n)
 
-            if direction == "front" then
-                y=y+n
-            elseif direction == "right" then
-                x=x+1
-            elseif direction == "left" then
-                x=x-1
-            elseif direction == "behind" then
-                y=y-1
+            if self.direction == "front" then
+                self.y=self.y+n
+            elseif self.direction == "right" then
+                self.x=self.x+1
+            elseif self.direction == "left" then
+                self.x=self.x-1
+            elseif self.direction == "behind" then
+                self.y=self.y-1
             end
         end,
 
@@ -114,53 +114,53 @@ function XyzApi.new()
 
         turn=function(self,d)
 
-            if direction == "front" then
+            if self.direction == "front" then
                 if d == "front" then
                     --do nothing
                 elseif d == "right" then
                     turtle.turnRight()
-                    direction = "right"
+                    self.direction = "right"
                 elseif d == "behind" then
                     turtle.turnRight()
-                    direction = "right"
+                    self.direction = "right"
                     turtle.turnRight()
-                    direction = "behind"
+                    self.direction = "behind"
                 end
-            elseif direction == "right" then
+            elseif self.direction == "right" then
                 if d == "right" then
                     --do nothing
                 elseif d == "behind" then
                     turtle.turnRight()
-                    direction = "behind"
+                    self.direction = "behind"
                 elseif d == "left" then
                     turtle.turnRight()
-                    direction = "behind"
+                    self.direction = "behind"
                     turtle.turnRight()
-                    direction = "left"
+                    self.direction = "left"
                 end
-            elseif direction == "left" then
+            elseif self.direction == "left" then
                 if d == "left" then
                     --do nothing
                 elseif d == "front" then
                     turtle.turnRight()
-                    direction = "front"
+                    self.direction = "front"
                 elseif d == "right" then
                     turtle.turnRight()
-                    direction = "front"
+                    self.direction = "front"
                     turtle.turnRight()
-                    direction = "right"
+                    self.direction = "right"
                 end
-            elseif direction == "behind" then
+            elseif self.direction == "behind" then
                 if d == "behind" then
                     --do nothing
                 elseif d == "left" then
                     turtle.turnRight()
-                    direction = "left"
+                    self.direction = "left"
                 elseif d == "front" then
                     turtle.turnRight()
-                    direction = "left"
+                    self.direction = "left"
                     turtle.turnRight()
-                    direction = "front"
+                    self.direction = "front"
                 end
             end
         end,
