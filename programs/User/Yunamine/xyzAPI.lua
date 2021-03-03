@@ -89,7 +89,7 @@ function XyzApi.new()
                     return moved
                 else
                     moved = moved + 1
-                    z=z+1
+                    self.z=self.z+1
                 end
             end
             return moved
@@ -106,7 +106,7 @@ function XyzApi.new()
                     return moved
                 else
                     moved = moved + 1
-                    z=z-1
+                    self.z=self.z-1
                 end
             end
             return moved
