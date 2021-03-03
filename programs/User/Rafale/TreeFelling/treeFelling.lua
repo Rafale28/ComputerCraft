@@ -156,14 +156,14 @@ end
 
 function initialize()
     print("init")
-    if fs.exists(logging.LOG_FILE) then
-        term.write("Return to home position..")
-        logging.makeRevFile()
-        logging.backupFile(logging.LOG_FILE)
-        logging.backupFile(logging.REV_FILE)
-        shell.run(logging.REV_FILE.."-bak")
-        print("ok")
-    end
+    --if fs.exists(logging.LOG_FILE) then
+    --    term.write("Return to home position..")
+    --    logging.makeRevFile()
+    --    logging.backupFile(logging.LOG_FILE)
+    --    logging.backupFile(logging.REV_FILE)
+    --    shell.run(logging.REV_FILE.."-bak")
+    --    print("ok")
+    --end
 end
 
 function routine(TID)
