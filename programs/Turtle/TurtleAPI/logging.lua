@@ -103,7 +103,7 @@ function write()
   local fh = fs.open(LOG_FILE, "w")
   local fp = fs.open(POS_FILE, "a")
 
-  message = string.format("X, %d, Y, %d, Z, %d, DIR, %d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z, MY_DIRECTION)
+  message = string.format("X,%d,Y,%d,Z,%d,DIR,%d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z, MY_DIRECTION)
 
   print(message)
   fh.writeLine(message)
@@ -138,9 +138,34 @@ function perseMyPosition(filename)
     local line = fh.readLine()
     line_splited = split(line, ",")
   
-    for i=1, #line_splited do
-        print(line_splited[i])
+    for i=1, table.getn(line_splited) do
+        if line_splited[i]     == "X" then
+            MY_POSITION.X   = tonumber(line_splited[i + 1])
+        elseif line_splited[i] == "Y" then
+            MY_POSITION.Y   = tonumber(line_splited[i + 1])
+        elseif line_splited[i] == "Z" then
+            MY_POSITION.Z   = tonumber(line_splited[i + 1])
+        elseif line_splited[i] == "DIR" then
+            MY_DIRECTION    = tonumber(line_splited[i + 1])
+        end
     end
+end
+
+function showMyPosition()
+  message = string.format("X, %d, Y, %d, Z, %d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z)
+  print(message)
+  local D = "N/A"
+  if MY_DIRECTION == DIRECTION.NORTH then
+    D = "NORTH"
+  elseif MY_DIRECTION == DIRECTION.EAST then
+    D = "EAST"
+  elseif MY_DIRECTION == DIRECTION.SOUTH then
+    D = "SOUTH"
+  elseif MY_DIRECTION == DIRECTION.WEST then
+    D = "WEST"
+  end
+  message = string.format("DIR %s", D)
+  print(message)
 end
 -- transrate from log messages to reverted functions
 --  with confirming timestamp
