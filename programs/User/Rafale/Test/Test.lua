@@ -1,11 +1,13 @@
 os.loadAPI("/TurtleAPI/logging.lua")
 
 function turnTo(dir)
+    print("turn to "..dir)
     while dir ~= logging.MY_DIRECTION do
         logging.turnRight()
     end
 end
-function goTo(x, y, z, dir)
+function backToHome(x, y, z, dir)
+    print("back to home")
     if x < logging.MY_POSITION.X then
         turnTo(logging.DIRECTION.SOUTH)
         while X ~= logging.MY_POSITION.X do
@@ -49,7 +51,7 @@ if fs.exists(logging.LOG_FILE) then
     logging.perseMyPosition(logging.LOG_FILE)
     logging.showMyPosition()
     --logging.backupFile(logging.LOG_FILE, "logbak")
-    goTo(0, 0, 0, logging.DIRECTION.NORTH)
+    backToHome(0, 0, 0, logging.DIRECTION.NORTH)
 else -- ファイルが残っていないのは初めてこのプログラム動かすということ
     for i=1, 5 do
         logging.forward()
