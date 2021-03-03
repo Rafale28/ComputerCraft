@@ -103,7 +103,7 @@ function write()
   local fh = fs.open(LOG_FILE, "w")
   local fp = fs.open(POS_FILE, "a")
 
-  message = string.format("X, %d, Y, %d, Z, %d, DIR, %d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z, MY_DIRECTION)
+  message = string.format("X,%d,Y,%d,Z,%d,DIR,%d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z, MY_DIRECTION)
 
   print(message)
   fh.writeLine(message)
@@ -138,7 +138,7 @@ function perseMyPosition(filename)
     local line = fh.readLine()
     line_splited = split(line, ",")
   
-    for i=1, #line_splited do
+    for i=1, table.getn(line_splited) do
         if line_splited[i]     == "X" then
             MY_POSITION.X   = tonumber(line_splited[i + 1])
         elseif line_splited[i] == "Y" then
