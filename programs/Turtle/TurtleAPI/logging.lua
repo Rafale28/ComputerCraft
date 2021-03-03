@@ -44,6 +44,7 @@ shell.run(rev_filename)
 -- ###########################
 -- config
 LOG_FILE = "mylog"
+POS_FILE = "myposition"
 CURRENT_TIME = os.day()*24 + os.time()
 
 DIRECTION = {
@@ -87,10 +88,16 @@ end
 -- write a log message as you like
 function write(filename)
   local fh = fs.open(filename or LOG_FILE, "w")
+  local fp = fs.open(POS_FILE, "a")
+
   message = string.format("X, %d, Y, %d, Z, %d, DIR, %d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z, MY_DIRECTION)
   print(message)
+
   fh.writeLine(message)
   fh.close()
+
+  fp.writeLine(message)
+  fp.close()
 end
  
 -- write a time stamp "-- daytime: 678.441"
