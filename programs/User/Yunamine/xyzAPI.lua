@@ -2,32 +2,32 @@ XyzApi = {}
 
 function XyzApi.new()
     return{
-        x = 0
-        y = 0
-        z = 0
-        direction = "front"
+        x = 0,
+        y = 0,
+        z = 0,
+        direction = "front",
 
         function getX(self)
             return X
-        end
+        end,
 
         function getY(self)
             return X
-        end
+        end,
 
         function getZ(self)
             return X
-        end
+        end,
 
         function getDirection(self)
             return direction
-        end
+        end,
 
         function getXYZ(self)
 
             return {x,y,z,direction}
 
-        end
+        end,
 
         local function incrementXYZ(self,n)
 
@@ -40,7 +40,7 @@ function XyzApi.new()
             elseif direction == "behind" then
                 y=y-1
             end
-        end
+        end,
 
         function forward(self,n)
 
@@ -58,7 +58,7 @@ function XyzApi.new()
             end
 
             return moved
-        end
+        end,
 
         function back(self,n)
 
@@ -76,7 +76,7 @@ function XyzApi.new()
             end
 
             return moved
-        end
+        end,
 
         function up(self,n)
 
@@ -93,7 +93,7 @@ function XyzApi.new()
                 end
             end
             return moved
-        end
+        end,
 
         function down(self,n)
 
@@ -110,7 +110,7 @@ function XyzApi.new()
                 end
             end
             return moved
-        end
+        end,
 
         function turn(self,d)
 
@@ -163,7 +163,7 @@ function XyzApi.new()
                     direction = "front"
                 end
             end
-        end
+        end,
 
         --front or back based on sign of n
         local function frontBack(self,n)
@@ -175,7 +175,7 @@ function XyzApi.new()
             elseif n < 0 then
                 back(-n)
             end
-        end
+        end,
 
         --up or down based on sign of n
         local function upDown(self,n)
@@ -187,7 +187,7 @@ function XyzApi.new()
             elseif n < 0 then
                 down(-n)
             end
-        end
+        end,
 
         function moveTo(self,tx,ty,tz)
 
@@ -214,7 +214,7 @@ function XyzApi.new()
             else then
                 updown(mz)
             end
-        end
+        end,
 
         function moveToRelative(self,tx,ty,tz)
 
