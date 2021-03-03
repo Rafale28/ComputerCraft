@@ -186,15 +186,17 @@ function backToHome(TID)
     elseif -1 > logging.getPosY() then
         turnTo(logging.DIRECTION.WEST)
         logging.back()
-        if -5 == logging.getPosY() then
+        print("elseif")
+        logging.showMyPosition()
+        if -6 == logging.getPosY() then
+            print("-6")
             place(ID.birchSapling)
         end
-        while -6 ~= logging.getPosY() do
-            logging.back()
-        end
+        logging.showMyPosition()
         turnTo(logging.DIRECTION.SOUTH)
         while 0 ~= logging.getPosX() do
             logging.forward()
+            logging.showMyPosition()
         end
         turnTo(logging.DIRECTION.WEST)
         while 0 ~= logging.getPosY() do
