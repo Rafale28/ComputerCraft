@@ -72,6 +72,19 @@ MY_POSITION = {
 -- ###########################
 -- functions
  
+local function split(str, ts)
+    -- 引数がないときは空tableを返す
+    if ts == nil then return {} end
+
+    local t = {} ; 
+    i=1
+    for s in string.gmatch(str, "([^"..ts.."]+)") do
+      t[i] = s
+      i = i + 1
+    end
+  
+    return t
+end
 -- backupFile("mylog")
 --  ==> move to "mylog-bak"
 function backupFile(filename, tail_str)
@@ -86,17 +99,17 @@ function backupFile(filename, tail_str)
 end
  
 -- write a log message as you like
-function write(filename)
-  local fh = fs.open(filename or LOG_FILE, "w")
+function write()
+  local fh = fs.open(LOG_FILE, "w")
   local fp = fs.open(POS_FILE, "a")
 
   message = string.format("X, %d, Y, %d, Z, %d, DIR, %d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z, MY_DIRECTION)
+
   print(message)
-
   fh.writeLine(message)
-  fh.close()
-
   fp.writeLine(message)
+
+  fh.close()
   fp.close()
 end
  
@@ -120,6 +133,15 @@ local function readTimeStamp(str)
   end
 end
  
+function perseMyPosition(filename)
+    local fh = fs.open(filename, 'r')
+    local line = fh.readLine()
+    line_splited = split(line, ",")
+  
+    for i=1, #line_splited do
+        print(line_splited[i])
+    end
+end
 -- transrate from log messages to reverted functions
 --  with confirming timestamp
 --local function readTrans(filename, trans_tbl)
