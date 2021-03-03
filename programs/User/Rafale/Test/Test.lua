@@ -6,44 +6,44 @@ function turnTo(dir)
         logging.turnRight()
     end
 end
-function backToHome(x, y, z, dir)
+function backToHome(tgx, tgy, tgz, tfdir)
     print("back to home")
-    if x < logging.getPosX() then
+    if tgx < logging.getPosX() then
         turnTo(logging.DIRECTION.SOUTH)
-        while X ~= logging.getPosX() do
+        while tgx ~= logging.getPosX() do
             logging.forward()
             logging.showMyPosition()
         end
-    elseif X > logging.getPosX() then
+    elseif tgx > logging.getPosX() then
         turnTo(logging.DIRECTION.NORTH)
-        while X ~= logging.getPosX() do
+        while tgx ~= logging.getPosX() do
             logging.forward()
             logging.showMyPosition()
         end
     end
 
-    if Y < logging.getPosY() then
+    if tgy < logging.getPosY() then
         turnTo(logging.DIRECTION.EAST)
-        while Y ~= logging.getPosY() do
+        while tgy ~= logging.getPosY() do
             logging.forward()
         end
-    elseif Y > logging.getPosY() then
+    elseif tgy > logging.getPosY() then
         turnTo(logging.DIRECTION.WEST)
-        while Y ~= logging.getPosY() do
+        while tgy ~= logging.getPosY() do
             logging.forward()
         end
     end
 
-    if Z < logging.getPosZ() then
-        while Z ~= logging.getPosZ() do
+    if tgz < logging.getPosZ() then
+        while tgz ~= logging.getPosZ() do
             logging.down()
         end
-    elseif Z > logging.getPosZ() then
-        while Z ~= logging.getPosZ() do
+    elseif tgz > logging.getPosZ() then
+        while tgz ~= logging.getPosZ() do
             logging.up()
         end
     end
-    turnTo(dir)
+    turnTo(tgdir)
 end
 
 print("Hello World!!")
