@@ -34,11 +34,11 @@ function XyzApi.new()
             if self.direction == "front" then
                 self.y=self.y+n
             elseif self.direction == "right" then
-                self.x=self.x+1
+                self.x=self.x+n
             elseif self.direction == "left" then
-                self.x=self.x-1
+                self.x=self.x-n
             elseif self.direction == "behind" then
-                self.y=self.y-1
+                self.y=self.y-n
             end
         end,
 
@@ -185,7 +185,7 @@ function XyzApi.new()
             elseif n > 0 then
                 self:forward(n)
             elseif n < 0 then
-                self:back(n)
+                self:back(-n)
             end
         end,
 
@@ -197,7 +197,7 @@ function XyzApi.new()
             elseif n > 0 then
                 self:up(n)
             elseif n < 0 then
-                self:down(n)
+                self:down(-n)
             end
         end,
 
