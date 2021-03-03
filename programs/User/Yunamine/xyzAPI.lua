@@ -171,9 +171,9 @@ function XyzApi.new()
             if n == 0 then
                 --do noting
             elseif n > 0 then
-                self.forward(n)
+                self:forward(n)
             elseif n < 0 then
-                self.back(-n)
+                self:back(-n)
             end
         end,
 
@@ -183,9 +183,9 @@ function XyzApi.new()
             if n == 0 then
                 --do noting
             elseif n > 0 then
-                self.up(n)
+                self:up(n)
             elseif n < 0 then
-                self.down(-n)
+                self:down(-n)
             end
         end,
 
@@ -198,21 +198,21 @@ function XyzApi.new()
             if mx  == 0 then
                 -- do nothing 
             else
-                self.turn("right")
-                self.frontBack(mx)
+                self:turn("right")
+                self:frontBack(mx)
             end
 
             if my  == 0 then
                 -- do nothing 
             else
-                self.turn("front")
-                self.frontBack(my)
+                self:turn("front")
+                self:frontBack(my)
             end
 
             if mz  == 0 then
                 -- do nothing 
             else
-                self.updown(mz)
+                self:updown(mz)
             end
         end,
 
@@ -225,21 +225,21 @@ function XyzApi.new()
             if mx  == 0 then
                 -- do nothing 
             else
-                self.turn("right")
-                self.frontBack(mx)
+                self:turn("right")
+                self:frontBack(mx)
             end
 
             if my  == 0 then
                 -- do nothing 
             else
-                self.turn("front")
-                self.frontBack(my)
+                self:turn("front")
+                self:frontBack(my)
             end
 
             if mz  == 0 then
                 -- do nothing 
             else
-                self.updown(mz)
+                self:updown(mz)
             end
         end
     }
