@@ -212,7 +212,7 @@ function XyzApi.new()
             if mz  == 0 then
                 -- do nothing 
             else
-                self:updown(mz)
+                self:upDown(mz)
             end
         end,
 
@@ -239,7 +239,7 @@ function XyzApi.new()
             if mz  == 0 then
                 -- do nothing 
             else
-                self:updown(mz)
+                self:upDown(mz)
             end
         end
     }
