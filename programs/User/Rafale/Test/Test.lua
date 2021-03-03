@@ -9,18 +9,19 @@ if fs.exists(logging.LOG_FILE) then
     logging.backupFile(logging.LOG_FILE, "logbak")
 else -- ファイルが残っていないのは初めてこのプログラム動かすということ
     for i=1, 5 do
-      logging.forward()
-      print("fwd")
+        logging.forward()
+        logging.showMyPosition()
     end
     logging.turnRight()
     print("turn right")
     for i=1, 4 do
       logging.forward()
-      print("fwd")
+      logging.showMyPosition()
     end
     logging.up()
     logging.up()
     logging.turnRight()
     logging.forward()
     logging.down()
+    logging.showMyPosition()
 end
