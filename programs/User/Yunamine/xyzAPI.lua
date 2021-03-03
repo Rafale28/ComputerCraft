@@ -191,9 +191,9 @@ function XyzApi.new()
 
         moveTo=function(self,tx,ty,tz)
 
-            mx = tx - x
-            my = ty - y
-            mz = tz - z
+            mx = tx - self.x
+            my = ty - self.y
+            mz = tz - self.z
 
             if mx  == 0 then
                 -- do nothing 
