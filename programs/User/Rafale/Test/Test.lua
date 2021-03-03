@@ -43,7 +43,7 @@ function backToHome(tgx, tgy, tgz, tgdir)
             logging.up()
         end
     end
-    turnTo(tgdir)
+    turnTo(logging.DIRECTION.NORTH)
 end
 
 print("Hello World!!")
