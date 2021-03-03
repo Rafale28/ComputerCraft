@@ -185,7 +185,7 @@ function XyzApi.new()
             elseif n > 0 then
                 self:forward(n)
             elseif n < 0 then
-                self:back(-n)
+                self:back(n)
             end
         end,
 
@@ -197,7 +197,7 @@ function XyzApi.new()
             elseif n > 0 then
                 self:up(n)
             elseif n < 0 then
-                self:down(-n)
+                self:down(n)
             end
         end,
 
