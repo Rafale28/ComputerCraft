@@ -53,7 +53,7 @@ function XyzApi.new()
                     return moved
                 else
                     moved = moved + 1
-                    incrementXYZ(1)
+                    self:incrementXYZ(1)
                 end
             end
 
@@ -71,7 +71,7 @@ function XyzApi.new()
                     return moved
                 else
                     moved = moved + 1
-                    incrementXYZ(-1)
+                    self:incrementXYZ(-1)
                 end
             end
 
