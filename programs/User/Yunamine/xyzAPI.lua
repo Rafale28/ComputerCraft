@@ -3,7 +3,7 @@ XyzApi = {}
 logname="xyz.log"
 
 function XyzApi.new()
-    log=
+
     --すでにログがあるか確認
     --ある場合は座標を更新
     if fs.exists(logname) then
@@ -28,7 +28,7 @@ function XyzApi.new()
         direction = xyzd[4],
 
         updateLog=function(self)
-            
+
             if fs.exists(logname) then
                 fs.delete(logname)
             end
