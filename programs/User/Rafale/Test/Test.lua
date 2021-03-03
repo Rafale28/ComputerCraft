@@ -12,11 +12,13 @@ function backToHome(x, y, z, dir)
         turnTo(logging.DIRECTION.SOUTH)
         while X ~= logging.getPosX() do
             logging.forward()
+            logging.showMyPosition()
         end
     elseif X > logging.getPosX() then
         turnTo(logging.DIRECTION.NORTH)
         while X ~= logging.getPosX() do
             logging.forward()
+            logging.showMyPosition()
         end
     end
 
