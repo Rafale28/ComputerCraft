@@ -125,6 +125,9 @@ function XyzApi.new()
                     self.direction = "right"
                     turtle.turnRight()
                     self.direction = "behind"
+                elseif d == "left" then
+                    turtle.turnLeft()
+                    self.direction = "left"
                 end
             elseif self.direction == "right" then
                 if d == "right" then
@@ -137,6 +140,9 @@ function XyzApi.new()
                     self.direction = "behind"
                     turtle.turnRight()
                     self.direction = "left"
+                elseif d == "front" then
+                    turtle.turnLeft()
+                    self.direction = "front"
                 end
             elseif self.direction == "left" then
                 if d == "left" then
@@ -149,6 +155,9 @@ function XyzApi.new()
                     self.direction = "front"
                     turtle.turnRight()
                     self.direction = "right"
+                elseif d == "behind" then
+                    turtle.turnLeft()
+                    self.direction = "behind"
                 end
             elseif self.direction == "behind" then
                 if d == "behind" then
@@ -161,6 +170,9 @@ function XyzApi.new()
                     self.direction = "left"
                     turtle.turnRight()
                     self.direction = "front"
+                elseif d == "right" then
+                    turtle.turnLeft()
+                    self.direction = "right"
                 end
             end
         end,
