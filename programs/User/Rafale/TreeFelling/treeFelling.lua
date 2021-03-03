@@ -202,6 +202,12 @@ function backToHome(TID)
         end
         turnTo(logging.DIRECTION.NORTH)
     end
+    if 0 < getPosX() then
+        turnTo(logging.DIRECTION.NORTH)
+        while 0 ~= logging.getPosX() do
+            logging.back()
+        end
+    end
 end
 function initialize(TID)
     print("init")
