@@ -6,6 +6,7 @@ if fs.exists(logging.LOG_FILE) then
     print("ok")
     logging.perseMyPosition(logging.LOG_FILE)
     logging.showMyPosition()
+    logging.backupFile(logging.LOG_FILE, "logbak")
 else -- ファイルが残っていないのは初めてこのプログラム動かすということ
     for i=1, 5 do
       logging.forward()
