@@ -197,21 +197,21 @@ function XyzApi.new()
 
             if mx  == 0 then
                 -- do nothing 
-            else then
+            else
                 turn("right")
                 frontBack(mx)
             end
 
             if my  == 0 then
                 -- do nothing 
-            else then
+            else
                 turn("front")
                 frontBack(my)
             end
 
             if mz  == 0 then
                 -- do nothing 
-            else then
+            else
                 updown(mz)
             end
         end,
@@ -224,21 +224,21 @@ function XyzApi.new()
 
             if mx  == 0 then
                 -- do nothing 
-            else then
+            else
                 turn("right")
                 frontBack(mx)
             end
 
             if my  == 0 then
                 -- do nothing 
-            else then
+            else
                 turn("front")
                 frontBack(my)
             end
 
             if mz  == 0 then
                 -- do nothing 
-            else then
+            else
                 updown(mz)
             end
         end
