@@ -202,7 +202,7 @@ function backToHome(TID)
         end
         turnTo(logging.DIRECTION.NORTH)
     end
-    if 0 < getPosX() then
+    if 0 < logging.getPosX() then
         turnTo(logging.DIRECTION.NORTH)
         while 0 ~= logging.getPosX() do
             logging.back()
