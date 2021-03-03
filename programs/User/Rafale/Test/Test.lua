@@ -6,7 +6,7 @@ function turnTo(dir)
         logging.turnRight()
     end
 end
-function backToHome(tgx, tgy, tgz, tfdir)
+function backToHome(tgx, tgy, tgz, tgdir)
     print("back to home")
     if tgx < logging.getPosX() then
         turnTo(logging.DIRECTION.SOUTH)
