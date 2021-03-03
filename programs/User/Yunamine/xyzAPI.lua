@@ -1,11 +1,42 @@
 XyzApi = {}
 
+logname="xyz.log"
+
 function XyzApi.new()
+    log=
+    --すでにログがあるか確認
+    --ある場合は座標を更新
+    if fs.exists(logname) then
+        log = fs.open(logname, 'r')
+        line=log.readLine()
+        log.close()
+        xyzd=split(line,",")
+
+        --ない場合は0,0,0,frontでつくる
+    else
+        log = fs.open(logname, 'w')
+        log.write("0,0,0,front")
+        log.close()
+        xyzd={"0","0","0","front"}
+    end
+
+    log = fs.open(logname, 'a')
     return{
-        x = 0,
-        y = 0,
-        z = 0,
-        direction = "front",
+        x = tonumber(xyzd[1]),
+        y = tonumber(xyzd[2]),
+        z = tonumber(xyzd[3]),
+        direction = xyzd[4],
+
+        updateLog=function(self)
+            
+            if fs.exists(logname) then
+                fs.delete(logname)
+            end
+
+            log = fs.open(logname, 'w')
+            log.write(self.x..","..self.y..","..self.z..","..self.direction)
+            log.close()
+        end,
 
         getX=function(self)
             return self.X
@@ -40,6 +71,7 @@ function XyzApi.new()
             elseif self.direction == "behind" then
                 self.y=self.y-n
             end
+            self:updateLog()
         end,
 
         forward=function(self,n)
@@ -90,6 +122,7 @@ function XyzApi.new()
                 else
                     moved = moved + 1
                     self.z=self.z+1
+                    self:updateLog()
                 end
             end
             return moved
@@ -107,6 +140,7 @@ function XyzApi.new()
                 else
                     moved = moved + 1
                     self.z=self.z-1
+                    self:updateLog()
                 end
             end
             return moved
@@ -120,14 +154,18 @@ function XyzApi.new()
                 elseif d == "right" then
                     turtle.turnRight()
                     self.direction = "right"
+                    self:updateLog()
                 elseif d == "behind" then
                     turtle.turnRight()
                     self.direction = "right"
+                    self:updateLog()
                     turtle.turnRight()
                     self.direction = "behind"
+                    self:updateLog()
                 elseif d == "left" then
                     turtle.turnLeft()
                     self.direction = "left"
+                    self:updateLog()
                 end
             elseif self.direction == "right" then
                 if d == "right" then
@@ -135,14 +173,18 @@ function XyzApi.new()
                 elseif d == "behind" then
                     turtle.turnRight()
                     self.direction = "behind"
+                    self:updateLog()
                 elseif d == "left" then
                     turtle.turnRight()
                     self.direction = "behind"
+                    self:updateLog()
                     turtle.turnRight()
                     self.direction = "left"
+                    self:updateLog()
                 elseif d == "front" then
                     turtle.turnLeft()
                     self.direction = "front"
+                    self:updateLog()
                 end
             elseif self.direction == "left" then
                 if d == "left" then
@@ -150,14 +192,18 @@ function XyzApi.new()
                 elseif d == "front" then
                     turtle.turnRight()
                     self.direction = "front"
+                    self:updateLog()
                 elseif d == "right" then
                     turtle.turnRight()
                     self.direction = "front"
+                    self:updateLog()
                     turtle.turnRight()
                     self.direction = "right"
+                    self:updateLog()
                 elseif d == "behind" then
                     turtle.turnLeft()
                     self.direction = "behind"
+                    self:updateLog()
                 end
             elseif self.direction == "behind" then
                 if d == "behind" then
@@ -165,14 +211,18 @@ function XyzApi.new()
                 elseif d == "left" then
                     turtle.turnRight()
                     self.direction = "left"
+                    self:updateLog()
                 elseif d == "front" then
                     turtle.turnRight()
                     self.direction = "left"
+                    self:updateLog()
                     turtle.turnRight()
                     self.direction = "front"
+                    self:updateLog()
                 elseif d == "right" then
                     turtle.turnLeft()
                     self.direction = "right"
+                    self:updateLog()
                 end
             end
         end,
