@@ -29,7 +29,7 @@ function XyzApi.new()
 
         end,
 
-        local incrementXYZ=function(self,n)
+        incrementXYZ=function(self,n)
 
             if direction == "front" then
                 y=y+n
@@ -166,7 +166,7 @@ function XyzApi.new()
         end,
 
         --front or back based on sign of n
-        local frontBack=function(self,n)
+        frontBack=function(self,n)
 
             if n == 0 then
                 --do noting
@@ -178,7 +178,7 @@ function XyzApi.new()
         end,
 
         --up or down based on sign of n
-        local upDown=function(self,n)
+        upDown=function(self,n)
 
             if n == 0 then
                 --do noting
