@@ -6,6 +6,7 @@
 -- config
 WHEAT_SLOT  = 1
 FUEL_SLOT   = 16
+xyz=XyzApi.new()
 
 WHEAT_ID = "minecraft:wheat"
 SEED_ID  = "minecraft:wheat_seeds"
@@ -33,27 +34,27 @@ end
 function harvestLine()
     res = true
     i = 1
-    while res do
+    while res~=0 do
         print(i,'/',MAX)
         harvest()
-        res =  turtle.forward()
+        res =  xyz:forward(1)
         i = i + 1
     end
     print("Harvest Line Finished.")
 end
 
 function harvestleftShift()
-    turtle.turnLeft()
+    xyz:turnLeft()
     turtle.dig() 
-    res =  turtle.forward()
-    turtle.turnLeft()
+    res =  xyz:forward(1)
+    xyz:turnLeft()
 end
 
 function harvestrightShift()
-    turtle.turnRight()
+    xyz:turnRight()
     turtle.dig() 
-    res =  turtle.forward()
-    turtle.turnRight()
+    res =  xyz:forward(1)
+    xyz:turnRight()
 end
 
 function toStoreWheat(lane)
@@ -98,45 +99,45 @@ end
 function plowLine()
     res = true
     i = 1
-    while res do
+    while res~=0 do
         print(i,'/',MAX)
         plowAndPlant()
-        res =  turtle.back()
+        res =  xyz:back(1)
         i = i + 1
     end
     print("Plow Line Finished.")
 end
 
 function plowleftShift()
-    turtle.turnRight()
-    res =  turtle.back()
+    xyz:turnRight()
+    res =  xyz:back(1)
     plowAndPlant()
     
-    turtle.turnRight()
+    xyz:turnRight()
 end
 
 function plowtrightShift()
-    turtle.turnLeft()
-    res =  turtle.back()
+    xyz:turnLeft()
+    res =  xyz:back(1)
     plowAndPlant()
-    turtle.turnLeft()
+    xyz:turnLeft()
 end
 
 function switch2LeftLane()
-    turtle.turnRight()
+    xyz:turnRight()
     turtle.dig() 
-    res =  turtle.forward()
+    res =  xyz:forward(1)
     turtle.dig() 
-    res =  turtle.forward()
-    turtle.turnRight()
+    res =  xyz:forward(1)
+    xyz:turnRight()
 end
 
 function switch2RightLane()
-    turtle.turnLeft()
-    res =  turtle.back()
+    xyz:turnLeft()
+    res =  xyz:back(1)
     plowAndPlant()
-    res =  turtle.back()
-    turtle.turnLeft()
+    res =  xyz:back(1)
+    xyz:turnLeft()
 end
 
 function routine(lane)
@@ -182,6 +183,19 @@ function routine(lane)
     end
 end
 -- #############
+
+-- Initialize
+
+-- to avoid anything on the initialize path, 
+-- the turtle will move up a block
+xyz:moveToRelative(0,0,1)
+
+-- to trhough under the chest 
+xyz:moveTo(0,1,1)
+xyz:moveToRelative(0,0,-1)
+xyz:moveTo(0,0,0)
+xyz:turn("front")
+
 -- Main
 -- Laneの数を指定(1Laneは32*4のブロック)
 hLane = 2
