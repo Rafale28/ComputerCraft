@@ -1,46 +1,5 @@
 --############################
 -- logging API
--- version 0.5a
--- http://hevohevo.hatenablog.com/
- 
--- ### how to use
---[[
-os.loadAPI("logging")
- 
--- backup files
-logging.backupFile(LOG_FILE)
-logging.backupFile(REV_FILE)
- 
--- default logfile name is "mylog"
-logging.forward() -- turtle.fowrard() and logging
-logging.back()
-logging.up()
-logging.down()
-logging.turnRight()
-logging.turnLeft()
- 
--- write a log forcibly
-logging.write("-- my message!!")
- 
--- write a timestamp
-logging.writeTimeStamp(LOG_FILE)
- 
--- createLoggedFunc(function, succeeded_log, *failed_log)
--- return a function which writes succeeded/failed msg to a logfile
--- if you omit "failed_log" argument, succeeded_log is written in true/false cases
-myRefuel = logging.createLoggedFunc(turtle.refuel, "turtle.refuel()")
-myRefuel()
- 
--- make a reverted log file, and return start position by running REV_FILE
-logging.forward()
-logging.turnRight()
-logging.up()
- 
-local rev_filename = logging.makeRevFile()
-shell.run(rev_filename)
---]]
- 
-
 -- ###########################
 -- config
 LOG_FILE = "mylog"
@@ -72,6 +31,19 @@ MY_POSITION = {
 -- ###########################
 -- functions
  
+function getDir()
+    return MY_DIRECTION
+end
+function getPosX()
+    return MY_POSITION.X
+end
+function getPosY()
+    return MY_POSITION.Y
+end
+function getPosZ()
+    return MY_POSITION.Z
+end
+
 local function split(str, ts)
     -- 引数がないときは空tableを返す
     if ts == nil then return {} end
@@ -105,7 +77,6 @@ function write()
 
   message = string.format("X,%d,Y,%d,Z,%d,DIR,%d", MY_POSITION.X, MY_POSITION.Y, MY_POSITION.Z, MY_DIRECTION)
 
-  print(message)
   fh.writeLine(message)
   fp.writeLine(message)
 
@@ -167,50 +138,6 @@ function showMyPosition()
   message = string.format("DIR %s", D)
   print(message)
 end
--- transrate from log messages to reverted functions
---  with confirming timestamp
---local function readTrans(filename, trans_tbl)
---  local fh = fs.open(filename or LOG_FILE, 'r')
---  local tmp_tbl = {}
---  repeat
---    local line = fh.readLine()
---    local time_stamp = readTimeStamp(line)
---    if time_stamp and time_stamp > CURRENT_TIME then
---      break
---    else
---      table.insert(tmp_tbl, TRANS_TBL[line])
---    end
---  until line == nil
---  fh.close()
---  return tmp_tbl
---end
- 
--- reverse reverted-func table, and write to REV_FILE
---local function reverseWrite(my_array, filename)
---  local fh = fs.open(filename or REV_FILE, 'a')
---  fh.writeLine("turtle.turnRight()")
---  fh.writeLine("turtle.turnRight()")
---  fh.writeLine("-- "..tostring(CURRENT_TIME))
---  for i=#my_array,1,-1 do
---    if my_array[i] then
---      fh.writeLine("turtle.dig()")
---      fh.writeLine("turtle.digUp()")
---      fh.writeLine("turtle.digDown()")
---      fh.writeLine(my_array[i])
---    end
---  end
---  fh.writeLine("turtle.turnRight()")
---  fh.writeLine("turtle.turnRight()")
---  fh.close()
---end
- 
--- transrate from log_file to rev_file with confirming timestamps
---function makeRevFile(log_filename, rev_filename)
---  local log_filename = log_filename or LOG_FILE
---  local rev_filename = rev_filename or REV_FILE
---  reverseWrite(readTrans(log_filename, TRANS_TBL), rev_filename)
---  return rev_filename
---end
  
 function myPosition(mov)
     if      mov == MOVE.FORWARD then

@@ -1,45 +1,49 @@
 os.loadAPI("/TurtleAPI/logging.lua")
 
 function turnTo(dir)
-    while dir ~= MY_DIRECTION do
+    print("turn to "..dir)
+    while dir ~= logging.getDir() do
         logging.turnRight()
     end
 end
-function goTo(x, y, z, dir)
-    if x < MY_POSITION.X then
-        turnTo(DIRECTION.SOUTH)
-        while X ~= MY_POSITION.X do
+function backToHome(tgx, tgy, tgz, tgdir)
+    print("back to home")
+    if tgx < logging.getPosX() then
+        turnTo(logging.DIRECTION.SOUTH)
+        while tgx ~= logging.getPosX() do
+            logging.forward()
+            logging.showMyPosition()
+        end
+    elseif tgx > logging.getPosX() then
+        turnTo(logging.DIRECTION.NORTH)
+        while tgx ~= logging.getPosX() do
+            logging.forward()
+            logging.showMyPosition()
+        end
+    end
+
+    if tgy < logging.getPosY() then
+        turnTo(logging.DIRECTION.EAST)
+        while tgy ~= logging.getPosY() do
             logging.forward()
         end
-    elseif X > MY_POSITION.X then
-        turnTo(DIRECTION.NORTH)
-        while X ~= MY_POSITION.X do
+    elseif tgy > logging.getPosY() then
+        turnTo(logging.DIRECTION.WEST)
+        while tgy ~= logging.getPosY() do
             logging.forward()
         end
     end
 
-    if Y < MY_POSITION.Y then
-        turnTo(DIRECTION.EAST)
-        while Y ~= MY_POSITION.Y do
-            logging.forward()
-        end
-    elseif Y > MY_POSITION.Y then
-        turnTo(DIRECTION.WEST)
-        while Y ~= MY_POSITION.Y do
-            logging.forward()
-        end
-    end
-
-    if Z < MY_POSITION.Z then
-        while Z ~= MY_POSITION.Z do
+    if tgz < logging.getPosZ() then
+        while tgz ~= logging.getPosZ() do
             logging.down()
         end
-    elseif Z > MY_POSITION.Z then
-        while Z ~= MY_POSITION.Z do
+    elseif tgz > logging.getPosZ() then
+        while tgz ~= logging.getPosZ() do
             logging.up()
         end
     end
-    turnTo(dir)
+    turnTo(logging.DIRECTION.NORTH)
 end
 
 print("Hello World!!")
@@ -49,7 +53,7 @@ if fs.exists(logging.LOG_FILE) then
     logging.perseMyPosition(logging.LOG_FILE)
     logging.showMyPosition()
     --logging.backupFile(logging.LOG_FILE, "logbak")
-    goTo(0, 0, 0, DIRECTION.NORTH)
+    backToHome(0, 0, 0, logging.DIRECTION.NORTH)
 else -- ファイルが残っていないのは初めてこのプログラム動かすということ
     for i=1, 5 do
         logging.forward()

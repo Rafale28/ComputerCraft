@@ -154,16 +154,73 @@ function felling(TID, DIR)
     end
 end
 
-function initialize()
+function turnTo(dir)
+    print("turn to "..dir)
+    while dir ~= logging.getDir() do
+        logging.turnRight()
+    end
+end
+--function backToHome(tgx, tgy, tgz, tgdir)
+function backToHome(TID)
+    while checkTree(TID, UP) do
+        turtle.digUp()
+        logging.up()
+    end
+    if 0 < logging.getPosZ() then
+        while 0 ~= logging.getPosZ() do
+            logging.down()
+        end
+    end
+    if -1 == logging.getPosY() then
+        turnTo(logging.DIRECTION.EAST)
+        logging.back()
+        place(ID.birchSapling)
+        if 0 < logging.getPosX() then
+            turnTo(logging.DIRECTION.SOUTH)
+            while 0 ~= logging.getPosX() do
+                logging.forward()
+            end
+        end
+        turnTo(logging.DIRECTION.NORTH)
+        logging.showMyPosition()
+    elseif -1 > logging.getPosY() then
+        turnTo(logging.DIRECTION.WEST)
+        logging.back()
+        print("elseif")
+        logging.showMyPosition()
+        if -6 == logging.getPosY() then
+            print("-6")
+            place(ID.birchSapling)
+        end
+        logging.showMyPosition()
+        turnTo(logging.DIRECTION.SOUTH)
+        while 0 ~= logging.getPosX() do
+            logging.forward()
+            logging.showMyPosition()
+        end
+        turnTo(logging.DIRECTION.WEST)
+        while 0 ~= logging.getPosY() do
+            logging.forward()
+        end
+        turnTo(logging.DIRECTION.NORTH)
+    end
+    if 0 < logging.getPosX() then
+        turnTo(logging.DIRECTION.NORTH)
+        while 0 ~= logging.getPosX() do
+            logging.back()
+        end
+    end
+end
+function initialize(TID)
     print("init")
-    --if fs.exists(logging.LOG_FILE) then
-    --    term.write("Return to home position..")
-    --    logging.makeRevFile()
-    --    logging.backupFile(logging.LOG_FILE)
-    --    logging.backupFile(logging.REV_FILE)
-    --    shell.run(logging.REV_FILE.."-bak")
-    --    print("ok")
-    --end
+    if fs.exists(logging.LOG_FILE) then
+        term.write("Return to home position..")
+        logging.perseMyPosition(logging.LOG_FILE)
+        logging.showMyPosition()
+        --backToHome(0, 0, 0, logging.DIRECTION.NORTH)
+        backToHome(TID)
+        print("ok")
+    end
 end
 
 function routine(TID)
@@ -236,13 +293,12 @@ end
 
 local fuelNum = 800
 local interval = 20
-initialize()
+initialize(ID.birchLog)
 while true do
     fuelCheck(fuelNum, DOWN)
     if saplingCheck(ID.birchSapling, LEFT) then
         routine(ID.birchLog)
     end
-    fs.delete(logging.LOG_FILE)
     for i=1, interval do
         print((interval-i + 1).."min...")
         sleep(60)
