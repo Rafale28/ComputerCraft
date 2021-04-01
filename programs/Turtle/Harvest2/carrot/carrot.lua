@@ -32,7 +32,7 @@ end
 function harvestLine()
     res = true
     i = 1
-    while res do
+    while res ~= 0 do
         print(i)
         harvest()
         res = xyz:forward(1)
@@ -117,7 +117,7 @@ end
 function plowLine()
     res = true
     i = 1
-    while res do
+    res ~= 0
         print(i)
         plowAndPlant()
         res =  xyz:back(1)
@@ -204,9 +204,12 @@ end
 
 -- to avoid anything on the initialize path, 
 -- the turtle will move up a block
-xyz:moveToRelative(0,1,0)
-xyz:moveTo(0,1,0)
-xyz:moveToRelative(0,-1,0)
+xyz:moveToRelative(0,0,1)
+
+-- to trhough under the chest 
+xyz:moveTo(0,1,1)
+xyz:moveToRelative(0,0,-1)
+xyz:moveTo(0,0,0)
 xyz:turn("front")
 
 -- Main
