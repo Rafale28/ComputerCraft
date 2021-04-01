@@ -241,6 +241,34 @@ function XyzApi.new()
             end
         end,
 
+        turnLeft=function(self)
+
+            if self.direction == "front" then
+                self:turn("left")
+            elseif self.direction == "right" then
+                self:turn("front")
+            elseif self.direction == "left" then
+                self:turn("behind")
+            elseif self.direction == "behind" then
+                self:turn("right")
+            end
+
+        end,
+
+        turnRight=function(self)
+
+            if self.direction == "front" then
+                self:turn("right")
+            elseif self.direction == "right" then
+                self:turn("behind")
+            elseif self.direction == "left" then
+                self:turn("front")
+            elseif self.direction == "behind" then
+                self:turn("left")
+            end
+
+        end,
+
         --front or back based on sign of n
         frontBack=function(self,n)
 
