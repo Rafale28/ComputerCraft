@@ -1,3 +1,4 @@
+require "Yunamine/xyzAPI"
 -- ########################
 -- cultivate <n>
 -- ########################
@@ -6,6 +7,7 @@
 -- config
 SUGAR_SLOT  = 1
 FUEL_SLOT   = 16
+xyz=XyzApi.new()
 
 function fuelCheck(lane)
     fmin = 16 * 2 * lane 
@@ -31,10 +33,10 @@ end
 function harvestLine()
     res = true
     i = 1
-    while res do
+    while res~= 0 do
         print(i)
         harvest()
-        res =  turtle.forward()
+        res =  xyz:forward(1)
         i = i + 1
     end
     turtle.digDown()
@@ -42,12 +44,12 @@ function harvestLine()
 end
 
 function harvestleftShift()
-    turtle.turnLeft()
+    xyz:turnLeft()
     turtle.dig() 
-    res =  turtle.forward()
+    res =  xyz:forward(1)
     turtle.dig() 
-    res =  turtle.forward()
-    turtle.turnLeft()
+    res =  xyz:forward(1)
+    xyz:turnLeft()
 end
 
 sugarCane  = "minecraft:sugar_cane"
@@ -62,10 +64,10 @@ function toStoreSugar()
             end
         end
     end
-    turtle.turnLeft()
-    turtle.forward()
-    turtle.forward()
-    turtle.turnLeft()
+    xyz:turnLeft()
+    xyz:forward(1)
+    xyz:forward(1)
+    xyz:turnLeft()
 end
 
 function routine(lane)
@@ -87,6 +89,16 @@ function routine(lane)
     toStoreSugar()
 end
 -- #############
+
+-- Initialize
+
+-- to forward on the center path,
+-- the turtle will move left a block
+xyz:moveToRelative(-1,0,0)
+
+xyz:moveTo(0,0,0)
+xyz:turn("front")
+
 -- Main
 -- Laneの数を指定(1Laneは32*4のブロック)
 hLane = 1
