@@ -117,7 +117,7 @@ end
 function plowLine()
     res = true
     i = 1
-    res ~= 0
+    while res ~= 0 do
         print(i)
         plowAndPlant()
         res =  xyz:back(1)
