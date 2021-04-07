@@ -10,18 +10,16 @@ FUEL_SLOT   = 16
 xyz=XyzApi.new()
 
 function fuelCheck(lane)
-    fmin = 16 * 2 * lane *2
-    fmin = fmin + 10
+    fmin = 1000
     fuel = turtle.getFuelLevel()
     print("fuelLevel"..fuel)
-    turtle.select(FUEL_SLOT)
-    turtle.suckDown()
-    turtle.refuel(64)
-    turtle.select(FUEL_SLOT)
-    turtle.dropDown()
-
-    fuel = turtle.getFuelLevel()
-    print("Refuel"..fuel)
+    while fuel < fmin do
+        turtle.select(FUEL_SLOT)
+        turtle.suckUp()
+        turtle.refuel(64)
+        fuel = turtle.getFuelLevel()
+        print("Refuel"..fuel)
+    end
 end
 
 -- #############
