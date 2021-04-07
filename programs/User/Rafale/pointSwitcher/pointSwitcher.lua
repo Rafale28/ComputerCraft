@@ -16,7 +16,7 @@ while true do
     while rs.getAnalogInput("top") == 15 do
         print("OFF")
         count=1
-        sleep(0.1)
+        sleep(1)
     end
     if count ==3 then
         rs.setAnalogOutput("front", 0)
