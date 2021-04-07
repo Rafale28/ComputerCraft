@@ -12,7 +12,9 @@ end
 count=1
 rs.setAnalogOutput("front", 15)
 while true do
+    print(count)
     while rs.getAnalogInput("top") == 15 do
+        print("OFF")
         sleep(0.1)
     end
     if count ~=3 then
