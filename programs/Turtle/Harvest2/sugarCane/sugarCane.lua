@@ -22,7 +22,6 @@ function fuelCheck(lane)
 
     fuel = turtle.getFuelLevel()
     print("Refuel"..fuel)
-    end
 end
 -- #############
 -- define functions
