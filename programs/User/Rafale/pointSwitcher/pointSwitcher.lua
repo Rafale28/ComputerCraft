@@ -21,9 +21,11 @@ while true do
         rs.setAnalogOutput("front", 0)
         getEdge("left", 15)
         count = 1
+        getEdge("left", 0)
     else
         rs.setAnalogOutput("front", 15)
         getEdge("right", 15)
         count = count + 1
+        getEdge("right", 0)
     end
 end
