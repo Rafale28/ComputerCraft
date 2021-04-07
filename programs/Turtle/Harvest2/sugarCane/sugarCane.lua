@@ -15,7 +15,7 @@ function fuelCheck(lane)
     print("fuelLevel"..fuel)
     while fuel < fmin do
         turtle.select(FUEL_SLOT)
-        turtle.suckUp()
+        turtle.suckDown()
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
         print("Refuel"..fuel)
