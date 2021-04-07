@@ -115,11 +115,12 @@ if debug ~= 'd' then
         routine(hLane)
     end
     while true do
+        routine(hLane)
         for i=interval, 0, -1 do
             print(i.."min...")
             sleep(minute)
         end
-        routine(hLane)
+        
     end
 else
     print("debug...")
