@@ -15,6 +15,7 @@ while true do
     print(count)
     while rs.getAnalogInput("top") == 15 do
         print("OFF")
+        count=1
         sleep(0.1)
     end
     if count ==3 then
