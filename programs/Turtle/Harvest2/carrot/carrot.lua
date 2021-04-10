@@ -73,6 +73,8 @@ carrot     = "minecraft:carrot"
 potato     = "minecraft:potato"
 pisPotato  = "minecraft:poisonous_potato"
 function toStoreCarrot(lane)
+
+    --store to chest
     for i = 5, 16 do
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
@@ -83,12 +85,22 @@ function toStoreCarrot(lane)
             elseif itm["name"] == potato then
                 turtle.select(i)
                 turtle.drop(itm["count"])
-            elseif itm["name"] == pisPotato then
+            end
+        end
+    end
+
+    --trough blue potato
+    for i = 1, 16 do
+        turtle.select(i)
+        local itm = turtle.getItemDetail(i)
+        if itm then
+            if  itm["name"] == pisPotato then
                 turtle.select(i)
                 turtle.dropUp(itm["count"])
             end
         end
     end
+
     --turtle.select(1)
     --suckStack(lane * 2)
 end
