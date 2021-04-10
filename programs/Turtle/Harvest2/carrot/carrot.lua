@@ -73,7 +73,7 @@ carrot     = "minecraft:carrot"
 potato     = "minecraft:potato"
 pisPotato  = "minecraft:poisonous_potato"
 function toStoreCarrot(lane)
-    for i = 1, 16 do
+    for i = 5, 16 do
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
         if itm then
@@ -89,8 +89,8 @@ function toStoreCarrot(lane)
             end
         end
     end
-    turtle.select(1)
-    suckStack(lane * 2)
+    --turtle.select(1)
+    --suckStack(lane * 2)
 end
 
 function plantCarrot()
