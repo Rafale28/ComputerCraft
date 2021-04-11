@@ -19,6 +19,7 @@ namespace imageConverter
             InitializeComponent();
 #if DEBUG
             AllocConsole();
+            this.Text = this.Text + "(Debug Mode)";
 #endif
         }
 
