@@ -30,52 +30,67 @@ namespace imageConverter
         {
             int mode = -1;
             int ret = -1;
+            int height, width;
+
             if(comboBox1.SelectedItem != null){
-                //mode = comboBox1.SelectedItem.ToString();
                 mode = comboBox1.SelectedIndex;
-#if DEBUG
-                Console.WriteLine("Index:" + mode);
-#endif
+                Common.DEBUG_PRINT("Index:" + mode);
             }
             else {
                 showErrorMessage("Modeをえらんで！");
                 return;
             }
+
+            //ファイル選択ダイアログを出す
             DialogResult dr = openFileDialog1.ShowDialog();
+
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
+                width   = (int)widthUpDown.Value;
+                height  = (int)heightUpDown.Value;
                 Image image = Image.FromFile(openFileDialog1.FileName);
-                if (doConvert(mode, image) != 0)
+
+                if (doConvert(mode, image, width, height) != 0)
                 {
                     showErrorMessage("Convert失敗!w");
+                    Common.DEBUG_PRINT("ERROR");
                     return;
                 }
+
                 showMessage("完了Ahoy!!");
+                Common.DEBUG_PRINT("Finish");
             }
         }
 
         //Convert実行
-        private int doConvert(int mode, Image img)
+        private int doConvert(int mode, Image img, int width, int height)
         {
             int ret = -1;
             //convert to 16colorBitmap
+            Bitmap bmp = new Bitmap(width, height);
+            Graphics graphics = Graphics.FromImage(bmp);
+            System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes();
+            wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+            graphics.DrawImage(img, new Rectangle(0, 0, width, height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, wrapMode);
+
+            ColorConvert cvt = new ColorConvert(bmp);
+            cvt.doColorConvert();
+#if DEBUG
+            pictureBox1.ClientSize = new Size(width, height);
+            pictureBox1.Image = (Image)bmp;
+            cvt.saveBitmap();
+#endif
 
             //ここでModeごとにクラス呼んで変換を実行
             switch ((Mode)mode)
             {
                 case Mode.AdvancedMonitor:
-#if DEBUG
-                    Console.WriteLine("Mode:AdvancedMonitor");
-#endif
-                    AdvancedMonitor amon = new AdvancedMonitor();
-                    ret = amon.doConvert(img);
+                    Common.DEBUG_PRINT("Mode:AdvancedMonitor");
+                    ret = AdvancedMonitor.doConvert(cvt.getBitmap());
                     break;
                 case Mode.WoolArt:
-#if DEBUG
-                    Console.WriteLine("Mode:WoolArt");
-#endif
-                    WoolArt wart = new WoolArt();
-                    ret = wart.doConvert(img);
+                    Common.DEBUG_PRINT("Mode:WoolArt");
+                    ret = WoolArt.doConvert(cvt.getBitmap());
                     break;
                 default:
                     ret = -1;
@@ -83,6 +98,7 @@ namespace imageConverter
             }
             return ret;
         }
+
 
         //ErrorMessage表示
         private void showErrorMessage(string errmsg)
@@ -98,6 +114,16 @@ namespace imageConverter
                     "MSG", 
                     MessageBoxButtons.OK,
                     MessageBoxIcon.None);
+        }
+    }
+    static class Common
+    {
+        //DEBUGメッセージ用関数
+        public static void DEBUG_PRINT(String msg)
+        {
+#if DEBUG
+            Console.WriteLine("[DEBUG]:" + msg);
+#endif
         }
     }
 }

@@ -7,13 +7,11 @@ using System.Drawing;
 
 namespace imageConverter
 {
-    class AdvancedMonitor
+    static class AdvancedMonitor
     {
-        public int doConvert(Image img)
+        public static int doConvert(Image img)
         {
-#if DEBUG
-            Console.WriteLine("Convert to AdvancedMonitor format...");
-#endif
+            Common.DEBUG_PRINT("Convert to AdvancedMonitor format...");
             return 0;
         }
     }

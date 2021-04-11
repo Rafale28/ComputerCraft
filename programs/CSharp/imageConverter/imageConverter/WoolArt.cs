@@ -7,13 +7,11 @@ using System.Drawing;
 
 namespace imageConverter
 {
-    class WoolArt
+    static class WoolArt
     {
-        public int doConvert(Image img)
+        public static int doConvert(Image img)
         {
-#if DEBUG
-            Console.WriteLine("Convert to WoolArt...");
-#endif
+            Common.DEBUG_PRINT("Convert to WoolArt...");
             return 0;
         }
     }
