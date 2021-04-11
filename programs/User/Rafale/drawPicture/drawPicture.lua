@@ -1,3 +1,6 @@
-images = paintutils.loadImage("test.nfp")
+local image = paintutils.loadImage("test.nfp")
+local mon = peripheral.wrap("back")
 
-paintutils.drawImage(images, 1, 1)
+mon.setTextScale(0.5)
+term.redirect(mon)
+paintutils.drawImage(image, 1, 1)
