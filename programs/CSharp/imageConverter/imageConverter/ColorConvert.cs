@@ -15,23 +15,23 @@ namespace imageConverter
             img = srcImg;
         }
 
-        private Color[] colorArray = { 
-            Color.Red,
-            Color.Green,
-            Color.Purple,
-            Color.Cyan,
-            Color.LightGray,
-            Color.Gray,
-            Color.Pink,
-            Color.Lime,
-            Color.Yellow,
-            Color.LightBlue,
-            Color.Magenta,
+        public static Color[] colorArray = { 
+            Color.White,
             Color.Orange,
-            Color.Black,
-            Color.Brown,
+            Color.Magenta,
+            Color.LightBlue,
+            Color.Yellow,
+            Color.Lime,
+            Color.Pink,
+            Color.Gray,
+            Color.LightGray,
+            Color.Cyan,
+            Color.Purple,
             Color.Blue,
-            Color.White
+            Color.Brown,
+            Color.Green,
+            Color.Red,
+            Color.Black
         };
 
         private static double MAX = Math.Sqrt(3);

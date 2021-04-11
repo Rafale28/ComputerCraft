@@ -9,7 +9,7 @@ namespace imageConverter
 {
     static class WoolArt
     {
-        public static int doConvert(Image img)
+        public static int doConvert(Bitmap img)
         {
             Common.DEBUG_PRINT("Convert to WoolArt...");
             return 0;
