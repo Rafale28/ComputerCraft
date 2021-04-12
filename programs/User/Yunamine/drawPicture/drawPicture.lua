@@ -1,4 +1,6 @@
 local sencho = paintutils.loadImage("sencho.nfp")
+local rina = paintutils.loadImage("rina.nfp")
+local tsunomaki = paintutils.loadImage("tsunomaki.nfp")
 local fbk = {
     paintutils.loadImage("fbk/1.nfp"),
     --paintutils.loadImage("fbk/2.nfp"),
@@ -71,6 +73,17 @@ while true do
     paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
     paintutils.drawImage(sencho, 1, 1)
     sleep(2)
+
+    paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
+
+    paintutils.drawImage(tsunomaki, 1, 1)
+    sleep(2)
+
+    paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
+
+    paintutils.drawImage(rina, 1, 1)
+    sleep(2)
+    
     paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
 
     for i=1,30 do
