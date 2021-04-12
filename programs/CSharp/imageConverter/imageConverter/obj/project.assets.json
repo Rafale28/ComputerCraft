@@ -8,30 +8,20 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Rafale\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\goibu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programing\\ComputerCraft\\ComputerCraft\\programs\\CSharp\\imageConverter\\imageConverter\\imageConverter.csproj",
+      "projectUniqueName": "H:\\git\\ComputerCraft\\programs\\CSharp\\imageConverter\\imageConverter\\imageConverter.csproj",
       "projectName": "imageConverter",
-      "projectPath": "D:\\Programing\\ComputerCraft\\ComputerCraft\\programs\\CSharp\\imageConverter\\imageConverter\\imageConverter.csproj",
-      "packagesPath": "C:\\Users\\Rafale\\.nuget\\packages\\",
-      "outputPath": "D:\\Programing\\ComputerCraft\\ComputerCraft\\programs\\CSharp\\imageConverter\\imageConverter\\obj\\",
+      "projectPath": "H:\\git\\ComputerCraft\\programs\\CSharp\\imageConverter\\imageConverter\\imageConverter.csproj",
+      "packagesPath": "C:\\Users\\goibu\\.nuget\\packages\\",
+      "outputPath": "H:\\git\\ComputerCraft\\programs\\CSharp\\imageConverter\\imageConverter\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Rafale\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\goibu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"

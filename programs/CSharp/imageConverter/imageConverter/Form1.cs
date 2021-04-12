@@ -30,7 +30,6 @@ namespace imageConverter
         private void fileOpenButton_Click(object sender, EventArgs e)
         {
             int mode = -1;
-            int ret = -1;
             int height, width;
 
             if(comboBox1.SelectedItem != null){
@@ -49,7 +48,14 @@ namespace imageConverter
             {
                 width   = (int)widthUpDown.Value;
                 height  = (int)heightUpDown.Value;
-                Image image = Image.FromFile(openFileDialog1.FileName);
+
+                List<Image> image;
+                image=new List<Image>();
+                foreach (String filename in openFileDialog1.FileNames)
+                {
+
+                    image.Add(Image.FromFile(openFileDialog1.FileName));
+                }
 
                 if (doConvert(mode, image, width, height) != 0)
                 {
@@ -64,21 +70,29 @@ namespace imageConverter
         }
 
         //Convert実行
-        private int doConvert(int mode, Image img, int width, int height)
+        private int doConvert(int mode, List<Image> img, int width, int height)
         {
             int ret = -1;
             //convert to 16colorBitmap
-            Bitmap bmp = new Bitmap(width, height);
-            Graphics graphics = Graphics.FromImage(bmp);
-            System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes();
-            wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
-            graphics.DrawImage(img, new Rectangle(0, 0, width, height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, wrapMode);
+
+            List<Bitmap> bmp;
+            bmp = new List<Bitmap>();
+            foreach (Image i in img)
+            {
+
+                Bitmap b = new Bitmap(width, height);
+                Graphics graphics = Graphics.FromImage(b);
+                System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes();
+                wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                graphics.DrawImage(i, new Rectangle(0, 0, width, height), 0, 0, i.Width, i.Height, GraphicsUnit.Pixel, wrapMode);
+                bmp.Add(b);
+            }
 
             ColorConvert cvt = new ColorConvert(bmp);
             cvt.doColorConvert();
 #if DEBUG
             pictureBox1.ClientSize = new Size(width, height);
-            pictureBox1.Image = (Image)bmp;
+            pictureBox1.Image = (Image)bmp[0];
             cvt.saveBitmap();
 #endif
 
@@ -91,7 +105,7 @@ namespace imageConverter
                     break;
                 case Mode.WoolArt:
                     Common.DEBUG_PRINT("Mode:WoolArt");
-                    ret = WoolArt.doConvert(cvt.getBitmap());
+                    ret = WoolArt.doConvert(cvt.getBitmap()[0]);
                     break;
                 default:
                     ret = -1;

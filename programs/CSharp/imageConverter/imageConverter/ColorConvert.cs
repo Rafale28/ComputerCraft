@@ -9,8 +9,9 @@ namespace imageConverter
 {
     class ColorConvert
     {
-        private Bitmap img;
-        public ColorConvert(Bitmap srcImg)
+        private List<Bitmap> img;
+        //private Bitmap img;
+        public ColorConvert(List<Bitmap> srcImg)
         {
             img = srcImg;
         }
@@ -72,27 +73,35 @@ namespace imageConverter
 
         public void doColorConvert()
         {
-            int bmpWidth  = img.Width;
-            int bmpHeight = img.Height;
-            int min = -1;
-            for (int hCount=0; hCount < bmpHeight; hCount++)
+            foreach (Bitmap i in img)
             {
-                for (int wCount=0; wCount < bmpWidth; wCount++)
+                int bmpWidth = i.Width;
+                int bmpHeight = i.Height;
+                int min = -1;
+                for (int hCount = 0; hCount < bmpHeight; hCount++)
                 {
-                    //Common.DEBUG_PRINT("H: " + hCount + "W:" + wCount);
-                    min = getMin(img.GetPixel(wCount, hCount));
-                    img.SetPixel(wCount, hCount, colorArray[min]);
+                    for (int wCount = 0; wCount < bmpWidth; wCount++)
+                    {
+                        //Common.DEBUG_PRINT("H: " + hCount + "W:" + wCount);
+                        min = getMin(i.GetPixel(wCount, hCount));
+                        i.SetPixel(wCount, hCount, colorArray[min]);
+                    }
                 }
             }
             Common.DEBUG_PRINT("Color Convert finished");
         }
-        public Bitmap getBitmap()
+        public List<Bitmap> getBitmap()
         {
             return img;
         }
         public void saveBitmap()
         {
-            img.Save("img.bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            int c = 1;
+            foreach (Bitmap i in img)
+            {
+                i.Save( c.ToString()+ ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+                c++;
+            }
         }
     }
 }
