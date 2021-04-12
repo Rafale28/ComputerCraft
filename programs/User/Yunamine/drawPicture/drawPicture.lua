@@ -27,5 +27,4 @@ while true do
         paintutils.drawImage(fbk[i], 1, 1)
         sleep(0.1)
       end
-
 end
