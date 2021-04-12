@@ -13,6 +13,7 @@ function playMovie(dir, num)
     end
 end
 while true do
-  playMovie("marine/marine_", 64)
-  playMovie("fbk/fbk_", 203)
+  playMovie("drawPicture/marine/marine_", 64)
+  playMovie("drawPicture/fbk/fbk_", 203)
+  playMovie("drawPicture/watame/watame_", 186)
 end
