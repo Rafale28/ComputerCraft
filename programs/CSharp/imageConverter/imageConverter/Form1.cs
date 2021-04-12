@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace imageConverter
 {
@@ -51,13 +52,15 @@ namespace imageConverter
 
                 List<Image> image;
                 image=new List<Image>();
+                List<String> fname = new List<String>();
                 foreach (String filename in openFileDialog1.FileNames)
                 {
 
                     image.Add(Image.FromFile(filename));
+                    fname.Add(Path.GetFileNameWithoutExtension(filename));
                 }
 
-                if (doConvert(mode, image, width, height) != 0)
+                if (doConvert(mode, fname, image, width, height) != 0)
                 {
                     showErrorMessage("Convert失敗!w");
                     Common.DEBUG_PRINT("ERROR");
@@ -70,29 +73,32 @@ namespace imageConverter
         }
 
         //Convert実行
-        private int doConvert(int mode, List<Image> img, int width, int height)
+        private int doConvert(int mode,List<String> fname, List<Image> img, int width, int height)
         {
             int ret = -1;
-            //convert to 16colorBitmap
 
-            List<Bitmap> bmp;
-            bmp = new List<Bitmap>();
+            //convert to 16colorBitmap
+            List<ColorConvert.ImageStr> imgstr = new List<ColorConvert.ImageStr>();
+            int c = 0;
             foreach (Image i in img)
             {
 
+                ColorConvert.ImageStr istr = new ColorConvert.ImageStr();
                 Bitmap b = new Bitmap(width, height);
                 Graphics graphics = Graphics.FromImage(b);
                 System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes();
                 wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
                 graphics.DrawImage(i, new Rectangle(0, 0, width, height), 0, 0, i.Width, i.Height, GraphicsUnit.Pixel, wrapMode);
-                bmp.Add(b);
+                istr.setImage(fname[c], b);
+                imgstr.Add(istr);
+                c++;
             }
 
-            ColorConvert cvt = new ColorConvert(bmp);
+            ColorConvert cvt = new ColorConvert(imgstr);
             cvt.doColorConvert();
 #if DEBUG
             pictureBox1.ClientSize = new Size(width, height);
-            pictureBox1.Image = (Image)bmp[0];
+            pictureBox1.Image = (Image)imgstr[0].getBitmap();
 #endif
             if (dumpBmp.Checked)
             {
@@ -103,11 +109,11 @@ namespace imageConverter
             {
                 case Mode.AdvancedMonitor:
                     Common.DEBUG_PRINT("Mode:AdvancedMonitor");
-                    ret = AdvancedMonitor.doConvert(cvt.getBitmap());
+                    ret = AdvancedMonitor.doConvert(imgstr);
                     break;
                 case Mode.WoolArt:
                     Common.DEBUG_PRINT("Mode:WoolArt");
-                    ret = WoolArt.doConvert(cvt.getBitmap()[0]);
+                    ret = WoolArt.doConvert(imgstr[0].getBitmap());
                     break;
                 default:
                     ret = -1;

@@ -10,10 +10,30 @@ namespace imageConverter
     class ColorConvert
     {
         private List<Bitmap> img;
-        //private Bitmap img;
-        public ColorConvert(List<Bitmap> srcImg)
+        private List<ImageStr> imgStr;
+        public ColorConvert(List<ImageStr> srcStr)
         {
-            img = srcImg;
+            imgStr = srcStr;
+        }
+
+        public struct ImageStr
+        {
+            private String fileName;
+            private Bitmap bitmap;
+            public void setImage(String fn, Bitmap bmp)
+            {
+                fileName = fn;
+                bitmap = bmp;
+            }
+
+            public String getFileName()
+            {
+                return fileName;
+            }
+            public Bitmap getBitmap()
+            {
+                return bitmap;
+            }
         }
 
         public static Color[] colorArray = { 
@@ -73,8 +93,10 @@ namespace imageConverter
 
         public void doColorConvert()
         {
-            foreach (Bitmap i in img)
+            //foreach (Bitmap i in img)
+            foreach (ImageStr s in imgStr)
             {
+                Bitmap i = s.getBitmap();
                 int bmpWidth = i.Width;
                 int bmpHeight = i.Height;
                 int min = -1;
@@ -96,11 +118,10 @@ namespace imageConverter
         }
         public void saveBitmap()
         {
-            int c = 1;
-            foreach (Bitmap i in img)
+            foreach (ImageStr s in imgStr)
             {
-                i.Save( c.ToString()+ ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
-                c++;
+                Common.DEBUG_PRINT("Save File");
+                s.getBitmap().Save( s.getFileName() + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
             }
         }
     }

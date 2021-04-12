@@ -26,27 +26,25 @@ namespace imageConverter
             }
             return num;
         }
-        public static int doConvert(List<Bitmap> img)
+        public static int doConvert(List<ColorConvert.ImageStr> img)
         {
-            int c = 1;
-            foreach (Bitmap i in img)
+            foreach (ColorConvert.ImageStr i in img)
             {
                 Common.DEBUG_PRINT("Convert to AdvancedMonitor format...");
-                StreamWriter writer = new StreamWriter(c.ToString()+".nfp");
-                int bmpWidth = i.Width;
-                int bmpHeight = i.Height;
+                StreamWriter writer = new StreamWriter(i.getFileName()+".nfp");
+                int bmpWidth = i.getBitmap().Width;
+                int bmpHeight = i.getBitmap().Height;
                 int num = -1;
                 for (int hCount = 0; hCount < bmpHeight; hCount++)
                 {
                     for (int wCount = 0; wCount < bmpWidth; wCount++)
                     {
-                        num = check(i.GetPixel(wCount, hCount));
+                        num = check(i.getBitmap().GetPixel(wCount, hCount));
                         writer.Write(num.ToString("x"));
                     }
                     writer.Write("\n");
                 }
                 writer.Close();
-                c++;
             }
             Common.DEBUG_PRINT("Color Convert finished");
             return 0;
