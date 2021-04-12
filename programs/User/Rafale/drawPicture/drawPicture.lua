@@ -10,7 +10,6 @@ while true do
         img = paintutils.loadImage(fname)
         print(fname)
         paintutils.drawImage(img, 1, 1)
-        term.restore()
         sleep(0)
       end
 end
