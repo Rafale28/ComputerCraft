@@ -93,9 +93,11 @@ namespace imageConverter
 #if DEBUG
             pictureBox1.ClientSize = new Size(width, height);
             pictureBox1.Image = (Image)bmp[0];
-            cvt.saveBitmap();
 #endif
-
+            if (dumpBmp.Checked)
+            {
+                cvt.saveBitmap();
+            }
             //ここでModeごとにクラス呼んで変換を実行
             switch ((Mode)mode)
             {
