@@ -23,7 +23,7 @@ while true do
     sleep(2)
     paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
 
-    for i=1,1,8 do
+    for i=1,8 do
         paintutils.drawImage(fbk[i], 1, 1)
         sleep(0.1)
       end
