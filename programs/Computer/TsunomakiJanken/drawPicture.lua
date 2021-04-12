@@ -23,7 +23,8 @@ local jankenArray = {
 }
 old = false;
 while true do
-  paintutils.drawImage(jankenPic, 1, 1)
+  jimg = paintutils.loadImage(jankenPic)
+  paintutils.drawImage(jimg, 1, 1)
   btn = trig()
   if (btn ~= old and btn == true) then
     jankenres = math.random(1,3)
