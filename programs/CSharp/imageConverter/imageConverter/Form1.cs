@@ -54,7 +54,7 @@ namespace imageConverter
                 foreach (String filename in openFileDialog1.FileNames)
                 {
 
-                    image.Add(Image.FromFile(openFileDialog1.FileName));
+                    image.Add(Image.FromFile(filename));
                 }
 
                 if (doConvert(mode, image, width, height) != 0)
