@@ -142,10 +142,8 @@ function printing(csv)
 
             xyz:moveTo(-j,0,ii)
 
-            -- alpha channel
-            if c==-1 then
-                sleep(0)
-            else
+            -- without alpha channel 
+            if c~=-1 then
                 --c will be  0 - 15
                 print("c:"..c)
                 turtle.select(c+1)
