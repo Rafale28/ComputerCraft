@@ -143,7 +143,7 @@ function printing(csv)
             xyz:moveTo(-j,0,ii)
 
             -- alpha channel
-            if c == -1 then
+            if c==-1 then
                 sleep(0)
             else
                 --c will be  0 - 15
