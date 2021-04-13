@@ -24,6 +24,7 @@ namespace imageConverter
             {
                 fileName = fn;
                 bitmap = bmp;
+                bitmap.MakeTransparent(Color.Transparent);
             }
 
             public String getFileName()
@@ -53,7 +54,7 @@ namespace imageConverter
             Color.Green,
             Color.Red,
             Color.Black
-        };
+         };
 
         private static double MAX = Math.Sqrt(3);
         private double getDefference(Color src, Color dst)
@@ -104,9 +105,22 @@ namespace imageConverter
                 {
                     for (int wCount = 0; wCount < bmpWidth; wCount++)
                     {
-                        //Common.DEBUG_PRINT("H: " + hCount + "W:" + wCount);
-                        min = getMin(i.GetPixel(wCount, hCount));
-                        i.SetPixel(wCount, hCount, colorArray[min]);
+                        Color c = i.GetPixel(wCount, hCount);
+
+                        //System.Windows.Forms.MessageBox.Show(c.A.ToString());
+
+                        //透明の時
+                        if (c.A == 0)
+                        {
+
+                            i.SetPixel(wCount, hCount, Color.Transparent);
+
+                        }
+                        else { 
+                            //Common.DEBUG_PRINT("H: " + hCount + "W:" + wCount);
+                            min = getMin(i.GetPixel(wCount, hCount));
+                            i.SetPixel(wCount, hCount, colorArray[min]);
+                        }
                     }
                 }
             }

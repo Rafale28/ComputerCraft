@@ -12,16 +12,21 @@ namespace imageConverter
     {
         private static int check(Color src)
         {
-            int num = -1;
-            
-            for (int i=0; i < 16; i++)
+            //透明の時は黒くなる
+            int num = 15;
+
+            //透明じゃないとき
+            if (src.A != 0)
             {
-                if (src.R == ColorConvert.colorArray[i].R && 
-                    src.G == ColorConvert.colorArray[i].G && 
-                    src.B == ColorConvert.colorArray[i].B )
+                for (int i = 0; i < 16; i++)
                 {
-                    num = i;
-                    break;
+                    if (src.R == ColorConvert.colorArray[i].R &&
+                        src.G == ColorConvert.colorArray[i].G &&
+                        src.B == ColorConvert.colorArray[i].B)
+                    {
+                        num = i;
+                        break;
+                    }
                 }
             }
             return num;

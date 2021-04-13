@@ -55,7 +55,6 @@ namespace imageConverter
                 List<String> fname = new List<String>();
                 foreach (String filename in openFileDialog1.FileNames)
                 {
-
                     image.Add(Image.FromFile(filename));
                     fname.Add(Path.GetFileNameWithoutExtension(filename));
                 }
@@ -113,7 +112,7 @@ namespace imageConverter
                     break;
                 case Mode.WoolArt:
                     Common.DEBUG_PRINT("Mode:WoolArt");
-                    ret = WoolArt.doConvert(imgstr[0].getBitmap());
+                    ret = WoolArt.doConvert(imgstr[0]);
                     break;
                 default:
                     ret = -1;
