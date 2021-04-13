@@ -144,7 +144,7 @@ function printing(csv)
 
             -- alpha channel
             if c == -1 then
-                --donothing
+                sleep(0)
             else
                 --c will be  0 - 15
                 print("c:"..c)
