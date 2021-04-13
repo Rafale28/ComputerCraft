@@ -140,7 +140,7 @@ function printing(csv)
         col=split(line,",")
         for j,c in pairs(col) do
 
-            xyz:moveTo(j,0,ii)
+            xyz:moveTo(-j,0,ii)
 
             -- alpha channel
             if c == -1 then
