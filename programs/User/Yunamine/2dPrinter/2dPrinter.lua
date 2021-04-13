@@ -136,9 +136,9 @@ function printing(csv)
         --printing
         xyz:turn("front")
         --parse the csv a line
-        j=1
+
         col=split(line,",")
-        for c in pairs(col) do
+        for j,c in pairs(col) do
 
             xyz:moveTo(j,0,i)
 
@@ -151,7 +151,6 @@ function printing(csv)
                 turtle.placeDown()
             end
             print(i..","..j..":OK")
-            j=j+1
 
         end
         i=i+1

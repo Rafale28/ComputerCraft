@@ -136,10 +136,9 @@ function printing(csv)
         --printing
         --xyz:turn("front")
         --parse the csv a line
-        j=1
         print("line:"..line)
         col=split(line,",")
-        for c in pairs(col) do
+        for j,c in pairs(col) do
 
             --xyz:moveTo(j,0,i)
 
@@ -153,8 +152,6 @@ function printing(csv)
             end
             print(i..","..j..":"..c)
             sleep(1)
-            j=j+1
-
         end
         i=i+1
         --xyz:moveTo(0,0,i)
