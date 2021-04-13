@@ -114,7 +114,7 @@ function printing(csv)
     print("---PHASE:Printing---")
 
     --line
-    i=0
+    ii=0
     while true do
 
         --load a line
@@ -131,7 +131,7 @@ function printing(csv)
         reWatame()
         print("Rewatame:OK")
 
-        xyz:moveTo(0,0,i)
+        xyz:moveTo(0,0,ii)
 
         --printing
         xyz:turn("front")
@@ -140,7 +140,7 @@ function printing(csv)
         col=split(line,",")
         for j,c in pairs(col) do
 
-            xyz:moveTo(j,0,i)
+            xyz:moveTo(j,0,ii)
 
             -- alpha channel
             if c == -1 then
@@ -150,11 +150,11 @@ function printing(csv)
                 turtle.select(c+1)
                 turtle.placeDown()
             end
-            print(i..","..j..":OK")
+            print(ii..","..j..":OK")
 
         end
-        i=i+1
-        xyz:moveTo(0,0,i)
+        ii=ii+1
+        xyz:moveTo(0,0,ii)
     end
 
     csv.close()
