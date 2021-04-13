@@ -116,7 +116,7 @@ function printing(csv)
     --line
     ii=0
     while true do
- 
+
         --load a line
         line=csv.readLine()
 
@@ -124,38 +124,38 @@ function printing(csv)
         if line == nil then
             break
         end
-  
-        --refuel()
-        --print("Refuel:OK")
 
-        --reWatame()
-        --print("Rewatame:OK")
+        refuel()
+        print("Refuel:OK")
 
-        --xyz:moveTo(0,0,i)
+        reWatame()
+        print("Rewatame:OK")
+
+        xyz:moveTo(0,0,ii)
 
         --printing
-        --xyz:turn("front")
+        xyz:turn("front")
         --parse the csv a line
-        print("line:"..line)
+
         col=split(line,",")
+        for j,c in pairs(col) do
 
-        for jj,c in pairs(col) do
-
-            --xyz:moveTo(j,0,i)
+            xyz:moveTo(j,0,ii)
 
             -- alpha channel
             if c == -1 then
                 --donothing
             else
                 --c will be  0 - 15
-                --turtle.select(c+1)
-                --turtle.placeDown()
+                print("c:"..c)
+                turtle.select(c+1)
+                turtle.placeDown()
             end
-            print(ii..","..jj..":"..c)
-            sleep(1)
+            print(ii..","..j..":OK")
+
         end
         ii=ii+1
-        --xyz:moveTo(0,0,i)
+        xyz:moveTo(0,0,ii)
     end
 
     csv.close()
