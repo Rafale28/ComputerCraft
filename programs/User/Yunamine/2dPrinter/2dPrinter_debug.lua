@@ -137,6 +137,7 @@ function printing(csv)
         --xyz:turn("front")
         --parse the csv a line
         j=1
+        print("line:"line)
         col=split(line,",")
         for c in pairs(col) do
 
