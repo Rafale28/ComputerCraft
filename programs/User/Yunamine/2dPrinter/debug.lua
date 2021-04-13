@@ -143,7 +143,7 @@ function printing(csv)
             xyz:moveTo(-j,0,ii)
 
             -- without alpha channel 
-            if c~=-1 then
+            if tonumber(c)~=-1 then
                 --c will be  0 - 15
                 print("c:"..c)
                 turtle.select(c+1)
