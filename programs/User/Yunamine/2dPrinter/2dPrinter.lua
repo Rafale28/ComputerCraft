@@ -12,7 +12,7 @@ xyz=XyzApi.new()
 function loadCSV()
     --CSVがあるか確認
     if fs.exists(CSV_NAME) then
-        csv = fs.open(logname, 'r')
+        csv = fs.open(CSV_NAME, 'r')
     else
         print("design.csv not found!")
         while true do
