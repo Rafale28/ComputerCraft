@@ -116,15 +116,15 @@ function printing(csv)
     --line
     i=0
     while true do
-
+        print(i)
         --load a line
         line=csv.readLine()
-
+        print(i)
         --end of line
         if line == nil then
             break
         end
-
+        print(i)
         --refuel()
         --print("Refuel:OK")
 
@@ -138,10 +138,11 @@ function printing(csv)
         --parse the csv a line
         print("line:"..line)
         col=split(line,",")
+        print(i)
         for j,c in pairs(col) do
 
             --xyz:moveTo(j,0,i)
-
+            print(i)
             -- alpha channel
             if c == -1 then
                 --donothing
