@@ -138,7 +138,7 @@ function printing(csv)
         --parse the csv a line
         j=1
         col=split(line,",")
-        for c in col do
+        for c in pairs(col) do
 
             xyz:moveTo(j,0,i)
 
