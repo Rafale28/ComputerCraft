@@ -223,6 +223,6 @@ end
 
 -- ########## routine
 csv=loadCSV()
-itemCheck()
-placeChests()
+--itemCheck()
+--placeChests()
 printing(csv)
