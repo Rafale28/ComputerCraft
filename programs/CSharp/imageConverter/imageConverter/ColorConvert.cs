@@ -24,7 +24,6 @@ namespace imageConverter
             {
                 fileName = fn;
                 bitmap = bmp;
-                bitmap.MakeTransparent(Color.Transparent);
             }
 
             public String getFileName()
@@ -94,7 +93,6 @@ namespace imageConverter
 
         public void doColorConvert()
         {
-            //foreach (Bitmap i in img)
             foreach (ImageStr s in imgStr)
             {
                 Bitmap i = s.getBitmap();
@@ -105,18 +103,13 @@ namespace imageConverter
                 {
                     for (int wCount = 0; wCount < bmpWidth; wCount++)
                     {
-                        Color c = i.GetPixel(wCount, hCount);
-
-                        //System.Windows.Forms.MessageBox.Show(c.A.ToString());
-
                         //透明の時
-                        if (c.A == 0)
+                        if (i.GetPixel(wCount, hCount).A == 0)
                         {
-
-                            i.SetPixel(wCount, hCount, Color.Transparent);
-
+                            i.SetPixel(wCount, hCount, Color.FromArgb(0, 0, 0, 0));
                         }
-                        else { 
+                        else 
+                        { 
                             //Common.DEBUG_PRINT("H: " + hCount + "W:" + wCount);
                             min = getMin(i.GetPixel(wCount, hCount));
                             i.SetPixel(wCount, hCount, colorArray[min]);
