@@ -145,7 +145,7 @@ function printing(csv)
         xyz:turn("front")
         --parse the csv a line
 
-        col=split(line,",")
+        col=split(line[ii],",")
         for j,c in pairs(col) do
 
             xyz:moveTo(-j,0,lines-ii)
