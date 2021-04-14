@@ -138,18 +138,18 @@ function printing(csv)
 
         reWatame()
         print("Rewatame:OK")
-
+        print("a")
         xyz:moveTo(0,0,lines-ii)
-
+        print("b")
         --printing
         xyz:turn("front")
         --parse the csv a line
 
         col=split(line,",")
         for j,c in pairs(col) do
-            print("a")
+
             xyz:moveTo(-j,0,lines-ii)
-            print("b")
+
             -- alpha channel
             if ctonumber(c) == -1 then
                 --donothing
