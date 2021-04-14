@@ -143,13 +143,15 @@ function printing(csv)
         print("b")
         --printing
         xyz:turn("front")
+        print("c")
         --parse the csv a line
 
         col=split(line,",")
+        print("d")
         for j,c in pairs(col) do
-
+            print("e")
             xyz:moveTo(-j,0,lines-ii)
-
+            print("f")
             -- alpha channel
             if ctonumber(c) == -1 then
                 --donothing
