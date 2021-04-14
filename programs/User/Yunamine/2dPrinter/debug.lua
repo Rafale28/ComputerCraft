@@ -217,7 +217,6 @@ function reWatame()
                 print("Color"..i..":NG")
                 xyz:moveTo(0,0,i-1)
                 turtle.suck()
-                end
             end
             sleep(0)
         end
