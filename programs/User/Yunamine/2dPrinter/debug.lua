@@ -153,7 +153,7 @@ function printing(csv)
             xyz:moveTo(-j,0,lines-ii)
 
             -- alpha channel
-            if ctonumber(c) == -1 then
+            if tonumber(c) == -1 then
                 --donothing
                 sleep(0)
             else
@@ -206,15 +206,20 @@ function reWatame()
             local itm = turtle.getItemDetail(i)
             if itm then
                 if itm["count"] == 64 then
-                watameWait = false
-                print("Color"..i..":OK")
+                    watameWait = false
+                    print("Color"..i..":OK")
+                else
+                    print("Color"..i..":NG")
+                    xyz:moveTo(0,0,i-1)
+                    turtle.suck()
                 end
             else
                 print("Color"..i..":NG")
-                xyz:moveTo(0,0,i)
+                xyz:moveTo(0,0,i-1)
                 turtle.suck()
-                sleep(0)
+                end
             end
+            sleep(0)
         end
     end
 
