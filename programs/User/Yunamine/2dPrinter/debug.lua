@@ -128,10 +128,10 @@ function printing(csv)
 
         --add to table
         table.insert(line,l)
-    }
+    end
 
     lines=table.maxn(line)
-    for ii=lines,-1 0 do
+    for ii=lines,0, -1 do
 
         refuel()
         print("Refuel:OK")
