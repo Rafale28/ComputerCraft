@@ -59,5 +59,15 @@ namespace imageConverter.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon rinaboard {
+            get {
+                object obj = ResourceManager.GetObject("rinaboard", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

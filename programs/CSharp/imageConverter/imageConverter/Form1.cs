@@ -13,11 +13,14 @@ namespace imageConverter
 {
     public partial class Form1 : Form
     {
+        public static readonly String VERSION = "1.0.0";
         [System.Runtime.InteropServices.DllImport("kernel32.dll")] 
         private static extern bool AllocConsole();
         public Form1()
         {
             InitializeComponent();
+            this.Icon = imageConverter.Properties.Resources.rinaboard;
+            this.Text = this.Text +" Ver." + VERSION;
 #if DEBUG
             AllocConsole();
             this.Text = this.Text + "(Debug Mode)";
@@ -110,10 +113,13 @@ namespace imageConverter
                     Common.DEBUG_PRINT("Mode:AdvancedMonitor");
                     ret = AdvancedMonitor.doConvert(imgstr);
                     break;
+            //未実装だからリリースビルドでは実行しない
+#if DEBUG
                 case Mode.WoolArt:
                     Common.DEBUG_PRINT("Mode:WoolArt");
                     ret = WoolArt.doConvert(imgstr[0]);
                     break;
+#endif
                 default:
                     ret = -1;
                     break;
