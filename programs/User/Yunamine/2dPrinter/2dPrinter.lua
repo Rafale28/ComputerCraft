@@ -1,8 +1,8 @@
 require "Yunamine/xyzAPI"
 
 -- ########## config
-CHEST_SLOT  = 1
-FUEL_SLOT   = 2
+CHEST_SLOT  = 2
+FUEL_SLOT   = 1
 CSV_NAME = "design.csv"
 
 xyz=XyzApi.new()
@@ -33,23 +33,6 @@ function itemCheck()
     -- requires 17 chests and 64 carpet
 
     print("")
-    print("Place 17 chests on the slot "..CHEST_SLOT)
-    chestWait=true    
-    while chestWait do
-        turtle.select(CHEST_SLOT)
-        local itm = turtle.getItemDetail(CHEST_SLOT)
-        if itm then
-            if itm["count"] == 17 then
-                chestWait = false
-                print("Chest:OK")
-            end
-        else
-            print("Chest:NG")
-            sleep(5)
-        end
-    end
-
-    print("")
     print("Place 64 carpets on the slot "..FUEL_SLOT)
     chestWait=true    
     while chestWait do
@@ -62,6 +45,23 @@ function itemCheck()
             end
         else
             print("Carpet:NG")
+            sleep(5)
+        end
+    end
+
+    print("")
+    print("Place 17 chests on the slot "..CHEST_SLOT)
+    chestWait=true    
+    while chestWait do
+        turtle.select(CHEST_SLOT)
+        local itm = turtle.getItemDetail(CHEST_SLOT)
+        if itm then
+            if itm["count"] == 17 then
+                chestWait = false
+                print("Chest:OK")
+            end
+        else
+            print("Chest:NG")
             sleep(5)
         end
     end
@@ -114,16 +114,24 @@ function printing(csv)
     print("---PHASE:Printing---")
 
     --line
-    ii=0
+
+    line = {}
     while true do
 
         --load a line
-        line=csv.readLine()
+        l=csv.readLine()
 
         --end of line
-        if line == nil then
+        if l == nil then
             break
         end
+
+        --add to table
+        table.insert(line,l)
+    }
+
+    lines=table.maxn(line)
+    for ii=lines,-1 0 do
 
         refuel()
         print("Refuel:OK")
@@ -131,7 +139,7 @@ function printing(csv)
         reWatame()
         print("Rewatame:OK")
 
-        xyz:moveTo(0,0,ii)
+        xyz:moveTo(0,0,lines-ii)
 
         --printing
         xyz:turn("front")
@@ -140,21 +148,21 @@ function printing(csv)
         col=split(line,",")
         for j,c in pairs(col) do
 
-            xyz:moveTo(-j,0,ii)
+            xyz:moveTo(-j,0,lines-ii)
 
             -- alpha channel
-            if c == -1 then
+            if ctonumber(c) == -1 then
                 --donothing
+                sleep(0)
             else
                 --c will be  0 - 15
                 turtle.select(c+1)
                 turtle.placeDown()
             end
-            print(ii..","..j..":OK")
+            print(lines-ii..","..j..":OK")
 
         end
-        ii=ii+1
-        xyz:moveTo(0,0,ii)
+        xyz:moveTo(0,0,lines-ii)
     end
 
     csv.close()
@@ -172,6 +180,8 @@ function refuel()
     fuel = turtle.getFuelLevel()
     while fuel < fmin do
         turtle.select(FUEL_SLOT)
+        xyz:turn("right")
+        turtle.drop()
         turtle.suckDown()
         turtle.refuel(64)
         fuel = turtle.getFuelLevel()
@@ -191,7 +201,6 @@ function reWatame()
         watameWait=true
         while watameWait do
 
-            turtle.suck()
             local itm = turtle.getItemDetail(i)
             if itm then
                 if itm["count"] == 64 then
@@ -200,12 +209,11 @@ function reWatame()
                 end
             else
                 print("Color"..i..":NG")
-                sleep(5)
+                xyz:moveTo(0,0,i)
+                turtle.suck()
+                sleep(0)
             end
         end
-
-        xyz:up(1)
-
     end
 
     xyz:moveTo(0,0,0)
