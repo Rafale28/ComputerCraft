@@ -151,7 +151,7 @@ function printing(csv)
             xyz:moveTo(-j,0,lines-ii)
 
             -- alpha channel
-            if ctonumber(c) == -1 then
+            if tonumber(c) == -1 then
                 --donothing
                 sleep(0)
             else
