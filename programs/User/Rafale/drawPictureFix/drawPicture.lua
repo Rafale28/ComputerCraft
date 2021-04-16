@@ -3,6 +3,7 @@ local dir = "drawPictureFix/"
 local senchoPic = dir.."sencho.nfp"
 local kasumiPic = dir.."kasumi.nfp"
 local aquaPic = dir.."aqua.nfp"
+local testPic = dir.."test.nfp"
 --local cmd = dir.."kasumi.clist"
 
 
@@ -68,6 +69,11 @@ mon.setTextScale(0.5)
 --shell.run(setColorFile)
 
 term.redirect(mon)
+
+img = paintutils.loadImage(testPic)
+paintutils.drawImage(img, 1, 1)
+sleep(20)
+
 while true do
   --print("set color.")
   senchoColor()
