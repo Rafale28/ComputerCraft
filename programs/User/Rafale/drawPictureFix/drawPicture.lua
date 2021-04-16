@@ -3,7 +3,6 @@ local dir = "drawPictureFix/"
 local pic = dir.."sencho.nfp"
 --local cmd = dir.."kasumi.clist"
 
-mon.setTextScale(0.5)
 
 function senchoColor()
   term.setTextColour(colors.white, 0xFDFDFB)
@@ -24,11 +23,17 @@ function senchoColor()
   term.setTextColour(colors.black, 0x413230)
 end
 
+mon.setTextScale(0.5)
 --print("set color.")
 --local setColorFile = fs.open(cmd)
 --shell.run(setColorFile)
 
-print("print util")
-term.redirect(mon)
-img = paintutils.loadImage(pic)
-paintutils.drawImage(img, 1, 1)
+while true do
+  print("set color.")
+  senchoColor()
+  print("print util")
+  term.redirect(mon)
+  img = paintutils.loadImage(pic)
+  paintutils.drawImage(img, 1, 1)
+  sleep(5)
+end
