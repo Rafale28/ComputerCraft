@@ -1,6 +1,8 @@
 local mon = peripheral.wrap("back")
 local dir = "drawPictureFix/"
-local pic = dir.."sencho.nfp"
+local senchoPic = dir.."sencho.nfp"
+local kasumiPic = dir.."kasumi.nfp"
+local aquaPic = dir.."aqua.nfp"
 --local cmd = dir.."kasumi.clist"
 
 
@@ -22,18 +24,65 @@ function senchoColor()
   term.setPaletteColour(colors.red, 0x889786)
   term.setPaletteColour(colors.black, 0x413230)
 end
+function kasumiColor()
+  tarm.setPaletteColour(colors.white, 0xC8BFC8)
+  tarm.setPaletteColour(colors.orange, 0xCCADA9)
+  tarm.setPaletteColour(colors.magenta, 0xE5DFDB)
+  tarm.setPaletteColour(colors.lightBlue, 0xF9F4EC)
+  tarm.setPaletteColour(colors.yellow, 0xAC9E93)
+  tarm.setPaletteColour(colors.lime, 0x3C4B9A)
+  tarm.setPaletteColour(colors.pink, 0x8A7669)
+  tarm.setPaletteColour(colors.gray, 0x883179)
+  tarm.setPaletteColour(colors.lightGray, 0xB1609F)
+  tarm.setPaletteColour(colors.cyan, 0x232B67)
+  tarm.setPaletteColour(colors.purple, 0x493848)
+  tarm.setPaletteColour(colors.blue, 0x6C625B)
+  tarm.setPaletteColour(colors.brown, 0x978975)
+  tarm.setPaletteColour(colors.green, 0x65AEC4)
+  tarm.setPaletteColour(colors.red, 0xBBBC6D)
+  tarm.setPaletteColour(colors.black, 0x729744)
+end
+function aquaColor()
+  term.setPaletteColour(colors.white, 0xFBF9F6)
+  term.setPaletteColour(colors.orange, 0xB8C7DE)
+  term.setPaletteColour(colors.magenta, 0xDFD3DA)
+  term.setPaletteColour(colors.lightBlue, 0xE2AFD2)
+  term.setPaletteColour(colors.yellow, 0xADB1CE)
+  term.setPaletteColour(colors.lime, 0xD397C6)
+  term.setPaletteColour(colors.pink, 0xA46A99)
+  term.setPaletteColour(colors.gray, 0x6B4F65)
+  term.setPaletteColour(colors.lightGray, 0xC26FB1)
+  term.setPaletteColour(colors.cyan, 0x6D8FB0)
+  term.setPaletteColour(colors.purple, 0x442A44)
+  term.setPaletteColour(colors.blue, 0xAB94A8)
+  term.setPaletteColour(colors.brown, 0xD59DAE)
+  term.setPaletteColour(colors.green, 0xEACFAE)
+  term.setPaletteColour(colors.red, 0x945D63)
+  term.setPaletteColour(colors.black, 0xBA9C52)
+end
+
 
 mon.setTextScale(0.5)
 --print("set color.")
 --local setColorFile = fs.open(cmd)
 --shell.run(setColorFile)
 
+term.redirect(mon)
 while true do
-  print("set color.")
+  --print("set color.")
   senchoColor()
-  print("print util")
-  term.redirect(mon)
-  img = paintutils.loadImage(pic)
+  --print("print util")
+  img = paintutils.loadImage(senchoPic)
   paintutils.drawImage(img, 1, 1)
-  sleep(5)
+  sleep(2)
+
+  kasumiColor()
+  img = paintutils.loadImage(kasumiPic)
+  paintutils.drawImage(img, 1, 1)
+  sleep(2)
+
+  aquaColor()
+  img = paintutils.loadImage(aquaPic)
+  paintutils.drawImage(img, 1, 1)
+  sleep(2)
 end
