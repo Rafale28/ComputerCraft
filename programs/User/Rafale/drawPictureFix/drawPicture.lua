@@ -3,6 +3,7 @@ local dir = "drawPictureFix/"
 local senchoPic = dir.."sencho.nfp"
 local kasumiPic = dir.."kasumi.nfp"
 local aquaPic = dir.."aqua.nfp"
+local tsunomakiPic = dir.."rock_0117.nfp"
 local testPic = dir.."test.nfp"
 --local cmd = dir.."kasumi.clist"
 
@@ -61,7 +62,24 @@ function aquaColor()
   term.setPaletteColour(colors.red, 0x945D63)
   term.setPaletteColour(colors.black, 0xBA9C52)
 end
-
+function tsunomakiColor()
+  term.setPaletteColour(colors.white, 0x0C1C2F)
+  term.setPaletteColour(colors.orange, 0x042B4D)
+  term.setPaletteColour(colors.magenta, 0x285B8E)
+  term.setPaletteColour(colors.lightBlue, 0x183154)
+  term.setPaletteColour(colors.yellow, 0x394055)
+  term.setPaletteColour(colors.lime, 0x6C8B9D)
+  term.setPaletteColour(colors.pink, 0x5F5E5C)
+  term.setPaletteColour(colors.gray, 0xE6D6CF)
+  term.setPaletteColour(colors.lightGray, 0xFBF7F2)
+  term.setPaletteColour(colors.cyan, 0xAAA4A6)
+  term.setPaletteColour(colors.purple, 0xFBF2D0)
+  term.setPaletteColour(colors.blue, 0xECD4AB)
+  term.setPaletteColour(colors.brown, 0xCD9F66)
+  term.setPaletteColour(colors.green, 0xE4B296)
+  term.setPaletteColour(colors.red, 0xBB3039)
+  term.setPaletteColour(colors.black, 0xB4071D)
+end
 
 mon.setTextScale(0.5)
 --print("set color.")
@@ -89,6 +107,11 @@ while true do
 
   aquaColor()
   img = paintutils.loadImage(aquaPic)
+  paintutils.drawImage(img, 1, 1)
+  sleep(2)
+
+  tsunomakiColor()
+  img = paintutils.loadImage(tsunomakiPic)
   paintutils.drawImage(img, 1, 1)
   sleep(2)
 end
