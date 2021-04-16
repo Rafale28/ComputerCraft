@@ -51,7 +51,7 @@ namespace imageConverter
             for (int i=0; i < clist.Count; i++)
             {
                 Common.DEBUG_PRINT("COLOR R:" + clist[i].R + " G:" + clist[i].G + " B:" + clist[i].B);
-                writer.WriteLine("tarm.setTextColour(colors."+ColorConvert.colorString[i] + ", 0x" + clist[i].R.ToString("X02") + clist[i].G.ToString("X02") + clist[i].B.ToString("X02") + ")");
+                writer.WriteLine("term.setTextColour(colors."+ColorConvert.colorString[i] + ", 0x" + clist[i].R.ToString("X02") + clist[i].G.ToString("X02") + clist[i].B.ToString("X02") + ")");
             }
             writer.Close();
         }
