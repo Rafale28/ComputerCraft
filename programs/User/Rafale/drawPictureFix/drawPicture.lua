@@ -17,9 +17,10 @@ function setColorPalette(cmdf)
   until cln == nil
   fh.close()
 end
-function drawPixelInternal( xPos, yPos )
+function drawPixelInternal( xPos, yPos, clr)
     term.setCursorPos( xPos, yPos )
-    term.write(" ")
+    --term.write(" ")
+    term.blit(" ", clr, clr)
 end
 
 function drawOneFrame(fh, xPos, yPos)
@@ -32,17 +33,16 @@ function drawOneFrame(fh, xPos, yPos)
   end
   for y=1, tonumber(fLine) do
     local px    = fh.readLine()
-    for x=1, #px do
-      if px[x] > 0 then
-        term.setBackgroundColor(px[x])
-        drawPixelInternal(x + xPos - 1, y + yPos - 1)
-      end
+    for x=1, string.len(px) do
+      --term.setBackgroundColor(tonumber(string.sub(px,x,x)))
+      drawPixelInternal(x + xPos - 1, y + yPos - 1, string.sub(px,x,x))
+      --end
     end
   end
 end
 
 function drawMvfImage(mvfPath, xPos, yPos)
-  local fh = fs.open(cmdf, 'r')
+  local fh = fs.open(mvfPath, 'r')
   frameNum = fh.readLine()
   for i=1, tonumber(frameNum) do
     drawOneFrame(fh, xPos, yPos)
