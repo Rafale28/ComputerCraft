@@ -1,5 +1,3 @@
-require "Yunamine/xyzAPI"
-
 --鉄インゴットの場所
 IRONINGOT_SLOT = 2
 
@@ -9,11 +7,7 @@ SHEAR_SLOT = 3
 --待機時間(s)
 WAITING = 10
 
-xyz=XyzApi.new()
-
 function unzipIron(n)
-
-    xyz:turn("front")
 
     wait = true
     while wait do
@@ -55,9 +49,8 @@ end
 
 function dropShear()
 
-    xyz:turn("back")
     turtle.select(SHEAR_SLOT)
-    turtle.drop()
+    turtle.dropDown()
 
 end
 
