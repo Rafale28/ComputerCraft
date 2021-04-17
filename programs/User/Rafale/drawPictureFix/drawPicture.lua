@@ -5,6 +5,7 @@ local dennisPic = dir.."dennis.nfp"
 local dennisCmd = dir.."dennis.clist"
 --local cmd = dir.."kasumi.clist"
 local dennisMvf = dir.."dennis.mvf"
+local rinaMvf = dir.."rina.mvf"
 
 function setColorPalette(cmdf)
   local fh = fs.open(cmdf, 'r')
@@ -46,6 +47,7 @@ function drawMvfImage(mvfPath, xPos, yPos)
   frameNum = fh.readLine()
   for i=1, tonumber(frameNum) do
     drawOneFrame(fh, xPos, yPos)
+    sleep(3)
   end
   fh.close()
 end

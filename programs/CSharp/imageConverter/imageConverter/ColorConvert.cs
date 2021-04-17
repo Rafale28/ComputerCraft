@@ -100,38 +100,41 @@ namespace imageConverter
         }
         public void checkPalette()
         {
-            Bitmap i = imgStr[0].getBitmap();
-            int bmpWidth = i.Width;
-            int bmpHeight = i.Height;
-            Common.DEBUG_PRINT("showColor");
-            for (int hCount = 0; hCount < bmpHeight; hCount++)
-            {
-                for (int wCount = 0; wCount < bmpWidth; wCount++)
+            foreach (ColorConvert.ImageStr img in imgStr) {
+                //Bitmap i = imgStr[0].getBitmap();
+                Bitmap i = img.getBitmap();
+                int bmpWidth = i.Width;
+                int bmpHeight = i.Height;
+                Common.DEBUG_PRINT("showColor");
+                for (int hCount = 0; hCount < bmpHeight; hCount++)
                 {
-                    if (imgStr[0].getColorList().Count < 1)
+                    for (int wCount = 0; wCount < bmpWidth; wCount++)
                     {
-                        imgStr[0].getColorList().Add(i.GetPixel(wCount, hCount));
-                        //colorList.Add(i.GetPixel(wCount, hCount));
-                        showColor(i.GetPixel(wCount, hCount));
-                    }
-                    else
-                    {
-                        //foreach(Color c in colorList)
-                        bool flag = false;
-                        for(int cnt=0; cnt < imgStr[0].getColorList().Count; cnt++)
+                        if (img.getColorList().Count < 1)
                         {
-                            if (i.GetPixel(wCount, hCount).R == imgStr[0].getColorList()[cnt].R &&
-                                i.GetPixel(wCount, hCount).G == imgStr[0].getColorList()[cnt].G &&
-                                i.GetPixel(wCount, hCount).B == imgStr[0].getColorList()[cnt].B)
-                            {
-                                flag = true;
-                            }
-                        }
-                        if(!flag)
-                        {
-                            imgStr[0].getColorList().Add(i.GetPixel(wCount, hCount));
+                            img.getColorList().Add(i.GetPixel(wCount, hCount));
+                            //colorList.Add(i.GetPixel(wCount, hCount));
                             showColor(i.GetPixel(wCount, hCount));
+                        }
+                        else
+                        {
+                            //foreach(Color c in colorList)
+                            bool flag = false;
+                            for (int cnt = 0; cnt < img.getColorList().Count; cnt++)
+                            {
+                                if (i.GetPixel(wCount, hCount).R == img.getColorList()[cnt].R &&
+                                    i.GetPixel(wCount, hCount).G == img.getColorList()[cnt].G &&
+                                    i.GetPixel(wCount, hCount).B == img.getColorList()[cnt].B)
+                                {
+                                    flag = true;
+                                }
+                            }
+                            if (!flag)
+                            {
+                                img.getColorList().Add(i.GetPixel(wCount, hCount));
+                                showColor(i.GetPixel(wCount, hCount));
 
+                            }
                         }
                     }
                 }
