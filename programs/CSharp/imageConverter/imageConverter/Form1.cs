@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace imageConverter
 {
     public partial class Form1 : Form
     {
-        public static readonly String VERSION = "1.0.0";
+        public static readonly String VERSION = "1.1.0";
         [System.Runtime.InteropServices.DllImport("kernel32.dll")] 
         private static extern bool AllocConsole();
         public Form1()
@@ -56,9 +57,21 @@ namespace imageConverter
                 List<Image> image;
                 image=new List<Image>();
                 List<String> fname = new List<String>();
+                String convertBin = "convert.exe";
                 foreach (String filename in openFileDialog1.FileNames)
                 {
-                    image.Add(Image.FromFile(filename));
+                    if ((Mode)mode == Mode.AdvancedMonitor)
+                    {
+                        String cmdOption = filename + " -resize " + width.ToString() + "x" + height.ToString() +
+                            "! -colors 16 " + Path.GetFileNameWithoutExtension(filename) + ".bmp";
+                        Process p = Process.Start(convertBin, cmdOption);
+                        Common.DEBUG_PRINT("Process " + convertBin + " " + cmdOption);
+                        p.WaitForExit();
+                        image.Add(Image.FromFile(Path.GetFileNameWithoutExtension(filename) + ".bmp"));
+                    } else
+                    {
+                        image.Add(Image.FromFile(filename));
+                    }
                     fname.Add(Path.GetFileNameWithoutExtension(filename));
                 }
 
@@ -86,18 +99,19 @@ namespace imageConverter
             {
 
                 ColorConvert.ImageStr istr = new ColorConvert.ImageStr();
-                Bitmap b = new Bitmap(width, height);
-                Graphics graphics = Graphics.FromImage(b);
-                System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes();
-                wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
-                graphics.DrawImage(i, new Rectangle(0, 0, width, height), 0, 0, i.Width, i.Height, GraphicsUnit.Pixel, wrapMode);
+                //Bitmap b = new Bitmap(width, height);
+                Bitmap b = (Bitmap)i;
+                //Graphics graphics = Graphics.FromImage(b);
+                //System.Drawing.Imaging.ImageAttributes wrapMode = new System.Drawing.Imaging.ImageAttributes();
+                //wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                //graphics.DrawImage(i, new Rectangle(0, 0, width, height), 0, 0, i.Width, i.Height, GraphicsUnit.Pixel, wrapMode);
                 istr.setImage(fname[c], b);
                 imgstr.Add(istr);
                 c++;
             }
 
             ColorConvert cvt = new ColorConvert(imgstr);
-            cvt.doColorConvert();
+            cvt.checkPalette();
 #if DEBUG
             pictureBox1.ClientSize = new Size(width, height);
             pictureBox1.Image = (Image)imgstr[0].getBitmap();
@@ -116,6 +130,7 @@ namespace imageConverter
             //未実装だからリリースビルドでは実行しない
 #if DEBUG
                 case Mode.WoolArt:
+                    cvt.doColorConvert();
                     Common.DEBUG_PRINT("Mode:WoolArt");
                     ret = WoolArt.doConvert(imgstr[0]);
                     break;

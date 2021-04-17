@@ -22,4 +22,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(ProjectDir)\Resources\convert.exe $(OutDir)\" />
+  </Target>
+
 </Project>

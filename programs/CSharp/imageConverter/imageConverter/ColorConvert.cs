@@ -11,19 +11,23 @@ namespace imageConverter
     {
         private List<Bitmap> img;
         private List<ImageStr> imgStr;
+        //private List<Color> colorList;
         public ColorConvert(List<ImageStr> srcStr)
         {
             imgStr = srcStr;
+            //colorList = new List<Color>();
         }
 
         public struct ImageStr
         {
             private String fileName;
             private Bitmap bitmap;
+            private List<Color> colorList;
             public void setImage(String fn, Bitmap bmp)
             {
                 fileName = fn;
                 bitmap = bmp;
+                colorList = new List<Color>();
             }
 
             public String getFileName()
@@ -33,6 +37,10 @@ namespace imageConverter
             public Bitmap getBitmap()
             {
                 return bitmap;
+            }
+            public List<Color> getColorList()
+            {
+                return colorList;
             }
         }
 
@@ -55,6 +63,25 @@ namespace imageConverter
             Color.Black
          };
 
+        public static String[] colorString = { 
+            "white",
+            "orange",
+            "magenta",
+            "lightBlue",
+            "yellow",
+            "lime",
+            "pink",
+            "gray",
+            "lightGray",
+            "cyan",
+            "purple",
+            "blue",
+            "brown",
+            "green",
+            "red",
+            "black"
+         };
+
         private static double MAX = Math.Sqrt(3);
         private double getDefference(Color src, Color dst)
         {
@@ -65,6 +92,51 @@ namespace imageConverter
             double deff = Math.Sqrt(rd * rd + gd * gd + bd * bd) / MAX;
             return deff;
 
+        }
+
+        private void showColor(Color c)
+        {
+            Common.DEBUG_PRINT("COLOR R:" + c.R + " G:" + c.G + " B:" + c.B);
+        }
+        public void checkPalette()
+        {
+            Bitmap i = imgStr[0].getBitmap();
+            int bmpWidth = i.Width;
+            int bmpHeight = i.Height;
+            Common.DEBUG_PRINT("showColor");
+            for (int hCount = 0; hCount < bmpHeight; hCount++)
+            {
+                for (int wCount = 0; wCount < bmpWidth; wCount++)
+                {
+                    if (imgStr[0].getColorList().Count < 1)
+                    {
+                        imgStr[0].getColorList().Add(i.GetPixel(wCount, hCount));
+                        //colorList.Add(i.GetPixel(wCount, hCount));
+                        showColor(i.GetPixel(wCount, hCount));
+                    }
+                    else
+                    {
+                        //foreach(Color c in colorList)
+                        bool flag = false;
+                        for(int cnt=0; cnt < imgStr[0].getColorList().Count; cnt++)
+                        {
+                            if (i.GetPixel(wCount, hCount).R == imgStr[0].getColorList()[cnt].R &&
+                                i.GetPixel(wCount, hCount).G == imgStr[0].getColorList()[cnt].G &&
+                                i.GetPixel(wCount, hCount).B == imgStr[0].getColorList()[cnt].B)
+                            {
+                                flag = true;
+                            }
+                        }
+                        if(!flag)
+                        {
+                            imgStr[0].getColorList().Add(i.GetPixel(wCount, hCount));
+                            showColor(i.GetPixel(wCount, hCount));
+
+                        }
+                    }
+                }
+            }
+            Common.DEBUG_PRINT("List Count:" + imgStr[0].getColorList().Count);
         }
         private int getMin(Color src)
         {
