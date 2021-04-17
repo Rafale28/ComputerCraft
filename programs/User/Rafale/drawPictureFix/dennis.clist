@@ -1,16 +1,32 @@
-colors.white, 0x4C2A18
-colors.orange, 0x31190D
-colors.magenta, 0x5D2F1F
-colors.lightBlue, 0x563624
-colors.yellow, 0x9B523D
-colors.lime, 0x2D1E14
-colors.pink, 0x5B5A56
-colors.gray, 0xBF8E72
-colors.lightGray, 0xB4AEB0
-colors.cyan, 0x6B828E
-colors.purple, 0xE6AD96
-colors.blue, 0x9D6D55
-colors.brown, 0xD3D8E1
-colors.green, 0xBAC7D5
-colors.red, 0xCEDAE6
-colors.black, 0xD8E4EF
+1
+ 0x4C2A18
+2
+ 0x31190D
+4
+ 0x5C2F1F
+8
+ 0x553624
+16
+ 0x9A523C
+32
+ 0x2D1D14
+64
+ 0x5B5A56
+128
+ 0x6C828E
+256
+ 0xBF8E72
+512
+ 0xB4AEB0
+1024
+ 0x9D6D55
+2048
+ 0xE6AD96
+4096
+ 0xD3D8E1
+8192
+ 0xD8E4EF
+16384
+ 0xB9C7D5
+32768
+ 0xCFDAE6

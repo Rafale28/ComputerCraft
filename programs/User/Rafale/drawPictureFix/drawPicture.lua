@@ -86,8 +86,9 @@ end
 function setColorPalette(cmdf)
   local fh = fs.open(cmdf)
   repeat
-    line = fh.readLine()
-    term.setPaletteColour(line)
+    cln = fh.readLine()
+    coln = fh.readLine()
+    term.setPaletteColour(tonumber(cln), tonumber(coln))
   until line == nil
   fh.close()
 end

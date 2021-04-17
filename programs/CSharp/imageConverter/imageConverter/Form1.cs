@@ -14,7 +14,7 @@ namespace imageConverter
 {
     public partial class Form1 : Form
     {
-        public static readonly String VERSION = "1.0.0";
+        public static readonly String VERSION = "1.1.0";
         [System.Runtime.InteropServices.DllImport("kernel32.dll")] 
         private static extern bool AllocConsole();
         public Form1()
@@ -60,13 +60,18 @@ namespace imageConverter
                 String convertBin = "convert.exe";
                 foreach (String filename in openFileDialog1.FileNames)
                 {
-                    String cmdOption = filename + " -resize " + width.ToString() + "x" + height.ToString() + 
-                        "! -colors 16 " + Path.GetFileNameWithoutExtension(filename) + ".bmp";
-                    Process p = Process.Start(convertBin, cmdOption);
-                    Common.DEBUG_PRINT("Process " + convertBin + " " + cmdOption);
-                    p.WaitForExit();
-                    //image.Add(Image.FromFile(filename));
-                    image.Add(Image.FromFile(Path.GetFileNameWithoutExtension(filename) + ".bmp"));
+                    if ((Mode)mode == Mode.AdvancedMonitor)
+                    {
+                        String cmdOption = filename + " -resize " + width.ToString() + "x" + height.ToString() +
+                            "! -colors 16 " + Path.GetFileNameWithoutExtension(filename) + ".bmp";
+                        Process p = Process.Start(convertBin, cmdOption);
+                        Common.DEBUG_PRINT("Process " + convertBin + " " + cmdOption);
+                        p.WaitForExit();
+                        image.Add(Image.FromFile(Path.GetFileNameWithoutExtension(filename) + ".bmp"));
+                    } else
+                    {
+                        image.Add(Image.FromFile(filename));
+                    }
                     fname.Add(Path.GetFileNameWithoutExtension(filename));
                 }
 
