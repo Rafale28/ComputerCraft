@@ -84,7 +84,7 @@ function tsunomakiColor()
 end
 
 function setColorPalette(cmdf)
-  local fh = fs.open(cmdf)
+  local fh = fs.open(cmdf, 'r')
   repeat
     cln = fh.readLine()
     coln = fh.readLine()
