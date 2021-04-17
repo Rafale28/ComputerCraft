@@ -17,15 +17,6 @@ function setColorPalette(cmdf)
   until cln == nil
   fh.close()
 end
-mon.setTextScale(0.5)
-term.redirect(mon)
-
-term.setPaletteColour(colors.black, 0x000000)
-paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
---img = paintutils.loadImage(testPic)
---paintutils.drawImage(img, 1, 1)
---sleep(2)
-
 function drawPixelInternal( xPos, yPos )
     term.setCursorPos( xPos, yPos )
     term.write(" ")
@@ -58,9 +49,20 @@ function drawMvfImage(mvfPath, xPos, yPos)
   end
   fh.close()
 end
+
+mon.setTextScale(0.5)
+term.redirect(mon)
+
+term.setPaletteColour(colors.black, 0x000000)
+paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
+--img = paintutils.loadImage(testPic)
+--paintutils.drawImage(img, 1, 1)
+--sleep(2)
+
 while true do
-  setColorPalette(dennisCmd)
-  img = paintutils.loadImage(dennisPic)
-  paintutils.drawImage(img, 1, 1)
+  drawMvfImage(dennisMvf, 1, 1)
+  --setColorPalette(dennisCmd)
+  --img = paintutils.loadImage(dennisPic)
+  --paintutils.drawImage(img, 1, 1)
   sleep(2)
 end
