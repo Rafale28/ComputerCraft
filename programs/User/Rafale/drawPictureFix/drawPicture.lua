@@ -84,11 +84,12 @@ function tsunomakiColor()
 end
 
 function setColorPalette(cmdf)
-  local fh = fs.open(cmd)
+  local fh = fs.open(cmdf)
   repeat
     line = fh.readLine()
     term.setPaletteColour(line)
-  until 
+  until line == nil
+  fh.close()
 end
 mon.setTextScale(0.5)
 --print("set color.")
@@ -97,13 +98,15 @@ mon.setTextScale(0.5)
 
 term.redirect(mon)
 
+term.setPaletteColour(colors.black, 0x000000)
+paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
 img = paintutils.loadImage(testPic)
 paintutils.drawImage(img, 1, 1)
-sleep(20)
+sleep(2)
 
 while true do
   setColorPalette(dennisCmd)
-  img = paintutils.loadImage(dennisPicPic)
+  img = paintutils.loadImage(dennisPic)
   paintutils.drawImage(img, 1, 1)
   sleep(2)
   --senchoColor()
