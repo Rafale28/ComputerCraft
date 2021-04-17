@@ -9,6 +9,8 @@ SHEAR_SLOT = 3
 --待機時間(s)
 WAITING = 10
 
+xyz=XyzApi.new()
+
 function unzipIron(n)
 
     xyz:turn("front")
