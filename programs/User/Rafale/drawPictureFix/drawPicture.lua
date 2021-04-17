@@ -63,7 +63,7 @@ paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
 --sleep(2)
 
 while true do
-  drawMvfImage(tsnomakiMvf, 1, 1)
+  drawMvfImage(tsunomakiMvf, 1, 1)
   --setColorPalette(dennisCmd)
   --img = paintutils.loadImage(dennisPic)
   --paintutils.drawImage(img, 1, 1)
