@@ -14,7 +14,7 @@ function setColorPalette(cmdf)
       coln = fh.readLine()
       term.setPaletteColour(tonumber(cln), tonumber(coln))
     end
-  until line == nil
+  until cln == nil
   fh.close()
 end
 mon.setTextScale(0.5)
@@ -22,10 +22,42 @@ term.redirect(mon)
 
 term.setPaletteColour(colors.black, 0x000000)
 paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
-img = paintutils.loadImage(testPic)
-paintutils.drawImage(img, 1, 1)
-sleep(2)
+--img = paintutils.loadImage(testPic)
+--paintutils.drawImage(img, 1, 1)
+--sleep(2)
 
+function drawPixelInternal( xPos, yPos )
+    term.setCursorPos( xPos, yPos )
+    term.write(" ")
+end
+
+function drawOneFrame(fh, xPos, yPos)
+  colorNum = fh.readLine()
+  fLine    = fh.readLine()
+  for i=1, tonumber(colorNum) do
+    cln = fh.readLine()
+    coln = fh.readLine()
+    term.setPaletteColour(tonumber(cln), tonumber(coln))
+  end
+  for y=1, tonumber(fLine) do
+    local px    = fh.readLine()
+    for x=1, #px do
+      if px[x] > 0 then
+        term.setBackgroundColor(px[x])
+        drawPixelInternal(x + xPos - 1, y + yPos - 1)
+      end
+    end
+  end
+end
+
+function drawMvfImage(mvfPath, xPos, yPos)
+  local fh = fs.open(cmdf, 'r')
+  frameNum = fh.readLine()
+  for i=1, tonumber(frameNum) do
+    drawOneFrame(fh, xPos, yPos)
+  end
+  fh.close()
+end
 while true do
   setColorPalette(dennisCmd)
   img = paintutils.loadImage(dennisPic)
