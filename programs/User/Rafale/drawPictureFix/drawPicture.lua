@@ -5,6 +5,8 @@ local kasumiPic = dir.."kasumi.nfp"
 local aquaPic = dir.."aqua.nfp"
 local tsunomakiPic = dir.."rock_0117.nfp"
 local testPic = dir.."test.nfp"
+local dennisPic = dir.."dennis.nfp"
+local dennisCmd = dir.."dennis.clist"
 --local cmd = dir.."kasumi.clist"
 
 
@@ -81,6 +83,13 @@ function tsunomakiColor()
   term.setPaletteColour(colors.black, 0xB4071D)
 end
 
+function setColorPalette(cmdf)
+  local fh = fs.open(cmd)
+  repeat
+    line = fh.readLine()
+    term.setPaletteColour(line)
+  until 
+end
 mon.setTextScale(0.5)
 --print("set color.")
 --local setColorFile = fs.open(cmd)
@@ -93,25 +102,27 @@ paintutils.drawImage(img, 1, 1)
 sleep(20)
 
 while true do
-  --print("set color.")
-  senchoColor()
-  --print("print util")
-  img = paintutils.loadImage(senchoPic)
+  setColorPalette(dennisCmd)
+  img = paintutils.loadImage(dennisPicPic)
   paintutils.drawImage(img, 1, 1)
   sleep(2)
+  --senchoColor()
+  --img = paintutils.loadImage(senchoPic)
+  --paintutils.drawImage(img, 1, 1)
+  --sleep(2)
 
-  kasumiColor()
-  img = paintutils.loadImage(kasumiPic)
-  paintutils.drawImage(img, 1, 1)
-  sleep(2)
+  --kasumiColor()
+  --img = paintutils.loadImage(kasumiPic)
+  --paintutils.drawImage(img, 1, 1)
+  --sleep(2)
 
-  aquaColor()
-  img = paintutils.loadImage(aquaPic)
-  paintutils.drawImage(img, 1, 1)
-  sleep(2)
+  --aquaColor()
+  --img = paintutils.loadImage(aquaPic)
+  --paintutils.drawImage(img, 1, 1)
+  --sleep(2)
 
-  tsunomakiColor()
-  img = paintutils.loadImage(tsunomakiPic)
-  paintutils.drawImage(img, 1, 1)
-  sleep(2)
+  --tsunomakiColor()
+  --img = paintutils.loadImage(tsunomakiPic)
+  --paintutils.drawImage(img, 1, 1)
+  --sleep(2)
 end
