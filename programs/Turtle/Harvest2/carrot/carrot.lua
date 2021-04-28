@@ -225,6 +225,16 @@ xyz:moveToRelative(0,0,-1)
 xyz:moveTo(0,0,0)
 xyz:turn("front")
 
+--check initialized position
+xyz:turn("back")
+
+--keep back while a half block detected
+while ~ turtle.forward() do
+    print("back...")    
+end
+
+xyz:turn("front")
+
 -- Main
 -- Laneの数を指定(1Laneは32*4のブロック)
 hLane = 2
