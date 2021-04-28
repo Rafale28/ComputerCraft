@@ -1,72 +1,72 @@
--- —¼˜e‚ÉƒKƒ‰ƒX‚ğ’u‚­
+-- ä¸¡è„‡ã«ã‚¬ãƒ©ã‚¹ã‚’ç½®ã
 function place_block_sides()
-  -- ¶‘¤
+  -- å·¦å´
   turtle.turnLeft()
   turtle.dig()
   turtle.place()
   
-  -- ‰E‘¤(U‚è•Ô‚é)
+  -- å³å´(æŒ¯ã‚Šè¿”ã‚‹)
   for i = 1, 2 do
     turtle.turnLeft()
   end
   turtle.dig()
   turtle.place()
 
-  -- ³–Ê‚ÉŒü‚«‚È‚¨‚é
+  -- æ­£é¢ã«å‘ããªãŠã‚‹
   turtle.turnLeft()
 end
 
--- ‰º’i‚ÌƒKƒ‰ƒXİ’u
+-- ä¸‹æ®µã®ã‚¬ãƒ©ã‚¹è¨­ç½®
 function place_lower()
-  -- ^‰º
+  -- çœŸä¸‹
   turtle.digDown()
   turtle.placeDown()
   
-  -- —¼˜e
+  -- ä¸¡è„‡
   place_block_sides()
 end
 
--- ã’i‚ÌƒKƒ‰ƒXİ’u
+-- ä¸Šæ®µã®ã‚¬ãƒ©ã‚¹è¨­ç½®
 function place_upper()
-  -- ^ã
+  -- çœŸä¸Š
   turtle.digUp()
   turtle.placeUp()
   
-  -- —¼˜e
+  -- ä¸¡è„‡
   place_block_sides()
 end
 
 --
--- c2ƒ}ƒX‚Ì‹óŠÔ‚ğƒKƒ‰ƒX‚ÅˆÍ‚¤
+-- ç¸¦2ãƒã‚¹ã®ç©ºé–“ã‚’ã‚¬ãƒ©ã‚¹ã§å›²ã†
 --
 
 for i = 1, 5 do
-  -- ³–Ê‚Éi‚Ş
+  -- æ­£é¢ã«é€²ã‚€
   turtle.dig()
   turtle.forward()
   
-  -- ‰º’i‚©‚çã’i(rise)
+  -- ä¸‹æ®µã‹ã‚‰ä¸Šæ®µ(rise)
   if (i % 2) == 0 then
-    -- ‰º’i‚Ìİ’u
+    -- ä¸‹æ®µã®è¨­ç½®
     place_lower()
     
-    -- ã’i‚ÉˆÚ“®
+    -- ä¸Šæ®µã«ç§»å‹•
     turtle.digUp()
     turtle.up()
     
-    -- ã’i‚Ìİ’u
+    -- ä¸Šæ®µã®è¨­ç½®
     place_upper()
 
-  -- ã’i‚©‚ç‰º’i(fall)
+  -- ä¸Šæ®µã‹ã‚‰ä¸‹æ®µ(fall)
   else
-    -- ã’i‚Ìİ’u
+    -- ä¸Šæ®µã®è¨­ç½®
     place_upper()
 
-    -- ‰º’i‚ÉˆÚ“®
+    -- ä¸‹æ®µã«ç§»å‹•
     turtle.digDown()
     turtle.down()
 
-    -- ‰º’i‚Ìİ’u
+    -- ä¸‹æ®µã®è¨­ç½®
     place_lower()
 
   end
