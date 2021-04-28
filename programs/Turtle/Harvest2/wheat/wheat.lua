@@ -198,7 +198,7 @@ xyz:moveTo(0,0,0)
 xyz:turn("front")
 
 --check initialized position
-xyz:turn("back")
+--xyz:turn("back")
 
 --keep back while a half block detected
 while not(turtle.detect()) do
