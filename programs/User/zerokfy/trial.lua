@@ -1,5 +1,5 @@
 -- —¼˜e‚ÉƒKƒ‰ƒX‚ğ’u‚­
-function place_block_sides
+function place_block_sides()
   -- ¶‘¤
   turtle.turnLeft()
   turtle.dig()
