@@ -45,9 +45,9 @@ namespace imageConverter
             }
             return ret;
         }
-        private static void dumpColor(String fn, List<Color> clist)
+        private static void dumpColor(String fn, List<Color> clist, StreamWriter writer)
         {
-            StreamWriter writer = new StreamWriter(fn +".clist");
+            //StreamWriter writer = new StreamWriter(fn +".clist");
             for (int i=0; i < clist.Count; i++)
             {
                 Common.DEBUG_PRINT("COLOR R:" + clist[i].R + " G:" + clist[i].G + " B:" + clist[i].B);
@@ -55,18 +55,22 @@ namespace imageConverter
                 writer.WriteLine((1 << i).ToString());
                 writer.WriteLine("0x" + clist[i].R.ToString("X02") + clist[i].G.ToString("X02") + clist[i].B.ToString("X02"));
             }
-            writer.Close();
+            //writer.Close();
         }
         public static int doConvert(List<ColorConvert.ImageStr> img)
         {
+            StreamWriter writer = new StreamWriter(img[0].getFileName()+".mvf");
+            writer.WriteLine(img.Count());
             foreach (ColorConvert.ImageStr i in img)
             {
                 Common.DEBUG_PRINT("Convert to AdvancedMonitor format...");
-                StreamWriter writer = new StreamWriter(i.getFileName()+".nfp");
+                //StreamWriter writer = new StreamWriter(i.getFileName()+".nfp");
                 int bmpWidth = i.getBitmap().Width;
                 int bmpHeight = i.getBitmap().Height;
                 int num = -1;
-                dumpColor(i.getFileName(), i.getColorList());
+                writer.WriteLine(i.getColorList().Count);
+                writer.WriteLine(bmpHeight);
+                dumpColor(i.getFileName(), i.getColorList(), writer);
                 for (int hCount = 0; hCount < bmpHeight; hCount++)
                 {
                     for (int wCount = 0; wCount < bmpWidth; wCount++)
@@ -77,8 +81,8 @@ namespace imageConverter
                     }
                     writer.Write("\n");
                 }
-                writer.Close();
             }
+            writer.Close();
             Common.DEBUG_PRINT("Color Convert finished");
             return 0;
         }
