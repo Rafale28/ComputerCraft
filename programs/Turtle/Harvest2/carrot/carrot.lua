@@ -229,7 +229,7 @@ xyz:turn("front")
 xyz:turn("back")
 
 --keep back while a half block detected
-while not(turtle.forward()) do
+while not(turtle.detect()) do
     print("back...")    
 end
 
