@@ -39,9 +39,7 @@ end
 --
 -- 縦2マスの空間をガラスで囲う
 --
-
--- 引数では上下1マスずつ掘り進む距離を指定するので2倍する
-iter = arg[1] * 2
+iter = arg[1]
 
 -- スロット番号16の燃料をすべて補給
 turtle.select(16)
@@ -76,5 +74,17 @@ for i = 1, iter do
     place_lower()
 
   end
+end
+
+-- 終了処理
+-- 前2マスを埋める
+if (iter % 2) == 0 then
+  turtle.place()
+  turtle.up()
+  turtle.place()
+else
+  turtle.place()
+  turtle.down()
+  turtle.place()
 end
 
