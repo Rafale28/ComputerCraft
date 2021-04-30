@@ -40,7 +40,14 @@ end
 -- 縦2マスの空間をガラスで囲う
 --
 
-for i = 1, 5 do
+-- スロット番号16の燃料をすべて補給
+turtle.select(16)
+turtle.refuel()
+
+-- スロット番号を1に戻す
+turtle.select(1)
+
+for i = 1, arg[1] do
   -- 正面に進む
   turtle.dig()
   turtle.forward()
