@@ -40,16 +40,14 @@ end
 -- 縦2マスの空間をガラスで囲う
 --
 
-iter = arg[1]
+-- 引数では上下1マスずつ掘り進む距離を指定するので2倍する
+iter = arg[1] * 2
 
 -- スロット番号16の燃料をすべて補給
 turtle.select(16)
 turtle.refuel()
 turtle.select(1)
 
--- 最初だけ一歩前に出る
-turtle.dig()
-turtle.forward()
 
 for i = 1, iter do
   -- 正面に進む
@@ -57,15 +55,12 @@ for i = 1, iter do
   turtle.forward()
   
   -- 下段から上段(rise)
-  if (i % 2) == 0 then
-    -- 下段の設置
+  if (i % 2) == 1 then
     place_lower()
     
-    -- 上段に移動
     turtle.digUp()
     turtle.up()
     
-    -- 上段の設置
     place_upper()
 
   -- 上段から下段(fall)
