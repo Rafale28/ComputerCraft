@@ -7,6 +7,7 @@ local dennisCmd = dir.."dennis.clist"
 local dennisMvf = dir.."dennis.mvf"
 local rinaMvf = dir.."rina.mvf"
 local tsunomakiMvf = dir.."tsunomaki.mvf"
+local aquaMvf = dir.."cinderella_aqua.mvf"
 
 function setColorPalette(cmdf)
   local fh = fs.open(cmdf, 'r')
@@ -63,7 +64,8 @@ paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
 --sleep(2)
 
 while true do
-  drawMvfImage(tsunomakiMvf, 1, 1)
+  --drawMvfImage(tsunomakiMvf, 1, 1)
+  drawMvfImage(aquaMvf, 1, 1)
   --setColorPalette(dennisCmd)
   --img = paintutils.loadImage(dennisPic)
   --paintutils.drawImage(img, 1, 1)
