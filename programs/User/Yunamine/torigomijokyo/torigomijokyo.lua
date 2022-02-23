@@ -28,8 +28,6 @@ end
 -- #############
 -- Main
 
--- initialize
-initialize()
 
 while true do
     routine()
