@@ -55,7 +55,7 @@ function routine()
 -- 3. チキン狩り(全滅するまで)
     exist=true
     while exist do
-        local res,x=turtle.atack()
+        local res,x=turtle.attack()
         exist=res
     end
 
