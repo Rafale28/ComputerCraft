@@ -3,10 +3,10 @@
 
 function rowAction()
 
-    turtle.select(i)
+    turtle.select(1)
 
     turtle.suck()
-    itemdetail=turtle.getItemDetail(i)
+    itemdetail=turtle.getItemDetail(1)
                     
     if itemdetail ~= nil then          
         if itemdetail["name"] ~= "minecraft:chicken" then
