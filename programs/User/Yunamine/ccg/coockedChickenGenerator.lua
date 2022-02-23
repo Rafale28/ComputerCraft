@@ -28,7 +28,7 @@ function initialize()
 
     print("----initializing----")
 
-    print("Open the log file")
+    print("STEP1:Open the log file")
     -- 1. チキン狩り発動までの残り時間をファイルから確認
     --ある場合は残り時間を更新
     if fs.exists(logname) then
@@ -47,12 +47,15 @@ end
  
 function routine()
 -- 2. 1で確認した時間待機(しつつ残り時間をファイルに更新していく)
+    print("STEP2:Wait for the chickens grow up")
     for i=estimate,0,-1 do 
         sleep(1)
         updateLog(i)
+        print(i.."secs")
     end
 
 -- 3. チキン狩り(全滅するまで)
+    print("STEP3:Hunting the chickens")
     exist=true
     while exist do
         local res,x=turtle.attack()
@@ -60,6 +63,7 @@ function routine()
     end
 
 -- 4. 卵発射(なくなるまで？)
+    print("STEP4:Launch the eggs")
     for i = 1, 16 do
         turtle.select(i)
         local itm = turtle.getItemDetail(i)
