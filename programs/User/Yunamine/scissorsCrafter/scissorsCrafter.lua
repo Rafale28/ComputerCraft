@@ -38,13 +38,9 @@ end
 function craft(t)
 
     --鉄1を配置
-    initialize()
-    turtle.turnLeft()
     while place(3) do sleep(t) end
 
     --鉄2を配置
-    initialize()
-    turtle.turnRight()
     while place(5) do sleep(t) end
 
     --クラフト
