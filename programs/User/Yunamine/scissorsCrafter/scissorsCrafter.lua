@@ -22,7 +22,7 @@ function place(pos)
     --そもそも拾えたかどうか
     if itemdetail ~= nil then    
      
-        oK=true
+        ok=true
      
     else
 
