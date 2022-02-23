@@ -14,7 +14,7 @@ function place(pos)
     turtle.select(pos)
 
     --ひとつづつ作る
-    turtle.suck(1) 
+    turtle.suckUp(1) 
 
     --拾ったアイテムを分析
     itemdetail=turtle.getItemDetail(pos)
@@ -61,11 +61,11 @@ end
 function startCondition()
 
     turtle.select(9)
-    local res,x=turtle.suckDown()
+    local res,x=turtle.suck()
 
     --下のホッパーにアイテムがあったとき
     if res then
-        turtle.dropDown()
+        turtle.drop()
         return false
     else
         return true
