@@ -41,7 +41,7 @@ function craft(t)
     while place(3) do sleep(t) end
 
     --鉄2を配置
-    while place(5) do sleep(t) end
+    while place(6) do sleep(t) end
 
     --クラフト
     turtle.select(4)
