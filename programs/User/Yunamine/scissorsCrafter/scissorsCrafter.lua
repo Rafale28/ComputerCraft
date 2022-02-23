@@ -22,7 +22,7 @@ function place(pos)
     --そもそも拾えたかどうか
     if itemdetail ~= nil then    
      
-        OK=true
+        oK=true
      
     else
 
@@ -38,9 +38,7 @@ end
 function craft(t)
 
     --鉄1を配置
-    print("a")
     while place(3) do sleep(t) end
-    print("b")
 
     --鉄2を配置
     while place(5) do sleep(t) end
