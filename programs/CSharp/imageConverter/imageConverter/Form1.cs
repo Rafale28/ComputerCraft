@@ -58,13 +58,24 @@ namespace imageConverter
                 image=new List<Image>();
                 List<String> fname = new List<String>();
                 String convertBin = "convert.exe";
+                int fcnt = openFileDialog1.FileNames.Length;
+                progressBar1.Minimum = 0;
+                progressBar1.Maximum = fcnt;
+                int pcount = 0;
                 foreach (String filename in openFileDialog1.FileNames)
                 {
                     if ((Mode)mode == Mode.AdvancedMonitor)
                     {
                         String cmdOption = filename + " -resize " + width.ToString() + "x" + height.ToString() +
                             "! -colors 16 " + Path.GetFileNameWithoutExtension(filename) + ".bmp";
-                        Process p = Process.Start(convertBin, cmdOption);
+                        ProcessStartInfo psi = new ProcessStartInfo();
+                        psi.FileName = convertBin;
+                        psi.Arguments = cmdOption;
+                        psi.WindowStyle = ProcessWindowStyle.Hidden;
+                        psi.CreateNoWindow = true;
+                        //Process p = Process.Start(convertBin, cmdOption);
+                        Process p = Process.Start(psi);
+
                         Common.DEBUG_PRINT("Process " + convertBin + " " + cmdOption);
                         p.WaitForExit();
                         image.Add(Image.FromFile(Path.GetFileNameWithoutExtension(filename) + ".bmp"));
@@ -73,7 +84,10 @@ namespace imageConverter
                         image.Add(Image.FromFile(filename));
                     }
                     fname.Add(Path.GetFileNameWithoutExtension(filename));
+                    pcount++;
+                    progressBar1.Value = pcount;
                 }
+                progressBar1.Value = 0;
 
                 if (doConvert(mode, fname, image, width, height) != 0)
                 {
@@ -95,6 +109,8 @@ namespace imageConverter
             //convert to 16colorBitmap
             List<ColorConvert.ImageStr> imgstr = new List<ColorConvert.ImageStr>();
             int c = 0;
+            int imgcnt = img.Count;
+            progressBar1.Maximum = imgcnt;
             foreach (Image i in img)
             {
 
@@ -108,6 +124,7 @@ namespace imageConverter
                 istr.setImage(fname[c], b);
                 imgstr.Add(istr);
                 c++;
+                progressBar1.Value = c;
             }
 
             ColorConvert cvt = new ColorConvert(imgstr);

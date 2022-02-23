@@ -40,6 +40,7 @@ namespace imageConverter
             this.heightUpDown = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dumpBmp = new System.Windows.Forms.CheckBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.widthUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,7 +52,7 @@ namespace imageConverter
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(7, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(254, 30);
+            this.label1.Size = new System.Drawing.Size(253, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "(^・ω・^§)ﾉ変換するぞい！";
             // 
@@ -64,10 +65,10 @@ namespace imageConverter
             // 
             this.fileOpenButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileOpenButton.Location = new System.Drawing.Point(10, 173);
+            this.fileOpenButton.Location = new System.Drawing.Point(10, 209);
             this.fileOpenButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fileOpenButton.Name = "fileOpenButton";
-            this.fileOpenButton.Size = new System.Drawing.Size(344, 64);
+            this.fileOpenButton.Size = new System.Drawing.Size(356, 64);
             this.fileOpenButton.TabIndex = 1;
             this.fileOpenButton.Text = "画像とモードを選んで実行";
             this.fileOpenButton.UseVisualStyleBackColor = true;
@@ -85,7 +86,7 @@ namespace imageConverter
             this.comboBox1.Location = new System.Drawing.Point(78, 52);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(276, 23);
+            this.comboBox1.Size = new System.Drawing.Size(288, 23);
             this.comboBox1.TabIndex = 2;
             // 
             // label2
@@ -184,11 +185,21 @@ namespace imageConverter
             this.dumpBmp.Text = "Bitmapを出力する";
             this.dumpBmp.UseVisualStyleBackColor = true;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(12, 178);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(357, 26);
+            this.progressBar1.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 247);
+            this.ClientSize = new System.Drawing.Size(375, 283);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.dumpBmp);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.heightUpDown);
@@ -226,6 +237,7 @@ namespace imageConverter
         private System.Windows.Forms.NumericUpDown heightUpDown;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox dumpBmp;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
