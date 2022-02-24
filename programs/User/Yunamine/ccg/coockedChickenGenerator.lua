@@ -10,7 +10,7 @@
 logname="coockedChickenGenerator.log"
 chickenHuntingTime=10
 estimate = 0
-estimateInit=1200
+estimateInit=1210
 
 function updateLog(e)
 
