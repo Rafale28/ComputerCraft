@@ -74,5 +74,5 @@ while true do
   --setColorPalette(dennisCmd)
   --img = paintutils.loadImage(dennisPic)
   --paintutils.drawImage(img, 1, 1)
-  sleep(2)
+  sleep(1)
 end
