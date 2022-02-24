@@ -33,7 +33,7 @@ function routine()
         itemdetail=turtle.getItemDetail(i)
                             
         if itemdetail ~= nil then          
-            if itemdetail["name"] = "minecraft:iron_ingot" then
+            if itemdetail["name"] == "minecraft:iron_ingot" then
 
                 --鉄インゴットなら後ろのチェストに空きがあるか確認
                 print("iron")
