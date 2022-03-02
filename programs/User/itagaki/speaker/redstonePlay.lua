@@ -14,9 +14,15 @@ function play(src)
 end
 
 playdata = arg[1]
+played=false
 while true do
     if redstone.getInput("back") then
-        play(playdata)
+        if played == false then
+            play(playdata)
+            played = true
+        end
+    else
+        played = false
     end
     sleep(0)
 end
