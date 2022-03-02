@@ -5,15 +5,20 @@ function rowAction()
 
     turtle.select(1)
 
-    turtle.suck()
+    turtle.suckUp()
     itemdetail=turtle.getItemDetail(1)
                     
     if itemdetail ~= nil then          
+    
         if itemdetail["name"] ~= "minecraft:chicken" then
 
-            --鉄インゴット以外なら奥のチェストに格納
-            print("Poppy...")
+            --冷めたチキン以外なら前のチェストに格納
+            print("gomi...")
+            turtle.drop()
+        else
 
+            --冷めたチキンは下で暖める
+            print("chicken!")
             turtle.dropDown()
         end
     end
