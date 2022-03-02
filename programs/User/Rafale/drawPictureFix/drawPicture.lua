@@ -11,6 +11,7 @@ local aquaMvf = dir.."cinderella_aqua.mvf"
 local ncpMvf = dir.."ncp.mvf"
 local stlMvf = dir.."stl.mvf"
 local egoMvf = dir.."egorock.mvf"
+local outMvf = dir.."output.mvf"
 
 function setColorPalette(cmdf)
   local fh = fs.open(cmdf, 'r')
@@ -68,7 +69,7 @@ paintutils.drawFilledBox(1, 1, 256, 256, colors.black)
 
 while true do
   --drawMvfImage(tsunomakiMvf, 1, 1)
-  drawMvfImage(egoMvf, 1, 1)
+  drawMvfImage(outMvf, 1, 1)
   --drawMvfImage(stlMvf, 1, 1)
   --drawMvfImage(ncpMvf, 1, 1)
   --setColorPalette(dennisCmd)
