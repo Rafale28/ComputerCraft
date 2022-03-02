@@ -15,7 +15,7 @@ end
 
 playdata = arg[1]
 while true do
-    if getInput("behind") then
+    if redstone.getInput("behind") then
         play(playdata)
     end
     sleep(0)
