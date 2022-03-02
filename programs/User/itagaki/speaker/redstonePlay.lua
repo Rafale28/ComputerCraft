@@ -14,9 +14,10 @@ function play(src)
 end
 
 playdata = arg[1]
+direction = arg[2]
 played=false
 while true do
-    if redstone.getInput("back") then
+    if redstone.getInput(direction) then
         if played == false then
             play(playdata)
             played = true
